@@ -140,9 +140,9 @@ export function CreateCredentialDialog({
         <Dialog open={open} onOpenChange={handleOpenChange}>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Add Credential</DialogTitle>
+                    <DialogTitle>Добавить учётные данные</DialogTitle>
                     <DialogDescription>
-                        Create a new credential for authentication.
+                        Создайте новые учётные данные для аутентификации.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -155,27 +155,27 @@ export function CreateCredentialDialog({
 
                 <div className="space-y-4 py-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="cred-name">Name *</Label>
+                        <Label htmlFor="cred-name">Название *</Label>
                         <Input
                             id="cred-name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder="My API Key"
+                                    placeholder="Мой API-ключ"
                         />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="cred-description">Description</Label>
+                        <Label htmlFor="cred-description">Описание</Label>
                         <Input
                             id="cred-description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Optional description"
+                                    placeholder="Необязательное описание"
                         />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label>Credential Type</Label>
+                        <Label>Тип учётных данных</Label>
                         <Select
                             value={credentialType}
                             onValueChange={(v) => {
@@ -220,7 +220,7 @@ export function CreateCredentialDialog({
                         onClick={handleClose}
                         disabled={isCreating}
                     >
-                        Cancel
+                        Отмена
                     </Button>
                     <Button
                         onClick={handleCreate}
@@ -229,10 +229,10 @@ export function CreateCredentialDialog({
                         {isCreating ? (
                             <>
                                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                Creating...
+                                Создание...
                             </>
                         ) : (
-                            "Create"
+                            "Создать"
                         )}
                     </Button>
                 </DialogFooter>

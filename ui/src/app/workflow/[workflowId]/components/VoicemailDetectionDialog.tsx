@@ -112,10 +112,9 @@ export const VoicemailDetectionDialog = ({
         <Dialog open={open} onOpenChange={handleOpenChange}>
             <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Voicemail Detection</DialogTitle>
+                    <DialogTitle>Определение автоответчика</DialogTitle>
                     <DialogDescription>
-                        Configure voicemail detection to automatically detect and end calls
-                        when a voicemail system is reached.
+                        Настройте определение автоответчика для автоматического обнаружения и завершения звонков при попадании на автоответчик.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -126,7 +125,7 @@ export const VoicemailDetectionDialog = ({
                             checked={enabled}
                             onCheckedChange={setEnabled}
                         />
-                        <Label htmlFor="voicemail-enabled">Enable Voicemail Detection</Label>
+                        <Label htmlFor="voicemail-enabled">Включить определение автоответчика</Label>
                     </div>
 
                     {enabled && (
@@ -139,9 +138,9 @@ export const VoicemailDetectionDialog = ({
                                         checked={useWorkflowLlm}
                                         onCheckedChange={setUseWorkflowLlm}
                                     />
-                                    <Label htmlFor="voicemail-use-workflow-llm">Use Workflow LLM</Label>
+                                    <Label htmlFor="voicemail-use-workflow-llm">Использовать LLM сценария</Label>
                                     <Label className="text-xs text-muted-foreground ml-2">
-                                        Use the LLM configured in your account settings.
+                                        Использовать LLM, настроенную в настройках аккаунта.
                                     </Label>
                                 </div>
 
@@ -159,10 +158,9 @@ export const VoicemailDetectionDialog = ({
 
                             {/* System Prompt */}
                             <div className="grid gap-2">
-                                <Label>System Prompt</Label>
+                                <Label>Системный промпт</Label>
                                 <Label className="text-xs text-muted-foreground">
-                                    Prompt for voicemail classification.
-                                    The LLM must respond with either &quot;CONVERSATION&quot; or &quot;VOICEMAIL&quot;.
+                                    Промпт для классификации автоответчика. LLM должна ответить &quot;CONVERSATION&quot; или &quot;VOICEMAIL&quot;.
                                 </Label>
                                 <Textarea
                                     value={systemPrompt}
@@ -173,11 +171,11 @@ export const VoicemailDetectionDialog = ({
 
                             {/* Timing Configuration */}
                             <div className="grid gap-4 p-3 border rounded-md bg-muted/10">
-                                <Label className="font-medium">Timing</Label>
+                                <Label className="font-medium">Тайминги</Label>
                                 <div className="space-y-2">
-                                    <Label className="text-sm">Speech Cutoff (seconds)</Label>
+                                    <Label className="text-sm">Порог речи (секунды)</Label>
                                     <Label className="text-xs text-muted-foreground">
-                                        Trigger classification early if first turn speech exceeds this duration.
+                                        Запускать классификацию раньше, если речь первой реплики превышает эту длительность.
                                     </Label>
                                     <Input
                                         type="number"
@@ -195,9 +193,9 @@ export const VoicemailDetectionDialog = ({
 
                 <DialogFooter>
                     <Button variant="outline" onClick={() => onOpenChange(false)}>
-                        Cancel
+                        Отмена
                     </Button>
-                    <Button onClick={handleSave}>Save</Button>
+                    <Button onClick={handleSave}>Сохранить</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

@@ -45,7 +45,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                 <MicOff className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
                 <div className="flex-1 min-w-0">
                     <div className="text-xs font-medium text-amber-700 dark:text-amber-400">
-                        Interruption Disabled
+                        Прерывание отключено
                     </div>
                     <div className="text-sm text-amber-600 dark:text-amber-300 mt-0.5">
                         {message.text}
@@ -56,7 +56,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-xs text-amber-600 dark:text-amber-400 hover:underline mt-1"
                     >
-                        Learn more <ExternalLink className="h-3 w-3" />
+                        Подробнее <ExternalLink className="h-3 w-3" />
                     </a>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                 <AlertTriangle className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
                 <div className="flex-1 min-w-0">
                     <div className="text-xs font-medium text-red-700 dark:text-red-400">
-                        {message.fatal ? 'Fatal Pipeline Error' : 'Pipeline Error'}
+                        {message.fatal ? 'Критическая ошибка конвейера' : 'Ошибка конвейера'}
                     </div>
                     <div className="text-sm text-red-600 dark:text-red-300 mt-0.5 break-words">
                         {message.text}
@@ -94,7 +94,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                 {ttfbMetric && ttfbMetric.ttfbSeconds !== undefined && (
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                         <Brain className="h-3 w-3" />
-                        <span className="font-medium">Reasoning Delay:</span>
+                        <span className="font-medium">Задержка рассуждения:</span>
                         <span>{(ttfbMetric.ttfbSeconds * 1000).toFixed(0)}ms</span>
                     </div>
                 )}
@@ -125,7 +125,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                 {ttfbMetric && ttfbMetric.ttfbSeconds !== undefined && (
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground px-1">
                         <Brain className="h-3 w-3" />
-                        <span className="font-medium">Reasoning Delay:</span>
+                        <span className="font-medium">Задержка рассуждения:</span>
                         <span>{(ttfbMetric.ttfbSeconds * 1000).toFixed(0)}ms</span>
                     </div>
                 )}
@@ -144,7 +144,7 @@ export function TranscriptMessage({ message, nextMessage }: TranscriptMessagePro
                             "text-[10px] mt-1 italic",
                             isUser ? "text-primary-foreground/70" : "text-muted-foreground"
                         )}>
-                            speaking...
+                            говорит...
                         </div>
                     )}
                 </div>

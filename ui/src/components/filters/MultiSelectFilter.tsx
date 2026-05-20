@@ -51,14 +51,14 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
   };
 
   const getDisplayText = () => {
-    if (value.codes.length === 0) return "Select options";
+    if (value.codes.length === 0) return "Выбрать...";
     if (value.codes.length <= 3) return value.codes.join(", ");
     return `${value.codes.slice(0, 3).join(", ")} +${value.codes.length - 3} more`;
   };
 
   return (
     <div className="space-y-2">
-      <Label>Select Options</Label>
+      <Label>Выбрать опции</Label>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -80,7 +80,7 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search options..."
+                  placeholder="Поиск опций..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-8"
@@ -96,7 +96,7 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
                   onClick={handleSelectAll}
                   className="flex-1"
                 >
-                  Select All
+                  Выбрать все
                 </Button>
                 <Button
                   variant="outline"
@@ -104,7 +104,7 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
                   onClick={handleSelectNone}
                   className="flex-1"
                 >
-                  Select None
+                  Снять выбор
                 </Button>
               </div>
             )}
@@ -112,7 +112,7 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
             <div className="max-h-[200px] overflow-auto space-y-1">
               {filteredOptions.length === 0 ? (
                 <p className="text-sm text-muted-foreground text-center py-2">
-                  No options found
+                    Опции не найдены
                 </p>
               ) : (
                 filteredOptions.map((option) => (
@@ -139,7 +139,7 @@ export const MultiSelectFilter: React.FC<MultiSelectFilterProps> = ({
 
             <div className="pt-2 border-t">
               <p className="text-xs text-muted-foreground">
-                {value.codes.length} selected
+                Выбрано: {value.codes.length}
               </p>
             </div>
           </div>

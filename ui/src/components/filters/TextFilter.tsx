@@ -15,7 +15,7 @@ export const TextFilter: React.FC<TextFilterProps> = ({
   value,
   onChange,
   error,
-  placeholder = "Enter text",
+  placeholder = "Поиск...",
   maxLength,
 }) => {
   // Local state for fast typing - only syncs to parent on blur

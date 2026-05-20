@@ -50,7 +50,7 @@ export const DocumentBadges = ({ documentUuids, onStaleUuidsDetected }: Document
 
     // Show loading while data hasn't loaded yet
     if (documents === undefined) {
-        return <Badge variant="outline">Loading...</Badge>;
+        return <Badge variant="outline">Загрузка...</Badge>;
     }
 
     return (

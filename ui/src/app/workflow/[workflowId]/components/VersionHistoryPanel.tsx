@@ -30,9 +30,9 @@ interface VersionHistoryPanelProps {
 }
 
 const statusLabel: Record<string, string> = {
-    draft: "Draft",
-    published: "Published",
-    archived: "Archived",
+    draft: "Черновик",
+    published: "Опубликовано",
+    archived: "В архиве",
 };
 
 const statusColor: Record<string, string> = {
@@ -71,7 +71,7 @@ export const VersionHistoryPanel = ({
             <div className="p-4 h-full overflow-y-auto">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-lg font-semibold text-white">
-                        Version History
+                        История версий
                     </h2>
                     <Button
                         variant="ghost"
@@ -89,7 +89,7 @@ export const VersionHistoryPanel = ({
                     </div>
                 ) : versions.length === 0 ? (
                     <p className="text-sm text-gray-500 text-center py-8">
-                        No versions found.
+                        Версии не найдены.
                     </p>
                 ) : (
                     <div className="space-y-2">
@@ -141,7 +141,7 @@ export const VersionHistoryPanel = ({
                                 {loadingMore ? (
                                     <LoaderCircle className="w-4 h-4 animate-spin" />
                                 ) : (
-                                    "Load more"
+                                    "Загрузить ещё"
                                 )}
                             </Button>
                         )}

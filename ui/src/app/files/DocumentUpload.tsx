@@ -199,7 +199,7 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
 
         {/* Retrieval mode selection */}
         <div className="space-y-3">
-          <Label className="text-sm font-medium">How should the agent use this document?</Label>
+          <Label className="text-sm font-medium">Как агенту использовать этот документ?</Label>
           <RadioGroup value={retrievalMode} onValueChange={setRetrievalMode}>
             <label
               htmlFor="full_document"
@@ -209,7 +209,7 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
             >
               <RadioGroupItem value="full_document" id="full_document" className="mt-0.5" />
               <div>
-                <p className="font-medium text-sm">Full Document</p>
+                <p className="font-medium text-sm">Полный документ</p>
                 <p className="text-xs text-muted-foreground">
                   The entire document is provided to the agent on each retrieval.
                   Best for menus, price lists, FAQs, and other small reference documents.
@@ -224,7 +224,7 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
             >
               <RadioGroupItem value="chunked" id="chunked" className="mt-0.5" />
               <div>
-                <p className="font-medium text-sm">Chunked Search</p>
+                <p className="font-medium text-sm">Поиск по фрагментам</p>
                 <p className="text-xs text-muted-foreground">
                   The document is split into chunks and the most relevant ones are retrieved.
                   Better for large documents like manuals or policies.
@@ -236,7 +236,7 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
 
         {/* Upload button */}
         <Button onClick={uploadFile} className="w-full">
-          Upload & Process
+          Загрузить и обработать
         </Button>
       </div>
     );
@@ -269,10 +269,10 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
       >
         <Upload className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
         <p className="text-lg font-medium mb-2">
-          {uploading ? 'Uploading...' : 'Drop your document here'}
+          {uploading ? 'Загрузка...' : 'Перетащите файл сюда'}
         </p>
         <p className="text-sm text-muted-foreground mb-4">
-          or click to browse
+          или нажмите для выбора
         </p>
         <p className="text-xs text-muted-foreground">
           Supported formats: {ACCEPTED_FILE_TYPES.join(', ')} (Max 5MB)
@@ -298,7 +298,7 @@ export default function DocumentUpload({ onUploadSuccess }: DocumentUploadProps)
             variant="outline"
             onClick={handleButtonClick}
           >
-            Choose File
+            Выбрать файл
           </Button>
         </div>
       )}

@@ -52,7 +52,7 @@ export function DailyUsageTable({ data, isLoading }: DailyUsageTableProps) {
                     <CardDescription>Last 7 days of usage</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-center py-8 text-gray-500">No usage data available</p>
+                    <p className="text-center py-8 text-gray-500">Нет данных об использовании</p>
                 </CardContent>
             </Card>
         );
@@ -69,10 +69,10 @@ export function DailyUsageTable({ data, isLoading }: DailyUsageTableProps) {
                     <Table>
                         <TableHeader>
                             <TableRow className="bg-gray-50">
-                                <TableHead className="font-semibold">Date</TableHead>
-                                <TableHead className="font-semibold text-right">Usage (minutes)</TableHead>
-                                <TableHead className="font-semibold text-right">Cost (USD)</TableHead>
-                                <TableHead className="font-semibold text-right">Calls</TableHead>
+                                <TableHead className="font-semibold">Дата</TableHead>
+                                <TableHead className="font-semibold text-right">Длительность (мин)</TableHead>
+                                <TableHead className="font-semibold text-right">Стоимость (USD)</TableHead>
+                                <TableHead className="font-semibold text-right">Звонки</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>

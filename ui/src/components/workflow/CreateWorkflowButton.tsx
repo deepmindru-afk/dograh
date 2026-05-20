@@ -86,7 +86,7 @@ export function CreateWorkflowButton() {
             <DropdownMenuTrigger asChild>
                 <Button disabled={isCreating}>
                     <PlusIcon className="w-4 h-4" />
-                    {isCreating ? 'Creating...' : 'Create Agent'}
+                    {isCreating ? 'Создание...' : 'Создать сценарий'}
                     <ChevronDown className="w-4 h-4" />
                 </Button>
             </DropdownMenuTrigger>
@@ -94,15 +94,15 @@ export function CreateWorkflowButton() {
                 <DropdownMenuItem onClick={handleAgentBuilder} className="cursor-pointer">
                     <Bot className="w-4 h-4 mr-2" />
                     <div>
-                        <div className="font-medium">Use Agent Builder</div>
-                        <div className="text-xs text-muted-foreground">AI generates a workflow from your description</div>
+                        <div className="font-medium">Использовать конструктор</div>
+                        <div className="text-xs text-muted-foreground">ИИ создаёт сценарий из вашего описания</div>
                     </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleBlankCanvas} disabled={isCreating} className="cursor-pointer">
                     <LayoutTemplate className="w-4 h-4 mr-2" />
                     <div>
-                        <div className="font-medium">Blank Canvas</div>
-                        <div className="text-xs text-muted-foreground">Start from scratch with an empty workflow</div>
+                        <div className="font-medium">Пустой холст</div>
+                        <div className="text-xs text-muted-foreground">Начать с нуля с пустым сценарием</div>
                     </div>
                 </DropdownMenuItem>
             </DropdownMenuContent>

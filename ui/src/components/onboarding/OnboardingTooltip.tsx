@@ -16,7 +16,7 @@ interface OnboardingTooltipProps {
 
 export const OnboardingTooltip = ({
     targetRef,
-    title = "One more thing...",
+    title = "Ещё кое-что...",
     message,
     onDismiss,
     onNext,
@@ -96,7 +96,7 @@ export const OnboardingTooltip = ({
                 <button
                     onClick={onDismiss}
                     className="absolute top-2 right-2 p-1 hover:bg-blue-600 rounded-full transition-colors"
-                    aria-label="Close tooltip"
+                    aria-label="Закрыть подсказку"
                 >
                     <X className="h-4 w-4" />
                 </button>
@@ -115,7 +115,7 @@ export const OnboardingTooltip = ({
                         onClick={onDismiss}
                         className="bg-white text-blue-500 px-4 py-1.5 rounded font-medium text-sm hover:bg-blue-50 transition-colors cursor-pointer"
                     >
-                        Close
+                        Понятно
                     </button>
 
                     {showNext && (
@@ -126,7 +126,7 @@ export const OnboardingTooltip = ({
                             }}
                             className="bg-white text-blue-500 px-4 py-1.5 rounded font-medium text-sm hover:bg-blue-50 transition-colors"
                         >
-                            Next
+                            Далее
                         </button>
                     )}
                 </div>

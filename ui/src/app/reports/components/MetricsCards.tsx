@@ -14,7 +14,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Workflow Runs</CardTitle>
+          <CardTitle className="text-sm font-medium">Всего звонков</CardTitle>
           <Phone className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
@@ -27,7 +27,7 @@ export function MetricsCards({ metrics }: MetricsCardsProps) {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Transfer Dispositions</CardTitle>
+          <CardTitle className="text-sm font-medium">Переводы (XFER)</CardTitle>
           <PhoneForwarded className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>

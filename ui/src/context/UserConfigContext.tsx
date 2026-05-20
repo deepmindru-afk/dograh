@@ -112,7 +112,7 @@ export function UserConfigProvider({ children }: { children: ReactNode }) {
                 }
                 setError(null);
             } catch (err) {
-                setError(err instanceof Error ? err : new Error('Failed to fetch user configuration'));
+                setError(err instanceof Error ? err : new Error('Не удалось получить конфигурацию пользователя'));
             } finally {
                 setLoading(false);
             }
@@ -122,7 +122,7 @@ export function UserConfigProvider({ children }: { children: ReactNode }) {
     }, [auth.loading, auth.isAuthenticated]);
 
     const saveUserConfig = useCallback(async (userConfigRequest: UserConfigurationRequestResponseSchema) => {
-        if (!authRef.current.isAuthenticated) throw new Error('No authentication available');
+        if (!authRef.current.isAuthenticated) throw new Error('Аутентификация недоступна');
         const response = await updateUserConfigurationsApiV1UserConfigurationsUserPut({
             body: {
                 ...userConfig,
@@ -130,7 +130,7 @@ export function UserConfigProvider({ children }: { children: ReactNode }) {
             } as UserConfigurationRequestResponseSchema,
         });
         if (response.error) {
-            let msg = 'Failed to save user configuration';
+            let msg = 'Не удалось сохранить конфигурацию пользователя';
             const detail = (response.error as unknown as { detail?: string | { errors: { model: string; message: string }[] } }).detail;
             if (typeof detail === 'string') {
                 msg = detail;
@@ -172,7 +172,7 @@ export function UserConfigProvider({ children }: { children: ReactNode }) {
             }
             setError(null);
         } catch (err) {
-            setError(err instanceof Error ? err : new Error('Failed to fetch user configuration'));
+            setError(err instanceof Error ? err : new Error('Не удалось получить конфигурацию пользователя'));
         } finally {
             setLoading(false);
         }

@@ -177,7 +177,7 @@ export default function RecordingsList({ refreshKey }: { refreshKey?: number }) 
                 <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
-                        placeholder="Search by filename, transcript, or ID..."
+                        placeholder="Поиск записей..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="pl-10"
@@ -205,8 +205,8 @@ export default function RecordingsList({ refreshKey }: { refreshKey?: number }) 
                     <AudioLines className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                     <p className="text-muted-foreground">
                         {searchQuery
-                            ? "No recordings match your search"
-                            : "No recordings yet"}
+                            ? "Нет записей по вашему запросу"
+                            : "Нет записей"}
                     </p>
                 </div>
             ) : (
@@ -272,7 +272,7 @@ export default function RecordingsList({ refreshKey }: { refreshKey?: number }) 
                                                         onClick={() => startEditing(rec)}
                                                     >
                                                         <Pencil className="w-3 h-3" />
-                                                        Edit ID
+                                                        Редактировать ID
                                                     </Button>
                                                 </div>
                                             )}

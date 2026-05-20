@@ -72,7 +72,7 @@ export function MediaPreviewDialog() {
                 <DialogContent className="sm:max-w-2xl">
                     <DialogHeader>
                         <DialogTitle>
-                            Run Preview
+                            Предпросмотр медиа
                             {selectedRunId && ` - Run #${selectedRunId}`}
                         </DialogTitle>
                     </DialogHeader>
@@ -111,7 +111,7 @@ export function MediaPreviewDialog() {
 
                     <DialogFooter className="pt-4">
                         <DialogClose asChild>
-                            <Button variant="secondary">Close</Button>
+                            <Button variant="secondary">Закрыть</Button>
                         </DialogClose>
                         <div className="flex gap-2">
                             {recordingKey && (

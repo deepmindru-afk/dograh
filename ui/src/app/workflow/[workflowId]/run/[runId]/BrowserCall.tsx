@@ -112,7 +112,7 @@ const BrowserCall = ({ workflowId, workflowRunId, initialContextVariables }: {
                     <div className="flex justify-center items-center h-full px-8">
                         <Card className="w-full max-w-xl">
                             <CardHeader>
-                                <CardTitle>Call Voice Agent</CardTitle>
+                                <CardTitle>Позвонить голосовому агенту</CardTitle>
                             </CardHeader>
 
                             <CardContent>
@@ -120,8 +120,8 @@ const BrowserCall = ({ workflowId, workflowRunId, initialContextVariables }: {
                                     <div className="flex flex-col items-center justify-center space-y-4 p-8">
                                         <Loader2 className="h-8 w-8 animate-spin text-primary" />
                                         <div className="text-center space-y-2">
-                                            <p className="text-foreground font-medium">Processing your call</p>
-                                            <p className="text-sm text-muted-foreground">Fetching transcript and recording...</p>
+                                            <p className="text-foreground font-medium">Обработка звонка</p>
+                                            <p className="text-sm text-muted-foreground">Получение транскрипции и записи...</p>
                                         </div>
                                     </div>
                                 ) : (

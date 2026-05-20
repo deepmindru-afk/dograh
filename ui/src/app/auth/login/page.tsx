@@ -26,7 +26,7 @@ export default function LoginPage() {
 
       if (res.error || !res.data) {
         const detail = (res.error as { detail?: string })?.detail;
-        toast.error(detail || "Login failed");
+        toast.error(detail || "Ошибка входа");
         return;
       }
 
@@ -39,7 +39,7 @@ export default function LoginPage() {
 
       window.location.href = "/after-sign-in";
     } catch {
-      toast.error("An error occurred. Please try again.");
+      toast.error("Произошла ошибка. Попробуйте снова.");
     } finally {
       setLoading(false);
     }
@@ -49,8 +49,8 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Sign in</CardTitle>
-          <CardDescription>Enter your email and password to continue</CardDescription>
+          <CardTitle className="text-2xl">Войти</CardTitle>
+          <CardDescription>Введите email и пароль для входа</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -66,24 +66,24 @@ export default function LoginPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Пароль</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Введите пароль"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in..." : "Sign in"}
+              {loading ? "Вход..." : "Войти"}
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
+            Нет аккаунта?{" "}
             <Link href="/auth/signup" className="text-primary underline-offset-4 hover:underline">
-              Sign up
+              Зарегистрироваться
             </Link>
           </p>
         </CardContent>

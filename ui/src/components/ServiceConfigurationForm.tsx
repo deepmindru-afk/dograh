@@ -47,25 +47,25 @@ interface FormValues {
 
 const STANDARD_TABS: { key: ServiceSegment; label: string }[] = [
     { key: "llm", label: "LLM" },
-    { key: "tts", label: "Voice" },
-    { key: "stt", label: "Transcriber" },
-    { key: "embeddings", label: "Embedding" },
+    { key: "tts", label: "Голос" },
+    { key: "stt", label: "Транскрибатор" },
+    { key: "embeddings", label: "Эмбеддинги" },
 ];
 
 const REALTIME_TABS: { key: ServiceSegment; label: string }[] = [
-    { key: "realtime", label: "Realtime Model" },
+    { key: "realtime", label: "Realtime модель" },
     { key: "llm", label: "LLM" },
-    { key: "embeddings", label: "Embedding" },
+    { key: "embeddings", label: "Эмбеддинги" },
 ];
 
 const OVERRIDE_STANDARD_TABS: { key: ServiceSegment; label: string }[] = [
     { key: "llm", label: "LLM" },
-    { key: "tts", label: "Voice" },
-    { key: "stt", label: "Transcriber" },
+    { key: "tts", label: "Голос" },
+    { key: "stt", label: "Транскрибатор" },
 ];
 
 const OVERRIDE_REALTIME_TABS: { key: ServiceSegment; label: string }[] = [
-    { key: "realtime", label: "Realtime Model" },
+    { key: "realtime", label: "Realtime модель" },
     { key: "llm", label: "LLM" },
 ];
 
@@ -89,10 +89,10 @@ export interface ServiceConfigurationFormProps {
 }
 
 function getGlobalSummary(config: Record<string, unknown> | null | undefined): string {
-    if (!config) return "Not configured";
+    if (!config) return "Не настроено";
     const provider = config.provider as string | undefined;
     const model = config.model as string | undefined;
-    if (!provider) return "Not configured";
+    if (!provider) return "Не настроено";
     return model ? `${provider} / ${model}` : provider;
 }
 
@@ -447,7 +447,7 @@ export function ServiceConfigurationForm({
             if (error instanceof Error) {
                 setApiError(error.message);
             } else {
-                setApiError('An unknown error occurred');
+                setApiError('Произошла неизвестная ошибка');
             }
         } finally {
             setIsSaving(false);
@@ -473,7 +473,7 @@ export function ServiceConfigurationForm({
             <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label>Provider</Label>
+                        <Label>Провайдер</Label>
                         <Select
                             value={currentProvider}
                             onValueChange={(providerName) => {
@@ -481,7 +481,7 @@ export function ServiceConfigurationForm({
                             }}
                         >
                             <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select provider" />
+                                <SelectValue placeholder="Выберите провайдера" />
                             </SelectTrigger>
                             <SelectContent>
                                 {availableProviders.map((provider) => (
@@ -521,13 +521,13 @@ export function ServiceConfigurationForm({
 
                 {currentProvider && providerSchema && providerSchema.properties.api_key && (
                     <div className="space-y-2">
-                        <Label>{mode === 'override' ? 'API Key (leave empty to use global)' : 'API Key(s)'}</Label>
+                        <Label>{mode === 'override' ? 'API ключ (оставьте пустым для использования глобального)' : 'API ключ(и)'}</Label>
                         {renderFieldDescription("api_key", providerSchema)}
                         {apiKeys[service].map((key, index) => (
                             <div key={index} className="flex gap-2">
                                 <Input
                                     type="text"
-                                    placeholder="Enter API key"
+                                    placeholder="Введите API ключ"
                                     value={key}
                                     onChange={(e) => {
                                         const newKeys = [...apiKeys[service]];
@@ -565,7 +565,7 @@ export function ServiceConfigurationForm({
                                     }));
                                 }}
                             >
-                                <Plus className="h-4 w-4 mr-1" /> Add API Key
+                                <Plus className="h-4 w-4 mr-1" /> Добавить API ключ
                             </Button>
                         )}
                     </div>
@@ -627,7 +627,7 @@ export function ServiceConfigurationForm({
                     <div className="space-y-2">
                         <Input
                             type="text"
-                            placeholder={`Enter ${field}`}
+                            placeholder={`Введите ${field}`}
                             value={currentValue}
                             onChange={(e) => {
                                 setValue(fieldKey, e.target.value, { shouldDirty: true });
@@ -645,7 +645,7 @@ export function ServiceConfigurationForm({
                                 }}
                             />
                             <Label htmlFor={`custom-input-${fieldKey}`} className="text-sm font-normal cursor-pointer">
-                                Enter Custom Value
+                                Ввести пользовательское значение
                             </Label>
                         </div>
                     </div>
@@ -662,7 +662,7 @@ export function ServiceConfigurationForm({
                         }}
                     >
                         <SelectTrigger className="w-full">
-                            <SelectValue placeholder={`Select ${field}`} />
+                            <SelectValue placeholder={`Выберите ${field}`} />
                         </SelectTrigger>
                         <SelectContent>
                             {options.map((value: string) => (
@@ -681,7 +681,7 @@ export function ServiceConfigurationForm({
                             }}
                         />
                         <Label htmlFor={`custom-input-${fieldKey}-dropdown`} className="text-sm font-normal cursor-pointer">
-                            Enter Custom Value
+                            Ввести пользовательское значение
                         </Label>
                     </div>
                 </div>
@@ -717,7 +717,7 @@ export function ServiceConfigurationForm({
                     }}
                 >
                     <SelectTrigger className="w-full">
-                        <SelectValue placeholder={`Select ${field}`} />
+                        <SelectValue placeholder={`Выберите ${field}`} />
                     </SelectTrigger>
                     <SelectContent>
                         {dropdownOptions.map((value: string) => (
@@ -735,7 +735,7 @@ export function ServiceConfigurationForm({
                 <Textarea
                     rows={6}
                     className="font-mono text-xs"
-                    placeholder={`Enter ${field}`}
+                    placeholder={`Введите ${field}`}
                     {...register(`${service}_${field}`, {
                         required: service !== "embeddings" && providerSchema.required?.includes(field),
                     })}
@@ -747,7 +747,7 @@ export function ServiceConfigurationForm({
             <Input
                 type={actualSchema?.type === "number" ? "number" : "text"}
                 {...(actualSchema?.type === "number" && { step: "any" })}
-                placeholder={`Enter ${field}`}
+                placeholder={`Введите ${field}`}
                 {...register(`${service}_${field}`, {
                     required: service !== "embeddings" && providerSchema.required?.includes(field),
                     valueAsNumber: actualSchema?.type === "number"
@@ -768,11 +768,11 @@ export function ServiceConfigurationForm({
             <div className="flex items-center justify-between p-3 border rounded-md bg-muted/20 mb-4">
                 <div className="space-y-0.5">
                     <Label htmlFor={`override-${service}`} className="text-sm cursor-pointer font-medium">
-                        Override {label}
+                        Переопределить {label}
                     </Label>
                     {!isEnabled && (
                         <p className="text-xs text-muted-foreground">
-                            Using global: {getGlobalSummary(globalVal)}
+                            Используется глобальный: {getGlobalSummary(globalVal)}
                         </p>
                     )}
                 </div>
@@ -801,10 +801,10 @@ export function ServiceConfigurationForm({
             <div className="flex items-center justify-between mb-4 p-4 border rounded-lg">
                 <div>
                     <Label htmlFor="realtime-toggle" className="text-sm font-medium">
-                        Realtime Mode
+                        Realtime режим
                     </Label>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                        Uses a single speech-to-speech model (no separate STT/TTS). An LLM is still required for variable extraction and QA.
+                        Использует единую модель «речь-речь» (без раздельных STT/TTS). LLM всё ещё требуется для извлечения переменных и вопросов.
                     </p>
                 </div>
                 <Switch
@@ -838,7 +838,7 @@ export function ServiceConfigurationForm({
             {apiError && <p className="text-red-500 mt-4">{apiError}</p>}
 
             <Button type="submit" className="w-full mt-6" disabled={isSaving}>
-                {isSaving ? "Saving..." : (submitLabel || "Save Configuration")}
+                {isSaving ? "Сохранение..." : (submitLabel || "Сохранить конфигурацию")}
             </Button>
         </form>
     );

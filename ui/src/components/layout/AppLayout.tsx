@@ -19,7 +19,7 @@ function AppHeader() {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between border-b bg-background px-4 py-2">
       <div className="flex items-center gap-3">
-        <Button variant="ghost" size="icon" onClick={toggleSidebar} aria-label="Open menu" className="md:hidden">
+        <Button variant="ghost" size="icon" onClick={toggleSidebar} aria-label="Меню" className="md:hidden">
           <Menu className="h-5 w-5" />
         </Button>
         <Link href="/" className="text-lg font-bold md:hidden">Portal</Link>

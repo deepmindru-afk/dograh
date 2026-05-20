@@ -338,7 +338,7 @@ export const FilterBuilder: React.FC<FilterBuilderProps> = ({
               addFilter(value);
             }}>
               <SelectTrigger className="flex-1">
-                <SelectValue placeholder="Select attribute to filter by" />
+                <SelectValue placeholder="Выберите атрибут для фильтрации" />
               </SelectTrigger>
               <SelectContent>
                 {availableAttributesForAdding.map((attr) => (
@@ -357,14 +357,14 @@ export const FilterBuilder: React.FC<FilterBuilderProps> = ({
           {activeFilters.length > 0 && (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-medium">Active Filters</h4>
+                <h4 className="text-sm font-medium">Активные фильтры</h4>
                 {activeFilters.length > 1 && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={clearAllFilters}
                   >
-                    Clear All
+                    Очистить всё
                   </Button>
                 )}
               </div>
@@ -425,7 +425,7 @@ export const FilterBuilder: React.FC<FilterBuilderProps> = ({
                     id="auto-refresh"
                   />
                   <label htmlFor="auto-refresh" className="text-sm font-medium cursor-pointer">
-                    Auto-refresh every 5s
+                    Автообновление каждые 5с
                   </label>
                   {autoRefresh && (
                     <RefreshCw className="h-4 w-4 text-gray-500 animate-spin" />
@@ -435,18 +435,18 @@ export const FilterBuilder: React.FC<FilterBuilderProps> = ({
 
               {/* Buttons on the right */}
               <div className="flex gap-2 ml-auto">
-                <Button
-                  variant="outline"
-                  onClick={clearAllFilters}
-                >
-                  Clear All
-                </Button>
+                  <Button
+                    variant="outline"
+                    onClick={clearAllFilters}
+                  >
+                    Очистить всё
+                  </Button>
                 <Button
                   onClick={onApplyFilters}
                   disabled={(activeFilters.length > 0 && !allFiltersValid) || isExecuting}
                   title={"Apply filters"}
                 >
-                  {isExecuting ? "Applying..." : `Apply (${navigator.userAgent.toUpperCase().indexOf('MAC') >= 0 ? '⌘' : 'Ctrl'}+Enter)`}
+                  {isExecuting ? "Применение..." : `Применить (${navigator.userAgent.toUpperCase().indexOf('MAC') >= 0 ? '⌘' : 'Ctrl'}+Enter)`}
                 </Button>
               </div>
             </div>

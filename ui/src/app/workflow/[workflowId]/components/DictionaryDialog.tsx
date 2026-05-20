@@ -43,20 +43,20 @@ export const DictionaryDialog = ({
         <Dialog open={open} onOpenChange={handleDialogOpenChange}>
             <DialogContent className="max-w-lg">
                 <DialogHeader>
-                    <DialogTitle>Dictionary</DialogTitle>
+                    <DialogTitle>Словарь</DialogTitle>
                     <DialogDescription>
-                    Add any specific words that you would want the bot to actively listen for. The Voice Agent learns your
-                    unique words and names. Add expected words and phrases, company jargon, named entities, or industry-specific lingo. <br/>
-                    Example: billing department, tretinoin etc. <br/>
-                    (May incur extra cost depending on provider)
+                    Добавьте слова, которые бот должен активно слушать. Голосовой агент изучает
+                    ваши уникальные слова и имена. Добавляйте ожидаемые слова и фразы, корпоративный жаргон, именованные сущности или отраслевую лексику. <br/>
+                    Пример: billing department, tretinoin и т.д. <br/>
+                    (Может повлечь дополнительные расходы в зависимости от провайдера)
                     </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="dictionary" className="text-sm font-medium">Words</Label>
+                        <Label htmlFor="dictionary" className="text-sm font-medium">Слова</Label>
                         <Textarea
                             id="dictionary"
-                            placeholder="Enter words separated by comma"
+                            placeholder="Введите слова через запятую"
                             value={dictionaryValue}
                             onChange={(e) => setDictionaryValue(e.target.value)}
                             rows={4}
@@ -67,10 +67,10 @@ export const DictionaryDialog = ({
                 <DialogFooter>
                     <div className="flex items-center gap-2">
                         <Button variant="outline" onClick={() => onOpenChange(false)}>
-                            Cancel
+                            Отмена
                         </Button>
                         <Button onClick={handleSave}>
-                            Save Dictionary
+                            Сохранить словарь
                         </Button>
                     </div>
                 </DialogFooter>

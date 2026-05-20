@@ -143,10 +143,10 @@ export const RealtimeFeedback = (props: RealtimeFeedbackProps) => {
             <UnifiedTranscript
                 messages={messages}
                 status="ended"
-                title="Call Transcript"
+                title="Транскрипция звонка"
                 emptyState={{
-                    title: "No conversation recorded",
-                    subtitle: "Real-time feedback events were not captured for this call"
+                    title: "Разговор не записан",
+                    subtitle: "События обратной связи в реальном времени не были записаны для этого звонка"
                 }}
             />
         );
@@ -161,13 +161,13 @@ export const RealtimeFeedback = (props: RealtimeFeedbackProps) => {
         <UnifiedTranscript
             messages={processedMessages}
             status={status}
-            title="Live Transcript"
+            title="Транскрипция в реальном времени"
             autoScroll={true}
             emptyState={{
-                title: "No messages yet",
+                title: "Сообщений пока нет",
                 subtitle: isCallActive
-                    ? "Start speaking to see the transcript"
-                    : "Start the call to begin the conversation"
+                    ? "Начните говорить, чтобы увидеть транскрипцию"
+                    : "Начните звонок, чтобы начать разговор"
             }}
         />
     );

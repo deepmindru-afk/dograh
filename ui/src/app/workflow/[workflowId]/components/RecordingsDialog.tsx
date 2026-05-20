@@ -101,7 +101,7 @@ export const RecordingsDialog = ({
             setRecordings(recs);
             onRecordingsChange?.(recs);
         } catch {
-            setError("Failed to load recordings");
+            setError("Не удалось загрузить записи");
         } finally {
             setLoading(false);
         }
@@ -347,7 +347,7 @@ export const RecordingsDialog = ({
             });
             await fetchRecordings();
         } catch {
-            setError("Failed to delete recording");
+            setError("Не удалось удалить запись");
         }
     };
 
@@ -359,7 +359,7 @@ export const RecordingsDialog = ({
                 source: 'recordings_dialog',
             });
         } catch {
-            setError("Failed to play recording");
+            setError("Не удалось воспроизвести запись");
         }
     };
 
@@ -372,19 +372,19 @@ export const RecordingsDialog = ({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Workflow Recordings</DialogTitle>
+                    <DialogTitle>Записи сценария</DialogTitle>
                     <DialogDescription>
-                        Upload or record audio for hybrid prompts. Recordings are
-                        scoped to your current TTS configuration. Use{" "}
-                        <code className="text-xs bg-muted px-1 rounded">@</code> in
-                        prompt fields to insert them.
+                        Загрузите или запишите аудио для гибридных промптов. Записи
+                        привязаны к текущей конфигурации TTS. Используйте{" "}
+                        <code className="text-xs bg-muted px-1 rounded">@</code> в
+                        полях промптов для их вставки.
                     </DialogDescription>
                 </DialogHeader>
 
                 {/* Current TTS Config */}
                 <div className="rounded-md border p-3 bg-muted/30 text-sm space-y-1">
                     <div className="font-medium text-xs text-muted-foreground uppercase tracking-wide">
-                        Current TTS Configuration
+                        Текущая конфигурация TTS
                     </div>
                     {ttsProvider ? (
                         <div className="flex flex-wrap gap-2 text-xs">
@@ -400,7 +400,7 @@ export const RecordingsDialog = ({
                         </div>
                     ) : (
                         <p className="text-xs text-destructive">
-                            No TTS configuration found. Set it in Model Configurations.
+                            Конфигурация TTS не найдена. Настройте в конфигурации моделей.
                         </p>
                     )}
                 </div>
@@ -413,13 +413,13 @@ export const RecordingsDialog = ({
 
                 {/* Upload Section */}
                 <div className="space-y-3 border rounded-md p-3">
-                    <Label className="text-sm font-medium">Add New Recordings</Label>
+                    <Label className="text-sm font-medium">Добавить новые записи</Label>
 
                     {/* Audio source: file picker or record */}
                     <div>
-                        <Label className="text-xs text-muted-foreground">
-                            Audio Files
-                        </Label>
+                            <Label className="text-xs text-muted-foreground">
+                                Аудиофайлы
+                            </Label>
                         <div className="flex gap-2">
                             <input
                                 ref={fileInputRef}
@@ -438,7 +438,7 @@ export const RecordingsDialog = ({
                                 disabled={isBusy}
                             >
                                 <Upload className="w-4 h-4 mr-2 shrink-0" />
-                                <span className="text-muted-foreground">Choose audio files (max 5MB each)</span>
+                                <span className="text-muted-foreground">Выберите аудиофайлы (макс. 5 МБ каждый)</span>
                             </Button>
                             {recordingStep === "idle" && (
                                 <Button
@@ -462,10 +462,10 @@ export const RecordingsDialog = ({
                                 <>
                                     <div>
                                         <Label className="text-xs text-muted-foreground">
-                                            Recording Name
+                                            Название записи
                                         </Label>
                                         <Input
-                                            placeholder="e.g. greeting, hold-message"
+                                            placeholder="например, приветствие, сообщение-ожидание"
                                             value={recordingFilename}
                                             onChange={(e) => setRecordingFilename(e.target.value)}
                                             autoFocus
@@ -478,14 +478,14 @@ export const RecordingsDialog = ({
                                             disabled={!recordingFilename.trim()}
                                         >
                                             <Mic className="w-4 h-4 mr-1" />
-                                            Start Recording
+                                            Начать запись
                                         </Button>
                                         <Button
                                             size="sm"
                                             variant="ghost"
                                             onClick={resetRecordingState}
                                         >
-                                            Cancel
+                                            Отмена
                                         </Button>
                                     </div>
                                 </>
@@ -507,7 +507,7 @@ export const RecordingsDialog = ({
                                         className="ml-auto"
                                     >
                                         <Square className="w-4 h-4 mr-1" />
-                                        Stop
+                                        Стоп
                                     </Button>
                                 </div>
                             )}
@@ -543,7 +543,7 @@ export const RecordingsDialog = ({
                                         <p className="text-xs text-destructive">{pf.error}</p>
                                     )}
                                     <Textarea
-                                        placeholder={pf.isTranscribing ? "Transcribing..." : "What does this recording say?"}
+                                        placeholder={pf.isTranscribing ? "Транскрибация..." : "Что говорит эта запись?"}
                                         value={pf.transcript}
                                         onChange={(e) => updateTranscript(pf.id, e.target.value)}
                                         disabled={pf.isTranscribing}
@@ -558,7 +558,7 @@ export const RecordingsDialog = ({
                     {/* Language */}
                     <div>
                         <Label className="text-xs text-muted-foreground">
-                            Language
+                            Язык
                         </Label>
                         <Select value={language} onValueChange={setLanguage}>
                             <SelectTrigger className="h-9 text-sm">
@@ -585,15 +585,15 @@ export const RecordingsDialog = ({
                             <Upload className="w-4 h-4 mr-1" />
                         )}
                         {uploading
-                            ? "Uploading..."
-                            : `Upload ${readyCount} Recording${readyCount !== 1 ? "s" : ""}`}
+                            ? "Загрузка..."
+                            : `Загрузить ${readyCount} запис${readyCount === 1 ? "ь" : "и"}`}
                     </Button>
                 </div>
 
                 {/* Recordings List */}
                 <div className="space-y-2">
                     <Label className="text-sm font-medium">
-                        Recordings{" "}
+                        Записи{" "}
                         {!loading && (
                             <span className="text-muted-foreground font-normal">
                                 ({recordings.length})
@@ -606,7 +606,7 @@ export const RecordingsDialog = ({
                         </div>
                     ) : recordings.length === 0 ? (
                         <p className="text-sm text-muted-foreground py-2">
-                            No recordings yet for this TTS configuration.
+                            Записей пока нет для этой конфигурации TTS.
                         </p>
                     ) : (
                         recordings.map((rec) => (

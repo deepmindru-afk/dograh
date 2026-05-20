@@ -27,9 +27,9 @@ export const ModelConfigurationDialog = ({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Model Configuration</DialogTitle>
+                    <DialogTitle>Конфигурация модели</DialogTitle>
                     <DialogDescription>
-                        Override global model settings for this workflow. Toggle individual services to customize.
+                        Переопределите глобальные настройки моделей для этого сценария. Включайте отдельные сервисы для настройки.
                     </DialogDescription>
                 </DialogHeader>
 

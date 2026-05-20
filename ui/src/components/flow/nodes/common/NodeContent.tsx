@@ -24,7 +24,7 @@ interface NodeContentProps {
 }
 
 // Get badge styling based on node type
-const DEFAULT_BADGE = { label: 'Node', className: 'bg-zinc-500 text-white' };
+const DEFAULT_BADGE = { label: 'Узел', className: 'bg-zinc-500 text-white' };
 
 export const NodeContent = ({
     selected,
@@ -35,7 +35,7 @@ export const NodeContent = ({
     icon,
     badgeLabel,
     badgeClassName,
-    contentLabel = "Prompt",
+    contentLabel = "Промпт",
     hasSourceHandle = false,
     hasTargetHandle = false,
     children,

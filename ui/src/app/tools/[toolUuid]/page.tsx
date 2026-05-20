@@ -537,10 +537,10 @@ const data = await response.json();`;
             <div className="min-h-screen bg-background">
                 <div className="container mx-auto px-4 py-8">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h1 className="text-2xl font-bold mb-4">Tool not found</h1>
+                        <h1 className="text-2xl font-bold mb-4">Инструмент не найден</h1>
                         <Button onClick={() => router.push("/tools")}>
                             <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back to Tools
+                            Назад к инструментам
                         </Button>
                     </div>
                 </div>
@@ -658,14 +658,14 @@ const data = await response.json();`;
                     ) : isMcpTool ? (
                         <Card>
                             <CardHeader>
-                                <CardTitle>MCP Server Configuration</CardTitle>
+                                <CardTitle>Конфигурация MCP сервера</CardTitle>
                                 <CardDescription>
                                     Configure the MCP server endpoint. Its tools become available to the agent.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-6">
                                 <div className="space-y-2">
-                                    <Label htmlFor="mcp-name">Tool Name</Label>
+                                    <Label htmlFor="mcp-name">Название инструмента</Label>
                                     <Input
                                         id="mcp-name"
                                         value={name}
@@ -775,12 +775,12 @@ const data = await response.json();`;
                             {isSaving ? (
                                 <>
                                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                    Saving...
+                                    Сохранение...
                                 </>
                             ) : (
                                 <>
                                     <Save className="w-4 h-4 mr-2" />
-                                    Save
+                                    Сохранить
                                 </>
                             )}
                         </Button>
@@ -792,9 +792,9 @@ const data = await response.json();`;
             <Dialog open={showCodeDialog} onOpenChange={setShowCodeDialog}>
                 <DialogContent className="max-w-2xl">
                     <DialogHeader>
-                        <DialogTitle>Code Preview</DialogTitle>
+                        <DialogTitle>Предпросмотр кода</DialogTitle>
                         <DialogDescription>
-                            JavaScript code to make this API call
+                            JavaScript код для выполнения этого API запроса
                         </DialogDescription>
                     </DialogHeader>
                     <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-auto max-h-96">

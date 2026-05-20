@@ -74,7 +74,7 @@ export function DuplicateWorkflowTemplate({ id, title, description, serverAccess
                     disabled={isLoading}
                 >
                     <Copy className="w-4 h-4 mr-2" />
-                    {isLoading ? 'Creating...' : 'Duplicate Workflow Template'}
+                    {isLoading ? 'Создание...' : 'Использовать шаблон'}
                 </Button>
             </div>
         </div>

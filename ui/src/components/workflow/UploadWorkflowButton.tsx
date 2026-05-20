@@ -90,13 +90,13 @@ export function UploadWorkflowButton() {
                 variant="outline"
             >
                 <Upload className="w-4 h-4 mr-2" />
-                Upload Agent Definition
+                Загрузить сценарий
             </Button>
 
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogContent className="sm:max-w-md">
                     <DialogHeader>
-                        <DialogTitle>Upload Agent Definition</DialogTitle>
+                        <DialogTitle>Загрузить сценарий</DialogTitle>
                     </DialogHeader>
                     <div
                         className={`mt-4 border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? 'border-primary bg-primary/5' : 'border-gray-300'
@@ -107,7 +107,7 @@ export function UploadWorkflowButton() {
                     >
                         <Upload className="w-8 h-8 mx-auto mb-4 text-gray-400" />
                         <p className="text-sm text-gray-600 mb-4">
-                            Drag and drop your Workflow JSON File here, or Click to Select
+                            Перетащите JSON-файл сценария сюда или нажмите, чтобы выбрать
                         </p>
                         <input
                             type="file"
@@ -120,7 +120,7 @@ export function UploadWorkflowButton() {
                             variant="outline"
                             onClick={() => document.getElementById('workflow-upload')?.click()}
                         >
-                            Select File
+                            Выбрать файл
                         </Button>
                         {error && (
                             <p className="mt-4 text-sm text-red-600">{error}</p>

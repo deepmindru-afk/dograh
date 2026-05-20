@@ -303,7 +303,7 @@ export default function EditCampaignPage() {
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Back to Campaign
                 </Button>
-                <h1 className="text-3xl font-bold mb-2">Edit Campaign</h1>
+                <h1 className="text-3xl font-bold mb-2">Редактировать кампанию</h1>
                 <p className="text-muted-foreground">Modify campaign settings</p>
             </div>
 
@@ -318,7 +318,7 @@ export default function EditCampaignPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Campaign Name */}
                         <div className="space-y-2">
-                            <Label htmlFor="campaign-name">Campaign Name</Label>
+                            <Label htmlFor="campaign-name">Название кампании</Label>
                             <Input
                                 id="campaign-name"
                                 placeholder="Enter campaign name"
@@ -376,7 +376,7 @@ export default function EditCampaignPage() {
                                 type="submit"
                                 disabled={isSubmitting || !campaignName.trim()}
                             >
-                                {isSubmitting ? 'Saving...' : 'Save Changes'}
+                                {isSubmitting ? 'Сохранение...' : 'Сохранить изменения'}
                             </Button>
                             <Button
                                 type="button"
@@ -384,8 +384,8 @@ export default function EditCampaignPage() {
                                 onClick={handleBack}
                                 disabled={isSubmitting}
                             >
-                                Cancel
-                            </Button>
+                                    Отмена
+                                </Button>
                         </div>
                     </form>
                 </CardContent>

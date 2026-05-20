@@ -357,13 +357,13 @@ export default function NewCampaignPage() {
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Back to Campaigns
                 </Button>
-                <h1 className="text-3xl font-bold mb-2">Create New Campaign</h1>
+                <h1 className="text-3xl font-bold mb-2">Создать кампанию</h1>
                 <p className="text-muted-foreground">Set up a new campaign to execute workflows at scale</p>
             </div>
 
             <Card>
                     <CardHeader>
-                        <CardTitle>Campaign Details</CardTitle>
+                        <CardTitle>Детали кампании</CardTitle>
                         <CardDescription>
                             Configure your campaign settings
                         </CardDescription>
@@ -371,7 +371,7 @@ export default function NewCampaignPage() {
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
-                                <Label htmlFor="campaign-name">Campaign Name</Label>
+                                <Label htmlFor="campaign-name">Название кампании</Label>
                                 <Input
                                     id="campaign-name"
                                     placeholder="Enter campaign name"
@@ -386,14 +386,14 @@ export default function NewCampaignPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="workflow">Workflow</Label>
+                                <Label htmlFor="workflow">Сценарий</Label>
                                 <Select
                                     value={selectedWorkflowId}
                                     onValueChange={setSelectedWorkflowId}
                                     required
                                 >
                                     <SelectTrigger id="workflow">
-                                        <SelectValue placeholder="Select a workflow" />
+                                        <SelectValue placeholder="Выберите сценарий" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {isLoadingWorkflows ? (
@@ -502,7 +502,7 @@ export default function NewCampaignPage() {
                                 className="border rounded-lg"
                             >
                                 <CollapsibleTrigger className="flex items-center justify-between w-full p-4 hover:bg-muted/50 transition-colors">
-                                    <span className="font-medium">Advanced Settings</span>
+                                    <span className="font-medium">Расширенные настройки</span>
                                     {showAdvancedSettings ? (
                                         <ChevronDown className="h-4 w-4" />
                                     ) : (
@@ -557,7 +557,7 @@ export default function NewCampaignPage() {
                                     type="submit"
                                     disabled={isSubmitting || !campaignName || !selectedWorkflowId || !sourceId || !selectedTelephonyConfigId}
                                 >
-                                    {isSubmitting ? 'Creating...' : 'Create Campaign'}
+                                    {isSubmitting ? 'Создание...' : 'Создать'}
                                 </Button>
                                 <Button
                                     type="button"
@@ -565,7 +565,7 @@ export default function NewCampaignPage() {
                                     onClick={handleBack}
                                     disabled={isSubmitting}
                                 >
-                                    Cancel
+                                    Отмена
                                 </Button>
                             </div>
                         </form>

@@ -22,9 +22,9 @@ export const ApiKeyErrorDialog = ({
 }: ApiKeyErrorDialogProps) => {
     const isQuotaError = errorCode === 'quota_exceeded';
 
-    const title = isQuotaError ? "Insufficient Credits" : "API Configuration Error";
+    const title = isQuotaError ? "Недостаточно кредитов" : "Ошибка конфигурации API";
     const icon = isQuotaError ? <CreditCard className="h-5 w-5 text-orange-500" /> : <Key className="h-5 w-5 text-red-500" />;
-    const buttonText = isQuotaError ? "Add Credits" : "Go to Model Configurations";
+    const buttonText = isQuotaError ? "Пополнить кредиты" : "Перейти к конфигурациям моделей";
     const onNavigate = isQuotaError ? onNavigateToCredits : onNavigateToModelConfig;
 
     return (
@@ -42,7 +42,7 @@ export const ApiKeyErrorDialog = ({
                                 <p className="font-medium text-foreground">{error}</p>
                                 {isQuotaError && (
                                     <p className="text-muted-foreground">
-                                        Your service credits are too low to start a call.
+                                        Ваших сервисных кредитов недостаточно для начала звонка.
                                     </p>
                                 )}
                             </div>
@@ -51,7 +51,7 @@ export const ApiKeyErrorDialog = ({
                 </DialogHeader>
                 <DialogFooter>
                     <Button variant="outline" onClick={() => onOpenChange(false)}>
-                        Cancel
+                        Отмена
                     </Button>
                     <Button onClick={onNavigate}>
                         {buttonText}

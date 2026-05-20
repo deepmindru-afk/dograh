@@ -26,7 +26,7 @@ async function WorkflowList() {
             // For OSS mode, this shouldn't happen as token is auto-generated
             return (
                 <div className="text-red-500">
-                    Authentication required. Please refresh the page.
+                    Требуется аутентификация. Пожалуйста, обновите страницу.
                 </div>
             );
         }
@@ -58,12 +58,12 @@ async function WorkflowList() {
             <>
                 {/* Active Workflows Section */}
                 <div className="mb-8">
-                    <h2 className="text-xl font-semibold mb-4">Active Agents</h2>
+                    <h2 className="text-xl font-semibold mb-4">Активные агенты</h2>
                     {activeWorkflows.length > 0 ? (
                         <WorkflowTable workflows={activeWorkflows} showArchived={false} />
                     ) : (
                         <div className="text-muted-foreground bg-muted rounded-lg p-8 text-center">
-                            No active workflows found. Create your first workflow to get started.
+                            Сценарии не найдены. Создайте первый сценарий для начала работы.
                         </div>
                     )}
                 </div>
@@ -71,7 +71,7 @@ async function WorkflowList() {
                 {/* Archived Workflows Section */}
                 {archivedWorkflows.length > 0 && (
                     <div className="mb-8">
-                        <h2 className="text-xl font-semibold mb-4 text-muted-foreground">Archived Workflows</h2>
+                        <h2 className="text-xl font-semibold mb-4 text-muted-foreground">Архивные сценарии</h2>
                         <WorkflowTable workflows={archivedWorkflows} showArchived={true} />
                     </div>
                 )}
@@ -81,7 +81,7 @@ async function WorkflowList() {
         logger.error(`Error fetching workflows: ${err}`);
         return (
             <div className="text-red-500">
-                Failed to load Workflows. Please Try Again Later.
+                Ошибка загрузки сценариев
             </div>
         );
     }
@@ -96,7 +96,7 @@ async function PageContent() {
             {/* Your Workflows Section */}
             <div className="mb-6">
                 <div className="flex justify-between items-center mb-6">
-                    <h1 className="text-2xl font-bold">Your Agents</h1>
+                    <h1 className="text-2xl font-bold">Ваши агенты</h1>
                     <div className="flex gap-2">
                         <UploadWorkflowButton />
                         <CreateWorkflowButton />

@@ -17,25 +17,25 @@ export default function SettingsPage() {
     <div className="flex justify-center py-12 px-4">
       <div className="w-full max-w-2xl space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">Platform Settings</h1>
+          <h1 className="text-2xl font-bold">Настройки платформы</h1>
           <p className="text-muted-foreground">
-            Manage your platform configuration and integrations.
+            Управление конфигурацией и интеграциями платформы.
           </p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>MCP Server</CardTitle>
+            <CardTitle>MCP Сервер</CardTitle>
             <CardDescription>
-              Let AI agents access your workspace and documentation via
-              the Model Context Protocol.{" "}
+              Дайте AI-агентам доступ к вашему рабочему пространству и документации через
+              Model Context Protocol.{" "}
               <a
                 href="https://docs.dograh.com/integrations/mcp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
               >
-                Learn more <ExternalLink className="h-3 w-3" />
+                Подробнее <ExternalLink className="h-3 w-3" />
               </a>
             </CardDescription>
           </CardHeader>
@@ -46,16 +46,16 @@ export default function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Telemetry</CardTitle>
+            <CardTitle>Телеметрия</CardTitle>
             <CardDescription>
-              Configure Langfuse tracing for your voice agent calls.{" "}
+              Настройте трассировку Langfuse для звонков голосовых агентов.{" "}
               <a
                 href="https://docs.dograh.com/configurations/tracing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
               >
-                Learn more <ExternalLink className="h-3 w-3" />
+                Подробнее <ExternalLink className="h-3 w-3" />
               </a>
             </CardDescription>
           </CardHeader>

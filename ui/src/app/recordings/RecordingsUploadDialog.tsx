@@ -283,7 +283,7 @@ export const RecordingsUploadDialog = ({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Upload Recordings</DialogTitle>
+                    <DialogTitle>Загрузить запись</DialogTitle>
                     <DialogDescription>
                         Upload or record audio files. Use{" "}
                         <code className="text-xs bg-muted px-1 rounded">@</code> in
@@ -311,17 +311,17 @@ export const RecordingsUploadDialog = ({
                                 onChange={(e) => handleFileSelect(e.target.files)}
                                 className="hidden"
                             />
-                            <Button
-                                type="button"
-                                variant="outline"
-                                size="sm"
-                                className="flex-1 justify-start text-sm font-normal"
-                                onClick={() => fileInputRef.current?.click()}
-                                disabled={isBusy}
-                            >
-                                <Upload className="w-4 h-4 mr-2 shrink-0" />
-                                <span className="text-muted-foreground">Choose audio files (max 5MB each)</span>
-                            </Button>
+<Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 justify-start text-sm font-normal"
+                            onClick={() => fileInputRef.current?.click()}
+                            disabled={isBusy}
+                        >
+                            <Upload className="w-4 h-4 mr-2 shrink-0" />
+                            <span className="text-muted-foreground">Выбрать файл (макс. 5 МБ каждый)</span>
+                        </Button>
                             {recordingStep === "idle" && (
                                 <Button
                                     type="button"
@@ -331,7 +331,7 @@ export const RecordingsUploadDialog = ({
                                     disabled={uploading || anyTranscribing}
                                 >
                                     <Mic className="w-4 h-4 mr-1" />
-                                    Record
+                                    Записать
                                 </Button>
                             )}
                         </div>
@@ -354,10 +354,10 @@ export const RecordingsUploadDialog = ({
                                     <div className="flex gap-2">
                                         <Button size="sm" onClick={startRecording} disabled={!recordingFilename.trim()}>
                                             <Mic className="w-4 h-4 mr-1" />
-                                            Start Recording
+                                            Начать запись
                                         </Button>
                                         <Button size="sm" variant="ghost" onClick={resetRecordingState}>
-                                            Cancel
+                                            Отмена
                                         </Button>
                                     </div>
                                 </>
@@ -379,7 +379,7 @@ export const RecordingsUploadDialog = ({
                                         className="ml-auto"
                                     >
                                         <Square className="w-4 h-4 mr-1" />
-                                        Stop
+                                        Стоп
                                     </Button>
                                 </div>
                             )}
@@ -455,8 +455,8 @@ export const RecordingsUploadDialog = ({
                             <Upload className="w-4 h-4 mr-1" />
                         )}
                         {uploading
-                            ? "Uploading..."
-                            : `Upload ${readyCount} Recording${readyCount !== 1 ? "s" : ""}`}
+                            ? "Загрузка..."
+                            : `Загрузить ${readyCount} ${readyCount === 1 ? "запись" : "записей"}`}
                     </Button>
                 </div>
             </DialogContent>

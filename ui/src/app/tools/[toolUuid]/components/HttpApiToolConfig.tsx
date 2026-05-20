@@ -80,7 +80,7 @@ export function HttpApiToolConfig({
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Tool Configuration</CardTitle>
+                <CardTitle>Конфигурация инструмента</CardTitle>
                 <CardDescription>
                     Configure the HTTP API endpoint and request settings
                 </CardDescription>
@@ -88,14 +88,14 @@ export function HttpApiToolConfig({
             <CardContent>
                 <Tabs defaultValue="settings" className="w-full">
                     <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="settings">Settings</TabsTrigger>
-                        <TabsTrigger value="auth">Authentication</TabsTrigger>
-                        <TabsTrigger value="parameters">Parameters</TabsTrigger>
+                        <TabsTrigger value="settings">Настройки</TabsTrigger>
+                        <TabsTrigger value="auth">Аутентификация</TabsTrigger>
+                        <TabsTrigger value="parameters">Параметры</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="settings" className="space-y-4 mt-4">
                         <div className="grid gap-2">
-                            <Label>Tool Name</Label>
+                            <Label>Название инструмента</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Use a descriptive name, like &quot;Get Weather using API&quot; for a tool that fetches weather
                             </Label>
@@ -107,7 +107,7 @@ export function HttpApiToolConfig({
                         </div>
 
                         <div className="grid gap-2">
-                            <Label>Description</Label>
+                            <Label>Описание</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Provide a description which makes it easy for LLM to understand what this tool does
                             </Label>
@@ -121,14 +121,14 @@ export function HttpApiToolConfig({
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-2">
-                                <Label>HTTP Method</Label>
+                                <Label>HTTP метод</Label>
                                 <HttpMethodSelector
                                     value={httpMethod}
                                     onChange={onHttpMethodChange}
                                 />
                             </div>
                             <div className="grid gap-2">
-                                <Label>Timeout (ms)</Label>
+                                <Label>Таймаут (мс)</Label>
                                 <Input
                                     type="number"
                                     value={timeoutMs}
@@ -142,7 +142,7 @@ export function HttpApiToolConfig({
                         </div>
 
                         <div className="grid gap-2">
-                            <Label>Endpoint URL</Label>
+                            <Label>URL</Label>
                             <UrlInput
                                 value={url}
                                 onChange={onUrlChange}
@@ -152,7 +152,7 @@ export function HttpApiToolConfig({
                         </div>
 
                         <div className="grid gap-2 pt-4 border-t">
-                            <Label>Custom Message</Label>
+                            <Label>Пользовательское сообщение</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Optional message the AI will speak or play before executing this tool.
                             </Label>
@@ -188,7 +188,7 @@ export function HttpApiToolConfig({
 
                     <TabsContent value="parameters" className="space-y-4 mt-4">
                         <div className="grid gap-2">
-                            <Label>LLM Parameters</Label>
+                            <Label>Параметры LLM</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Define the parameters that the LLM will provide when calling this tool.
                                 These will be sent as JSON body for POST/PUT/PATCH or as URL query params for GET/DELETE.
@@ -200,7 +200,7 @@ export function HttpApiToolConfig({
                         </div>
 
                         <div className="grid gap-2 pt-4 border-t">
-                            <Label>Preset Parameters</Label>
+                            <Label>Предустановленные параметры</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Add values that Dograh should inject at runtime. These are not exposed to the LLM and can use
                                 workflow templates like {`{{initial_context.phone_number}}`} or fixed literals.
@@ -212,16 +212,16 @@ export function HttpApiToolConfig({
                         </div>
 
                         <div className="grid gap-2 pt-4 border-t">
-                            <Label>Custom Headers</Label>
+                            <Label>Заголовки</Label>
                             <Label className="text-xs text-muted-foreground">
-                                Add custom headers to include in the request (optional)
+                                Добавьте пользовательские заголовки в запрос (опционально)
                             </Label>
                             <KeyValueEditor
                                 items={headers}
                                 onChange={onHeadersChange}
-                                keyPlaceholder="Header name"
-                                valuePlaceholder="Header value"
-                                addButtonText="Add Header"
+                                keyPlaceholder="Имя заголовка"
+                                valuePlaceholder="Значение заголовка"
+                                addButtonText="Добавить заголовок"
                             />
                         </div>
                     </TabsContent>

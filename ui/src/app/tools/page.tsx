@@ -297,7 +297,7 @@ export default function ToolsPage() {
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-8">
-                        <h1 className="text-3xl font-bold mb-2">Tools</h1>
+                        <h1 className="text-3xl font-bold mb-2">Инструменты</h1>
                         <p className="text-muted-foreground">
                             Manage reusable tools that can be used across your workflows.{" "}
                             <a href="https://docs.dograh.com/voice-agent/tools/introduction" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
@@ -323,7 +323,7 @@ export default function ToolsPage() {
                                 </div>
                                 <Button onClick={() => setIsCreateDialogOpen(true)}>
                                     <Plus className="w-4 h-4 mr-2" />
-                                    Create Tool
+                                    Создать инструмент
                                 </Button>
                             </div>
                         </CardHeader>
@@ -332,7 +332,7 @@ export default function ToolsPage() {
                             <div className="relative mb-4">
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                                 <Input
-                                    placeholder="Search tools..."
+                                    placeholder="Поиск инструментов..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="pl-10"
@@ -359,12 +359,12 @@ export default function ToolsPage() {
                                     {renderToolIcon("http_api", "w-12 h-12 text-muted-foreground mx-auto mb-4")}
                                     <p className="text-muted-foreground mb-4">
                                         {searchQuery
-                                            ? "No tools match your search"
-                                            : "No tools found"}
+                                            ? "Инструменты не найдены по вашему запросу"
+                                            : "Инструменты не найдены"}
                                     </p>
                                     {!searchQuery && (
                                         <Button onClick={() => setIsCreateDialogOpen(true)}>
-                                            Create Your First Tool
+                                            Создать первый инструмент
                                         </Button>
                                     )}
                                 </div>
@@ -424,7 +424,7 @@ export default function ToolsPage() {
                                                 No active tools
                                             </p>
                                             <Button onClick={() => setIsCreateDialogOpen(true)}>
-                                                Create Your First Tool
+                                                Создать первый инструмент
                                             </Button>
                                         </div>
                                     ) : null}
@@ -624,7 +624,7 @@ export default function ToolsPage() {
                             Cancel
                         </Button>
                         <Button onClick={handleCreateTool} disabled={isCreating}>
-                            {isCreating ? "Creating..." : "Create Tool"}
+                            {isCreating ? "Создание..." : "Создать инструмент"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>

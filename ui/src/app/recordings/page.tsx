@@ -36,7 +36,7 @@ export default function RecordingsPage() {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Recordings</h1>
+                <h1 className="text-3xl font-bold mb-2">Записи</h1>
                 <p className="text-muted-foreground">
                     Manage audio recordings for your organization. Use{" "}
                     <code className="rounded bg-muted px-1 text-xs">@</code> in prompt fields to insert them,
@@ -51,14 +51,14 @@ export default function RecordingsPage() {
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
-                            <CardTitle>All Recordings</CardTitle>
+                            <CardTitle>Все записи</CardTitle>
                             <CardDescription>
                                 Audio recordings shared across all agents in your organization
                             </CardDescription>
                         </div>
                         <Button onClick={() => setIsUploadOpen(true)}>
                             <Upload className="w-4 h-4 mr-2" />
-                            Upload Recording
+                            Загрузить запись
                         </Button>
                     </div>
                 </CardHeader>

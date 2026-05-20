@@ -51,7 +51,7 @@ interface UrlInputProps {
 export function UrlInput({
     value,
     onChange,
-    placeholder = "https://api.example.com/endpoint",
+    placeholder = "Введите URL",
     disabled = false,
     className,
     showValidation = false,
