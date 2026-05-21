@@ -11,7 +11,8 @@ export const WORKFLOW_RUN_MODES = {
     SMALL_WEBRTC: 'smallwebrtc',
     ARI: 'ari',
     TELNYX: 'telnyx',
-    PLIVO: 'plivo'
+    PLIVO: 'plivo',
+    LIVEKIT: 'livekit'
 } as const;
 
 export type WorkflowRunMode = typeof WORKFLOW_RUN_MODES[keyof typeof WORKFLOW_RUN_MODES];

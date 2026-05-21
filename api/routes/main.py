@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 from api.routes.agent_stream import router as agent_stream_router
 from api.routes.auth import router as auth_router
+from api.routes.livekit import router as livekit_router
 from api.routes.campaign import router as campaign_router
 from api.routes.credentials import router as credentials_router
 from api.routes.knowledge_base import router as knowledge_base_router
@@ -55,6 +56,7 @@ router.include_router(workflow_recording_router)
 router.include_router(auth_router)
 router.include_router(node_types_router)
 router.include_router(agent_stream_router)
+router.include_router(livekit_router)
 
 for _integration_router in all_routers():
     router.include_router(_integration_router)

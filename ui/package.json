@@ -54,7 +54,9 @@
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.2.5",
     "zundo": "^2.3.0",
-    "zustand": "^5.0.8"
+    "zustand": "^5.0.8",
+    "livekit-client": "^2.11.2",
+    "@livekit/components-react": "^2.11.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

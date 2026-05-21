@@ -1,0 +1,31 @@
+port: 7880
+bind_addresses:
+  - "0.0.0.0"
+
+api_key: ${LIVEKIT_API_KEY}
+api_secret: ${LIVEKIT_API_SECRET}
+
+rtc:
+  udp_port: 7882
+  tcp_port: 7881
+  use_external_ip: false
+  port_range_start: 7883
+  port_range_end: 7885
+
+turn:
+  enabled: true
+  domain: ${TURN_HOST:-localhost}
+  tls_port: 5349
+
+redis:
+  address: ${LIVEKIT_REDIS_ADDRESS:-redis:6379}
+  password: ${LIVEKIT_REDIS_PASSWORD:-redissecret}
+  db: 0
+
+agent:
+  enabled: true
+  default_agent_name: dograh-agent
+
+logging:
+  level: info
+  json: false

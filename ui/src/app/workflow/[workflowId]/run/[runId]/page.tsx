@@ -7,6 +7,7 @@ import posthog from 'posthog-js';
 import { useEffect, useRef, useState } from 'react';
 
 import BrowserCall from '@/app/workflow/[workflowId]/run/[runId]/BrowserCall';
+import LiveKitCall from '@/app/workflow/[workflowId]/run/[runId]/components/LiveKitCall';
 import { RealtimeFeedback, WorkflowRunLogs } from '@/app/workflow/[workflowId]/run/[runId]/components/RealtimeFeedback';
 import WorkflowLayout from '@/app/workflow/WorkflowLayout';
 import {
@@ -27,6 +28,7 @@ import { getRandomId } from '@/lib/utils';
 
 interface WorkflowRunResponse {
     is_completed: boolean;
+    mode: string;
     transcript_url: string | null;
     recording_url: string | null;
     initial_context: Record<string, string | number | boolean | object> | null;
@@ -118,6 +120,7 @@ export default function WorkflowRunPage() {
             setIsLoading(false);
             const runData = {
                 is_completed: response.data?.is_completed ?? false,
+                mode: response.data?.mode ?? '',
                 transcript_url: response.data?.transcript_url ?? null,
                 recording_url: response.data?.recording_url ?? null,
                 initial_context: response.data?.initial_context as Record<string, string> | null ?? null,
@@ -143,9 +146,12 @@ export default function WorkflowRunPage() {
         try {
             const workflowId = Number(params.workflowId);
             const workflowRunName = `WR-${getRandomId()}`;
+            const testMode = workflowRun?.mode === WORKFLOW_RUN_MODES.LIVEKIT
+                ? WORKFLOW_RUN_MODES.LIVEKIT
+                : WORKFLOW_RUN_MODES.SMALL_WEBRTC;
             const response = await createWorkflowRunApiV1WorkflowWorkflowIdRunsPost({
                 path: { workflow_id: workflowId },
-                body: { mode: WORKFLOW_RUN_MODES.SMALL_WEBRTC, name: workflowRunName },
+                body: { mode: testMode, name: workflowRunName },
             });
             if (response.data?.id) {
                 router.push(`/workflow/${workflowId}/run/${response.data.id}`);
@@ -313,24 +319,32 @@ export default function WorkflowRunPage() {
         );
     }
     else {
+        const isLiveKit = workflowRun?.mode === WORKFLOW_RUN_MODES.LIVEKIT;
         returnValue =
-            <div className="h-full flex items-center justify-center">
-                <BrowserCall
-                    workflowId={Number(params.workflowId)}
-                    workflowRunId={Number(params.runId)}
-                    initialContextVariables={
-                        workflowRun?.initial_context
-                            ? Object.fromEntries(
-                                Object.entries(workflowRun.initial_context).map(([key, value]) => [
-                                    key,
-                                    typeof value === 'object' && value !== null
-                                        ? JSON.stringify(value)
-                                        : String(value)
-                                ])
-                            )
-                            : null
-                    }
-                />
+            <div className="h-full flex items-center justify-center p-4">
+                {isLiveKit ? (
+                    <LiveKitCall
+                        workflowId={Number(params.workflowId)}
+                        workflowRunId={Number(params.runId)}
+                    />
+                ) : (
+                    <BrowserCall
+                        workflowId={Number(params.workflowId)}
+                        workflowRunId={Number(params.runId)}
+                        initialContextVariables={
+                            workflowRun?.initial_context
+                                ? Object.fromEntries(
+                                    Object.entries(workflowRun.initial_context).map(([key, value]) => [
+                                        key,
+                                        typeof value === 'object' && value !== null
+                                            ? JSON.stringify(value)
+                                            : String(value)
+                                    ])
+                                )
+                                : null
+                        }
+                    />
+                )}
             </div>
     }
 

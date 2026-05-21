@@ -144,3 +144,10 @@ OSS_JWT_SECRET = os.getenv("OSS_JWT_SECRET", "change-me-in-production")
 OSS_JWT_EXPIRY_HOURS = int(os.getenv("OSS_JWT_EXPIRY_HOURS", "720"))  # 30 days
 
 TUNER_BASE_URL = os.getenv("TUNER_BASE_URL", "https://api.usetuner.ai")
+
+# LiveKit Configuration (for LiveKit Agents voice pipeline)
+LIVEKIT_API_KEY = os.getenv("LIVEKIT_API_KEY", "devkey")
+LIVEKIT_API_SECRET = os.getenv("LIVEKIT_API_SECRET", "devsecret")
+LIVEKIT_HOST = os.getenv("LIVEKIT_HOST", "localhost:7880")
+LIVEKIT_WS_URL = os.getenv("LIVEKIT_WS_URL", "ws://localhost:7880")
+LIVEKIT_AGENT_NAME = os.getenv("LIVEKIT_AGENT_NAME", "dograh-agent")

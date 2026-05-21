@@ -821,3 +821,36 @@ async def _run_pipeline(
     finally:
         await feedback_observer.cleanup()
         logger.debug(f"Cleaned up context providers for workflow run {workflow_run_id}")
+
+
+async def run_pipeline_livekit(
+    workflow_id: int,
+    workflow_run_id: int,
+    user_id: int,
+    organization_id: int,
+    call_context_vars: dict = {},
+) -> None:
+    """Start a LiveKit-based voice pipeline.
+
+    Creates a LiveKit room, dispatches the agent via AgentDispatchService,
+    and persists a session row. The actual VoicePipelineAgent runs inside
+    the dedicated agent worker process.
+    """
+    from api.services.livekit.agent_service import start_livekit_session
+
+    logger.info(
+        "Starting LiveKit pipeline",
+        workflow_id=workflow_id,
+        workflow_run_id=workflow_run_id,
+    )
+
+    result = await start_livekit_session(
+        organization_id=organization_id,
+        workflow_run_id=workflow_run_id,
+    )
+
+    logger.info(
+        "LiveKit pipeline started",
+        room_name=result["room_name"],
+        session_id=result["session_id"],
+    )

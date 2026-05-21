@@ -33,6 +33,7 @@ from api.services.pipecat.tracing_config import (
     handle_langfuse_sync,
     load_all_org_langfuse_credentials,
 )
+from api.services.livekit.livekit_service import get_livekit_service
 from api.services.worker_sync.manager import (
     WorkerSyncManager,
     set_worker_sync_manager,
@@ -51,6 +52,10 @@ async def lifespan(app: FastAPI):
         # warmup arq pool
         await get_arq_redis()
 
+        # Start LiveKit API client
+        lk_service = get_livekit_service()
+        await lk_service.start()
+
         # Pre-register all org-specific Langfuse exporters so they're ready
         # before any pipeline runs, without per-call DB lookups.
         await load_all_org_langfuse_credentials()
@@ -68,6 +73,7 @@ async def lifespan(app: FastAPI):
         # Shutdown sequence - this runs when FastAPI is shutting down
         logger.info("Starting graceful shutdown...")
         await sync_manager.stop()
+        await lk_service.stop()
 
 
 app = FastAPI(

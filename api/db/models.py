@@ -1218,3 +1218,31 @@ class KnowledgeBaseChunkModel(Base):
             postgresql_ops={"embedding": "vector_cosine_ops"},
         ),
     )
+
+
+class LiveKitAgentSessionModel(Base):
+    __tablename__ = "livekit_agent_sessions"
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    room_name = Column(String(255), nullable=False, index=True)
+    workflow_run_id = Column(
+        Integer, ForeignKey("workflow_runs.id", ondelete="SET NULL"), nullable=True
+    )
+    workflow_run = relationship("WorkflowRunModel")
+    organization_id = Column(Integer, ForeignKey("organizations.id"), nullable=False)
+    organization = relationship("OrganizationModel")
+    agent_name = Column(String(128), nullable=False, default="dograh-agent")
+    status = Column(String(32), nullable=False, default="initialized")
+    started_at = Column(DateTime(timezone=True), nullable=True)
+    ended_at = Column(DateTime(timezone=True), nullable=True)
+    metadata = Column(JSON, nullable=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(UTC))
+    updated_at = Column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(UTC),
+        onupdate=lambda: datetime.now(UTC),
+    )
+
+    __table_args__ = (
+        Index("idx_lk_sessions_org_status", "organization_id", "status"),
+        Index("idx_lk_sessions_workflow_run", "workflow_run_id"),
+    )

@@ -17,9 +17,11 @@ from api.db.workflow_client import WorkflowClient
 from api.db.workflow_recording_client import WorkflowRecordingClient
 from api.db.workflow_run_client import WorkflowRunClient
 from api.db.workflow_template_client import WorkflowTemplateClient
+from api.db.livekit_client import LiveKitClient
 
 
 class DBClient(
+    LiveKitClient,
     WorkflowClient,
     WorkflowRunClient,
     UserClient,
