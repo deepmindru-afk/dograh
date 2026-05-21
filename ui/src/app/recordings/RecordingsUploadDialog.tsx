@@ -125,7 +125,7 @@ export const RecordingsUploadDialog = ({
             setPendingFiles((prev) =>
                 prev.map((p) =>
                     p.id === pendingId
-                        ? { ...p, isTranscribing: false, error: "Auto-transcription failed" }
+                        ? { ...p, isTranscribing: false, error: "Авто-транскрипция не удалась" }
                         : p
                 )
             );
@@ -136,7 +136,7 @@ export const RecordingsUploadDialog = ({
         const valid: PendingFile[] = [];
         for (const file of files) {
             if (file.size > MAX_FILE_SIZE) {
-                setError(`${file.name} (${(file.size / (1024 * 1024)).toFixed(1)}MB) exceeds 5MB limit — skipped.`);
+                setError(`${file.name} (${(file.size / (1024 * 1024)).toFixed(1)}МБ) превышает лимит 5МБ — пропущен.`);
                 continue;
             }
             const id = `pending-${++pendingFileCounter}`;
@@ -178,7 +178,7 @@ export const RecordingsUploadDialog = ({
 
                 const blob = new Blob(audioChunksRef.current, { type: mediaRecorder.mimeType });
                 if (blob.size > MAX_FILE_SIZE) {
-                    setError(`Recording (${(blob.size / (1024 * 1024)).toFixed(1)}MB) exceeds the maximum allowed size of 5MB.`);
+                    setError(`Запись (${(blob.size / (1024 * 1024)).toFixed(1)}МБ) превышает максимально допустимый размер 5МБ.`);
                     resetRecordingState();
                     return;
                 }
@@ -196,7 +196,7 @@ export const RecordingsUploadDialog = ({
                 setRecordingDuration((d) => d + 1);
             }, 1000);
         } catch {
-            setError("Microphone access denied. Please allow microphone permissions.");
+            setError("Доступ к микрофону запрещён. Пожалуйста, разрешите доступ к микрофону.");
             resetRecordingState();
         }
     };
@@ -268,7 +268,7 @@ export const RecordingsUploadDialog = ({
             onUploadComplete?.();
             onOpenChange(false);
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to upload recordings");
+            setError(err instanceof Error ? err.message : "Не удалось загрузить записи");
         } finally {
             setUploading(false);
         }
@@ -283,11 +283,11 @@ export const RecordingsUploadDialog = ({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>Upload Recordings</DialogTitle>
+                    <DialogTitle>Загрузить записи</DialogTitle>
                     <DialogDescription>
-                        Upload or record audio files. Use{" "}
-                        <code className="text-xs bg-muted px-1 rounded">@</code> in
-                        prompt fields to insert them into your agents.
+                        Загрузите или запишите аудиофайлы. Используйте{" "}
+                        <code className="text-xs bg-muted px-1 rounded">@</code> в
+                        полях подсказок для вставки в ваших агентов.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -301,7 +301,7 @@ export const RecordingsUploadDialog = ({
                 <div className="space-y-3">
                     {/* Audio source: file picker or record */}
                     <div>
-                        <Label className="text-xs text-muted-foreground">Audio Files</Label>
+                        <Label className="text-xs text-muted-foreground">Аудиофайлы</Label>
                         <div className="flex gap-2">
                             <input
                                 ref={fileInputRef}
@@ -320,7 +320,7 @@ export const RecordingsUploadDialog = ({
                                 disabled={isBusy}
                             >
                                 <Upload className="w-4 h-4 mr-2 shrink-0" />
-                                <span className="text-muted-foreground">Choose audio files (max 5MB each)</span>
+                                <span className="text-muted-foreground">Выберите аудиофайлы (макс. 5МБ каждый)</span>
                             </Button>
                             {recordingStep === "idle" && (
                                 <Button
@@ -331,7 +331,7 @@ export const RecordingsUploadDialog = ({
                                     disabled={uploading || anyTranscribing}
                                 >
                                     <Mic className="w-4 h-4 mr-1" />
-                                    Record
+                                    Записать
                                 </Button>
                             )}
                         </div>
@@ -343,9 +343,9 @@ export const RecordingsUploadDialog = ({
                             {recordingStep === "naming" && (
                                 <>
                                     <div>
-                                        <Label className="text-xs text-muted-foreground">Recording Name</Label>
+                                        <Label className="text-xs text-muted-foreground">Имя записи</Label>
                                         <Input
-                                            placeholder="e.g. greeting, hold-message"
+                                            placeholder="например, приветствие, ожидание"
                                             value={recordingFilename}
                                             onChange={(e) => setRecordingFilename(e.target.value)}
                                             autoFocus
@@ -354,10 +354,10 @@ export const RecordingsUploadDialog = ({
                                     <div className="flex gap-2">
                                         <Button size="sm" onClick={startRecording} disabled={!recordingFilename.trim()}>
                                             <Mic className="w-4 h-4 mr-1" />
-                                            Start Recording
+                                            Начать запись
                                         </Button>
                                         <Button size="sm" variant="ghost" onClick={resetRecordingState}>
-                                            Cancel
+                                            Отмена
                                         </Button>
                                     </div>
                                 </>
@@ -379,7 +379,7 @@ export const RecordingsUploadDialog = ({
                                         className="ml-auto"
                                     >
                                         <Square className="w-4 h-4 mr-1" />
-                                        Stop
+                                        Стоп
                                     </Button>
                                 </div>
                             )}
@@ -390,7 +390,7 @@ export const RecordingsUploadDialog = ({
                     {pendingFiles.length > 0 && (
                         <div className="space-y-2">
                             <Label className="text-xs text-muted-foreground">
-                                Pending ({pendingFiles.length} file{pendingFiles.length !== 1 ? "s" : ""})
+                                Ожидающие ({pendingFiles.length} файл{pendingFiles.length !== 1 ? "ов" : ""})
                             </Label>
                             {pendingFiles.map((pf) => (
                                 <div key={pf.id} className="rounded-md border p-2 space-y-1.5 bg-muted/10">
@@ -415,7 +415,7 @@ export const RecordingsUploadDialog = ({
                                         <p className="text-xs text-destructive">{pf.error}</p>
                                     )}
                                     <Textarea
-                                        placeholder={pf.isTranscribing ? "Transcribing..." : "What does this recording say?"}
+                                        placeholder={pf.isTranscribing ? "Транскрибация..." : "Что сказано в этой записи?"}
                                         value={pf.transcript}
                                         onChange={(e) => updateTranscript(pf.id, e.target.value)}
                                         disabled={pf.isTranscribing}
@@ -429,7 +429,7 @@ export const RecordingsUploadDialog = ({
 
                     {/* Language */}
                     <div>
-                        <Label className="text-xs text-muted-foreground">Language</Label>
+                        <Label className="text-xs text-muted-foreground">Язык</Label>
                         <Select value={language} onValueChange={setLanguage}>
                             <SelectTrigger className="h-9 text-sm">
                                 <SelectValue />
@@ -455,8 +455,8 @@ export const RecordingsUploadDialog = ({
                             <Upload className="w-4 h-4 mr-1" />
                         )}
                         {uploading
-                            ? "Uploading..."
-                            : `Upload ${readyCount} Recording${readyCount !== 1 ? "s" : ""}`}
+                            ? "Загрузка..."
+                            : `Загрузить ${readyCount} запись${readyCount !== 1 ? "ей" : ""}`}
                     </Button>
                 </div>
             </DialogContent>

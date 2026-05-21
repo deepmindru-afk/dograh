@@ -330,8 +330,8 @@ export default function UsagePage() {
             <div>
                 <div className="flex justify-between items-start">
                     <div>
-                        <h1 className="text-3xl font-bold mb-2">Agent Runs</h1>
-                        <p className="text-muted-foreground">See all your Agent Runs across all Voice Agents. You can use filters to filter out required Agent Runs.</p>
+                        <h1 className="text-3xl font-bold mb-2">Запуски агентов</h1>
+                        <p className="text-muted-foreground">Просмотрите все запуски агентов для всех голосовых агентов. Используйте фильтры, чтобы найти нужные запуски.</p>
                     </div>
                         <div className="flex items-center gap-2">
                             <Globe className="h-4 w-4 text-muted-foreground" />
@@ -341,7 +341,7 @@ export default function UsagePage() {
                                     value={selectedTimezone}
                                     onChange={handleTimezoneChange}
                                     isDisabled={savingTimezone || userConfigLoading}
-                                    placeholder={userConfigLoading ? "Loading..." : "Select timezone"}
+                                    placeholder={userConfigLoading ? "Загрузка..." : "Выберите часовой пояс"}
                                     styles={{
                                         control: (base, state) => ({
                                             ...base,
@@ -412,9 +412,9 @@ export default function UsagePage() {
                 {/* MPS Credits Card */}
                 <Card className="mb-6">
                     <CardHeader>
-                        <CardTitle>Dograh Model Credits</CardTitle>
+                        <CardTitle>Кредиты моделей Dograh</CardTitle>
                         <CardDescription>
-                            These track usage of Dograh models using Dograh Service Keys.
+                            Они отслеживают использование моделей Dograh через сервисные ключи Dograh.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -431,11 +431,11 @@ export default function UsagePage() {
                                         <p className="text-2xl font-bold">
                                             {mpsCredits.total_credits_used.toFixed(2)} <span className="text-lg font-normal text-muted-foreground">/ {mpsCredits.total_quota.toFixed(2)}</span>
                                         </p>
-                                        <p className="text-sm text-muted-foreground">Credits Used</p>
+                                        <p className="text-sm text-muted-foreground">Использовано кредитов</p>
                                     </div>
                                     <div className="text-right">
                                         <p className="text-lg font-semibold">{mpsCredits.remaining_credits.toFixed(2)}</p>
-                                        <p className="text-sm text-muted-foreground">Remaining</p>
+                                        <p className="text-sm text-muted-foreground">Осталось</p>
                                     </div>
                                 </div>
 
@@ -444,7 +444,7 @@ export default function UsagePage() {
                                 )}
                             </div>
                         ) : (
-                            <p className="text-muted-foreground">No Dograh service keys configured. Set up a service key in your model configuration to see usage.</p>
+                            <p className="text-muted-foreground">Сервисные ключи Dograh не настроены. Настройте сервисный ключ в конфигурации модели, чтобы увидеть использование.</p>
                         )}
                     </CardContent>
                 </Card>
@@ -478,7 +478,7 @@ export default function UsagePage() {
                                 disabled={isDownloadingReport}
                             >
                                 <Download className="h-4 w-4 mr-2" />
-                                {isDownloadingReport ? 'Preparing...' : 'Download Filtered Results'}
+                                {isDownloadingReport ? 'Подготовка...' : 'Скачать отфильтрованные результаты'}
                             </Button>
                         </div>
                     )}
@@ -489,9 +489,9 @@ export default function UsagePage() {
                     <CardHeader>
                         <div className="flex justify-between items-start">
                             <div className="space-y-1.5">
-                                <CardTitle>All Runs</CardTitle>
+                                <CardTitle>Все запуски</CardTitle>
                                 <CardDescription>
-                                    Every agent run across your organization, with usage details
+                                    Каждый запуск агента в вашей организации с деталями использования
                                 </CardDescription>
                             </div>
                         </div>
@@ -509,17 +509,17 @@ export default function UsagePage() {
                                     <Table>
                                         <TableHeader>
                                             <TableRow className="bg-muted/50">
-                                                <TableHead className="font-semibold">Run ID</TableHead>
-                                                <TableHead className="font-semibold">Agent Name</TableHead>
-                                                <TableHead className="font-semibold">Call Type</TableHead>
-                                                <TableHead className="font-semibold">Phone Number</TableHead>
-                                                <TableHead className="font-semibold">Disposition</TableHead>
-                                                <TableHead className="font-semibold">Date</TableHead>
-                                                <TableHead className="font-semibold text-right">Duration</TableHead>
+                                                <TableHead className="font-semibold">ID запуска</TableHead>
+                                                <TableHead className="font-semibold">Имя агента</TableHead>
+                                                <TableHead className="font-semibold">Тип звонка</TableHead>
+                                                <TableHead className="font-semibold">Номер телефона</TableHead>
+                                                <TableHead className="font-semibold">Результат</TableHead>
+                                                <TableHead className="font-semibold">Дата</TableHead>
+                                                <TableHead className="font-semibold text-right">Длительность</TableHead>
                                                 <TableHead className="font-semibold text-right">
-                                                    {organizationPricing?.price_per_second_usd ? 'Cost (USD)' : 'Tokens'}
+                                                    {organizationPricing?.price_per_second_usd ? 'Стоимость (USD)' : 'Токены'}
                                                 </TableHead>
-                                                <TableHead className="font-semibold">Actions</TableHead>
+                                                <TableHead className="font-semibold">Действия</TableHead>
                                             </TableRow>
                                         </TableHeader>
                                         <TableBody>
@@ -533,7 +533,7 @@ export default function UsagePage() {
                                                     >
                                                         #{run.id}
                                                     </TableCell>
-                                                    <TableCell>{run.workflow_name || 'Unknown'}</TableCell>
+                                                    <TableCell>{run.workflow_name || 'Неизвестно'}</TableCell>
                                                     <TableCell>
                                                         <CallTypeCell mode={run.mode} callType={run.call_type} />
                                                     </TableCell>
@@ -579,8 +579,8 @@ export default function UsagePage() {
                                 {appliedFilters.length > 0 && (
                                     <div className="mt-4 p-3 bg-muted rounded-md">
                                         <p className="text-sm text-muted-foreground">
-                                            Total for filtered period: <span className="font-semibold text-foreground">
-                                                {usageHistory.total_dograh_tokens.toLocaleString()} Dograh Tokens
+                                            Всего за период фильтрации: <span className="font-semibold text-foreground">
+                                                {usageHistory.total_dograh_tokens.toLocaleString()} токенов Dograh
                                             </span>
                                             {' • '}
                                             <span className="font-semibold text-foreground">
@@ -594,7 +594,7 @@ export default function UsagePage() {
                                 {usageHistory.total_pages > 1 && (
                                     <div className="flex items-center justify-between mt-6">
                                         <p className="text-sm text-muted-foreground">
-                                            Page {usageHistory.page} of {usageHistory.total_pages} ({usageHistory.total_count} total runs)
+                                            Страница {usageHistory.page} из {usageHistory.total_pages} ({usageHistory.total_count} всего запусков)
                                         </p>
                                         <div className="flex gap-2">
                                             <Button
@@ -604,7 +604,7 @@ export default function UsagePage() {
                                                 disabled={currentPage === 1}
                                             >
                                                 <ChevronLeft className="h-4 w-4" />
-                                                Previous
+                                                Назад
                                             </Button>
                                             <Button
                                                 variant="outline"
@@ -612,7 +612,7 @@ export default function UsagePage() {
                                                 onClick={() => handlePageChange(currentPage + 1)}
                                                 disabled={currentPage === usageHistory.total_pages}
                                             >
-                                                Next
+                                                Вперед
                                                 <ChevronRight className="h-4 w-4" />
                                             </Button>
                                         </div>
@@ -620,7 +620,7 @@ export default function UsagePage() {
                                 )}
                             </>
                         ) : (
-                            <p className="text-center py-8 text-muted-foreground">No runs found</p>
+                            <p className="text-center py-8 text-muted-foreground">Запуски не найдены</p>
                         )}
                     </CardContent>
                 </Card>

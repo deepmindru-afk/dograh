@@ -34,60 +34,60 @@ export interface ToolCategoryConfig {
 export const TOOL_CATEGORIES: ToolCategoryConfig[] = [
     {
         value: "http_api",
-        label: "External HTTP API",
-        description: "Make HTTP requests to external APIs",
+        label: "Внешний HTTP API",
+        description: "Выполнять HTTP-запросы к внешним API",
         icon: Globe,
         iconName: "globe",
         iconColor: "#3B82F6",
     },
     {
         value: "end_call",
-        label: "End Call",
-        description: "End the call when conditions are met",
+        label: "Завершить звонок",
+        description: "Завершить звонок при выполнении условий",
         icon: PhoneOff,
         iconName: "phone-off",
         iconColor: "#EF4444",
         autoFill: {
-            name: "End Call",
-            description: "End the call when either user asks to disconnect the call, or when you believe its time to end the conversation",
+            name: "Завершить звонок",
+            description: "Завершить звонок, когда пользователь просит отключиться или когда пора закончить разговор",
         },
     },
     {
         value: "transfer_call",
-        label: "Transfer Call",
-        description: "Transfer the call to another phone number (Twilio only)",
+        label: "Перевести звонок",
+        description: "Перевести звонок на другой номер (только Twilio)",
         icon: PhoneForwarded,
         iconName: "phone-forwarded",
         iconColor: "#10B981",
         autoFill: {
-            name: "Transfer Call",
-            description: "Transfer the caller to another phone number when requested",
+            name: "Перевести звонок",
+            description: "Перевести звонящего на другой номер по запросу",
         },
     },
     {
         value: "calculator",
-        label: "Calculator",
-        description: "Built-in calculator for arithmetic operations",
+        label: "Калькулятор",
+        description: "Встроенный калькулятор для арифметических операций",
         icon: Calculator,
         iconName: "calculator",
         iconColor: "#F59E0B",
         autoFill: {
-            name: "Calculator",
-            description: "Perform arithmetic calculations (supports +, -, *, /, **, %, and parentheses)",
+            name: "Калькулятор",
+            description: "Выполнение арифметических операций (поддерживает +, -, *, /, **, %, и скобки)",
         },
     },
     {
         value: "mcp",
-        label: "MCP Server",
-        description: "Connect a customer MCP server; its tools become available to the agent",
+        label: "MCP Сервер",
+        description: "Подключите MCP-сервер; его инструменты станут доступны агенту",
         icon: Puzzle,
         iconName: "puzzle",
         iconColor: "#8B5CF6",
     },
     {
         value: "native",
-        label: "Native (Coming Soon)",
-        description: "Built-in tools like call transfer, DTMF input",
+        label: "Встроенные (скоро)",
+        description: "Встроенные инструменты: перевод звонка, ввод DTMF",
         icon: Cog,
         iconName: "cog",
         iconColor: "#6B7280",
@@ -95,8 +95,8 @@ export const TOOL_CATEGORIES: ToolCategoryConfig[] = [
     },
     {
         value: "integration",
-        label: "Integration (Coming Soon)",
-        description: "Third-party integrations like Google Calendar",
+        label: "Интеграции (скоро)",
+        description: "Интеграции со сторонними сервисами, например Google Calendar",
         icon: Puzzle,
         iconName: "puzzle",
         iconColor: "#8B5CF6",
@@ -126,21 +126,21 @@ export function renderToolIcon(category: string, className: string = "w-5 h-5 te
 export function getToolTypeLabel(category: string): string {
     switch (category) {
         case "end_call":
-            return "End Call Tool";
+            return "Инструмент завершения звонка";
         case "transfer_call":
-            return "Transfer Call Tool";
+            return "Инструмент перевода звонка";
         case "http_api":
-            return "HTTP API Tool";
+            return "HTTP API инструмент";
         case "calculator":
-            return "Calculator Tool";
+            return "Инструмент калькулятор";
         case "native":
-            return "Native Tool";
+            return "Встроенный инструмент";
         case "integration":
-            return "Integration Tool";
+            return "Инструмент интеграции";
         case "mcp":
-            return "MCP Server Tool";
+            return "MCP серверный инструмент";
         default:
-            return "Tool";
+            return "Инструмент";
     }
 }
 

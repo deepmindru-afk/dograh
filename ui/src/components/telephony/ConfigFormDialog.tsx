@@ -110,7 +110,7 @@ export function ConfigFormDialog({
   const handleSubmit = async () => {
     if (!currentProvider) return;
     if (!isEdit && !name.trim()) {
-      toast.error("Name is required");
+      toast.error("Имя обязательно");
       return;
     }
 
@@ -133,7 +133,7 @@ export function ConfigFormDialog({
           },
         );
         if (res.error) throw new Error(detailFromError(res.error));
-        toast.success("Configuration updated");
+        toast.success("Конфигурация обновлена");
       } else {
         const res = await createTelephonyConfigurationApiV1OrganizationsTelephonyConfigsPost(
           {
@@ -146,12 +146,12 @@ export function ConfigFormDialog({
           },
         );
         if (res.error) throw new Error(detailFromError(res.error));
-        toast.success("Configuration created");
+        toast.success("Конфигурация создана");
       }
       onOpenChange(false);
       onSaved();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to save");
+      toast.error(err instanceof Error ? err.message : "Не удалось сохранить");
     } finally {
       setSubmitting(false);
     }
@@ -162,28 +162,28 @@ export function ConfigFormDialog({
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? "Edit telephony configuration" : "Add telephony configuration"}
+            {isEdit ? "Редактировать телефонную конфигурацию" : "Добавить телефонную конфигурацию"}
           </DialogTitle>
           <DialogDescription>
             {isEdit
-              ? "Update credentials for this configuration. Phone numbers are managed separately."
-              : "Connect a telephony provider account. Phone numbers are added after the configuration is created."}
+              ? "Обновите учётные данные для этой конфигурации. Номера управляются отдельно."
+              : "Подключите аккаунт телефонного провайдера. Номера добавляются после создания конфигурации."}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           {isEdit && existing && (
             <div className="space-y-1">
-              <Label>Configuration ID</Label>
+              <Label>ID конфигурации</Label>
               <button
                 type="button"
                 onClick={() => {
                   navigator.clipboard
                     .writeText(String(existing.id))
-                    .then(() => toast.success("Configuration ID copied"))
-                    .catch(() => toast.error("Failed to copy ID"));
+                    .then(() => toast.success("ID конфигурации скопирован"))
+                    .catch(() => toast.error("Не удалось скопировать ID"));
                 }}
-                title="Click to copy"
+                title="Нажмите, чтобы скопировать"
                 className="group flex w-full items-center gap-2 rounded-md border bg-muted/20 p-2 text-left font-mono text-xs transition-colors hover:bg-muted/40"
               >
                 <code className="flex-1 truncate">{existing.id}</code>
@@ -193,24 +193,24 @@ export function ConfigFormDialog({
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="cfg-name">Name</Label>
+            <Label htmlFor="cfg-name">Имя</Label>
             <Input
               id="cfg-name"
-              placeholder="e.g. Twilio US prod"
+              placeholder="например, Twilio US prod"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="cfg-provider">Provider</Label>
+            <Label htmlFor="cfg-provider">Провайдер</Label>
             <Select
               value={providerName}
               onValueChange={setProviderName}
               disabled={lockedProvider || providers.length === 0}
             >
               <SelectTrigger id="cfg-provider">
-                <SelectValue placeholder="Select a provider" />
+                <SelectValue placeholder="Выберите провайдера" />
               </SelectTrigger>
               <SelectContent>
                 {providers.map((p) => (
@@ -222,7 +222,7 @@ export function ConfigFormDialog({
             </Select>
             {lockedProvider && (
               <p className="text-xs text-muted-foreground">
-                Provider cannot be changed after creation.
+                Провайдера нельзя изменить после создания.
               </p>
             )}
             {currentProvider?.docs_url && (
@@ -232,7 +232,7 @@ export function ConfigFormDialog({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-xs text-blue-600 underline"
               >
-                {currentProvider.display_name} docs <ExternalLink className="h-3 w-3" />
+                {currentProvider.display_name} документация <ExternalLink className="h-3 w-3" />
               </a>
             )}
           </div>
@@ -240,9 +240,9 @@ export function ConfigFormDialog({
           {!isEdit && (
             <div className="flex items-center justify-between rounded border p-3">
               <div>
-                <Label className="text-sm">Set as default for outbound calls</Label>
+                <Label className="text-sm">Установить по умолчанию для исходящих звонков</Label>
                 <p className="text-xs text-muted-foreground">
-                  Used by test calls and campaigns when no specific config is selected.
+                  Используется тестовыми звонками и кампаниями, если не выбрана конкретная конфигурация.
                 </p>
               </div>
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
@@ -257,7 +257,7 @@ export function ConfigFormDialog({
                     {field.label}
                     {!field.required && (
                       <span className="ml-1 text-xs text-muted-foreground">
-                        (optional)
+                        (необязательно)
                       </span>
                     )}
                   </Label>
@@ -278,10 +278,10 @@ export function ConfigFormDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
-            Cancel
+            Отмена
           </Button>
           <Button onClick={handleSubmit} disabled={submitting || !currentProvider}>
-            {submitting ? "Saving..." : isEdit ? "Save changes" : "Create"}
+            {submitting ? "Сохранение..." : isEdit ? "Сохранить изменения" : "Создать"}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -302,14 +302,14 @@ function FieldInput({ field, value, onChange, isEdit }: FieldInputProps) {
   if (field.name === "from_numbers") {
     return (
       <p className="text-xs text-muted-foreground">
-        Phone numbers are managed separately on the configuration page.
+        Номера управляются отдельно на странице конфигурации.
       </p>
     );
   }
 
   const placeholder =
     field.placeholder ??
-    (field.sensitive && isEdit ? "Leave masked to keep existing" : "");
+    (field.sensitive && isEdit ? "Оставьте скрытым для сохранения текущего" : "");
 
   if (field.type === "textarea") {
     return (
@@ -356,5 +356,5 @@ function detailFromError(err: unknown): string {
     const first = e.detail[0] as { msg?: string };
     if (first?.msg) return first.msg;
   }
-  return "Failed to save configuration";
+  return "Не удалось сохранить конфигурацию";
 }

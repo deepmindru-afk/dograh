@@ -116,7 +116,7 @@ export function CampaignRuns({ campaignId, workflowId, searchParams }: CampaignR
             });
 
             if (response.error) {
-                throw new Error("Failed to fetch campaign runs");
+                throw new Error("Не удалось загрузить запуски кампании");
             }
 
             if (response.data) {
@@ -129,7 +129,7 @@ export function CampaignRuns({ campaignId, workflowId, searchParams }: CampaignR
             setError(null);
         } catch (err) {
             console.error("Error fetching campaign runs:", err);
-            setError("Failed to load campaign runs");
+            setError("Не удалось загрузить запуски кампании");
         } finally {
             setLoading(false);
         }
@@ -236,8 +236,8 @@ export function CampaignRuns({ campaignId, workflowId, searchParams }: CampaignR
             onSort={handleSort}
             workflowId={workflowId}
             onReload={handleReload}
-            title="Campaign Workflow Runs"
-            emptyMessage="No workflow runs found for this campaign"
+            title="Запуски кампании"
+            emptyMessage="Запуски для этой кампании не найдены"
         />
     );
 }

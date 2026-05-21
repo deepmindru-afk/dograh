@@ -20,12 +20,12 @@ export default function SignupPage() {
     e.preventDefault();
 
     if (password.length < 8) {
-      toast.error("Password must be at least 8 characters");
+      toast.error("Пароль должен содержать не менее 8 символов");
       return;
     }
 
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("Пароли не совпадают");
       return;
     }
 
@@ -38,7 +38,7 @@ export default function SignupPage() {
 
       if (res.error || !res.data) {
         const detail = (res.error as { detail?: string })?.detail;
-        toast.error(detail || "Signup failed");
+        toast.error(detail || "Ошибка регистрации");
         return;
       }
 
@@ -51,7 +51,7 @@ export default function SignupPage() {
 
       window.location.href = "/after-sign-in";
     } catch {
-      toast.error("An error occurred. Please try again.");
+      toast.error("Произошла ошибка. Пожалуйста, попробуйте снова.");
     } finally {
       setLoading(false);
     }
@@ -61,8 +61,8 @@ export default function SignupPage() {
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Create an account</CardTitle>
-          <CardDescription>Enter your details to get started</CardDescription>
+          <CardTitle className="text-2xl">Создать аккаунт</CardTitle>
+          <CardDescription>Введите данные для начала работы</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -78,11 +78,11 @@ export default function SignupPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Пароль</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="At least 8 characters"
+                placeholder="Не менее 8 символов"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -90,11 +90,11 @@ export default function SignupPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm password</Label>
+              <Label htmlFor="confirmPassword">Подтвердите пароль</Label>
               <Input
                 id="confirmPassword"
                 type="password"
-                placeholder="Confirm your password"
+                placeholder="Подтвердите пароль"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
@@ -102,13 +102,13 @@ export default function SignupPage() {
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Create account"}
+              {loading ? "Создание аккаунта..." : "Создать аккаунт"}
             </Button>
           </form>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
+            Уже есть аккаунт?{" "}
             <Link href="/auth/login" className="text-primary underline-offset-4 hover:underline">
-              Sign in
+              Войти
             </Link>
           </p>
         </CardContent>

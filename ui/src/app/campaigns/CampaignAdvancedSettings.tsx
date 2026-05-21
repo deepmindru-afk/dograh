@@ -122,28 +122,28 @@ export default function CampaignAdvancedSettings({
         <div className="space-y-6">
             {/* Max Concurrent Calls */}
             <div className="space-y-2">
-                <Label htmlFor="max-concurrency">Max Concurrent Calls</Label>
+                <Label htmlFor="max-concurrency">Макс. одновременных звонков</Label>
                 <Input
                     id="max-concurrency"
                     type="number"
-                    placeholder={`Default: ${effectiveLimit}`}
+                    placeholder={`По умолчанию: ${effectiveLimit}`}
                     value={maxConcurrency}
                     onChange={(e) => onMaxConcurrencyChange(e.target.value)}
                     min={1}
                     max={effectiveLimit}
                 />
                 <p className="text-sm text-muted-foreground">
-                    Maximum number of simultaneous calls. Leave empty to use {effectiveLimit}.
-                    {fromNumbersCount > 0 && ` You have ${fromNumbersCount} CLI${fromNumbersCount !== 1 ? 's' : ''} and an org limit of ${orgConcurrentLimit}.`}
+                    Максимальное количество одновременных звонков. Оставьте пустым для использования {effectiveLimit}.
+                    {fromNumbersCount > 0 && ` У вас ${fromNumbersCount} CLI и лимит организации ${orgConcurrentLimit}.`}
                 </p>
                 {fromNumbersCount > 0 && fromNumbersCount < orgConcurrentLimit && (
                     <p className="text-sm text-amber-600 dark:text-amber-400">
-                        Concurrency is limited to {fromNumbersCount} by your configured phone numbers. To use the full org limit of {orgConcurrentLimit}, add more CLIs in <Link href="/telephony-configurations" className="underline font-medium">Telephony Configuration</Link>.
+                        Параллельность ограничена {fromNumbersCount} вашими настроенными номерами. Чтобы использовать полный лимит организации {orgConcurrentLimit}, добавьте больше CLI в <Link href="/telephony-configurations" className="underline font-medium">Телефонной конфигурации</Link>.
                     </p>
                 )}
                 {fromNumbersCount === 0 && (
                     <p className="text-sm text-amber-600 dark:text-amber-400">
-                        No phone numbers configured. Add CLIs in <Link href="/telephony-configurations" className="underline font-medium">Telephony Configuration</Link> before running the campaign.
+                        Номера телефонов не настроены. Добавьте CLI в <Link href="/telephony-configurations" className="underline font-medium">Телефонной конфигурации</Link> перед запуском кампании.
                     </p>
                 )}
             </div>
@@ -152,9 +152,9 @@ export default function CampaignAdvancedSettings({
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <Label htmlFor="retry-enabled">Enable Retries</Label>
+                        <Label htmlFor="retry-enabled">Включить повторы</Label>
                         <p className="text-sm text-muted-foreground">
-                            Automatically retry failed calls
+                            Автоматически повторять неудачные звонки
                         </p>
                     </div>
                     <Switch
@@ -168,7 +168,7 @@ export default function CampaignAdvancedSettings({
                     <div className="space-y-4 pl-4 border-l-2 border-muted">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="max-retries">Max Retries</Label>
+                                <Label htmlFor="max-retries">Макс. повторов</Label>
                                 <Input
                                     id="max-retries"
                                     type="number"
@@ -179,7 +179,7 @@ export default function CampaignAdvancedSettings({
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="retry-delay">Retry Delay (seconds)</Label>
+                                <Label htmlFor="retry-delay">Задержка повтора (сек)</Label>
                                 <Input
                                     id="retry-delay"
                                     type="number"
@@ -192,18 +192,18 @@ export default function CampaignAdvancedSettings({
                         </div>
 
                         <div className="space-y-3">
-                            <Label>Retry On</Label>
+                            <Label>Повтор при</Label>
                             <div className="space-y-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">Busy Signal</span>
+                                    <span className="text-sm">Занято</span>
                                     <Switch checked={retryOnBusy} onCheckedChange={onRetryOnBusyChange} />
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">No Answer</span>
+                                    <span className="text-sm">Нет ответа</span>
                                     <Switch checked={retryOnNoAnswer} onCheckedChange={onRetryOnNoAnswerChange} />
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">Voicemail</span>
+                                    <span className="text-sm">Голосовая почта</span>
                                     <Switch checked={retryOnVoicemail} onCheckedChange={onRetryOnVoicemailChange} />
                                 </div>
                             </div>
@@ -218,9 +218,9 @@ export default function CampaignAdvancedSettings({
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <Label htmlFor="schedule-enabled">Call Schedule</Label>
+                        <Label htmlFor="schedule-enabled">Расписание звонков</Label>
                         <p className="text-sm text-muted-foreground">
-                            Restrict when calls are made
+                            Ограничить время совершения звонков
                         </p>
                     </div>
                     <Switch
@@ -233,7 +233,7 @@ export default function CampaignAdvancedSettings({
                 {scheduleEnabled && (
                     <div className="space-y-4 pl-4 border-l-2 border-muted">
                         <div className="space-y-2">
-                            <Label>Timezone</Label>
+                            <Label>Часовой пояс</Label>
                             <TimezoneSelect
                                 instanceId={timezoneSelectId}
                                 value={scheduleTimezone}
@@ -243,7 +243,7 @@ export default function CampaignAdvancedSettings({
                         </div>
 
                         <div className="space-y-3">
-                            <Label>Time Slots</Label>
+                            <Label>Временные слоты</Label>
                             {timeSlots.map((slot, index) => (
                                 <div key={index} className="flex items-center gap-2">
                                     <Select
@@ -258,7 +258,7 @@ export default function CampaignAdvancedSettings({
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => (
+                                            {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((day, i) => (
                                                 <SelectItem key={i} value={String(i)}>{day}</SelectItem>
                                             ))}
                                         </SelectContent>
@@ -273,7 +273,7 @@ export default function CampaignAdvancedSettings({
                                         }}
                                         className="w-[130px]"
                                     />
-                                    <span className="text-sm text-muted-foreground">to</span>
+                                    <span className="text-sm text-muted-foreground">до</span>
                                     <Input
                                         type="time"
                                         value={slot.end_time}
@@ -303,7 +303,7 @@ export default function CampaignAdvancedSettings({
                                 onClick={() => onTimeSlotsChange([...timeSlots, { day_of_week: 0, start_time: '09:00', end_time: '17:00' }])}
                             >
                                 <Plus className="h-4 w-4 mr-1" />
-                                Add Time Slot
+                                Добавить слот
                             </Button>
                         </div>
                     </div>
@@ -318,7 +318,7 @@ export default function CampaignAdvancedSettings({
                     <div>
                         <Label htmlFor="circuit-breaker-enabled">Circuit Breaker</Label>
                         <p className="text-sm text-muted-foreground">
-                            Auto-pause campaign on high failure rates
+                            Автоматически приостанавливать кампанию при высоком уровне ошибок
                         </p>
                     </div>
                     <Switch

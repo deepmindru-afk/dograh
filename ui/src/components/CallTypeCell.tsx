@@ -21,16 +21,16 @@ export function CallTypeCell({
     callType?: string | null;
 }) {
     if (!mode && !callType) {
-        return <span className="text-sm text-muted-foreground">-</span>;
+        return <span className="text-sm text-muted-foreground">—</span>;
     }
 
     const channel = getCallChannel(mode);
     const ChannelIcon = channel === "chat" ? MessageSquare : channel === "web" ? Globe : Phone;
-    const channelLabel = channel === "chat" ? "Text chat" : channel === "web" ? "Web call" : "Phone call";
+    const channelLabel = channel === "chat" ? "Чат" : channel === "web" ? "Веб-звонок" : "Телефонный звонок";
 
     const isInbound = callType === "inbound";
     const DirectionIcon = isInbound ? ArrowDownLeft : ArrowUpRight;
-    const directionLabel = isInbound ? "Inbound" : "Outbound";
+    const directionLabel = isInbound ? "Входящий" : "Исходящий";
 
     return (
         <Tooltip>

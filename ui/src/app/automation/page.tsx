@@ -8,28 +8,28 @@ export default function AutomationPage() {
     return (
         <div className="container mx-auto p-6 space-y-6">
             <div>
-                <h1 className="text-3xl font-bold mb-2">Automation</h1>
-                <p>Automate your workflows and processes</p>
+                <h1 className="text-3xl font-bold mb-2">Автоматизация</h1>
+                <p>Автоматизируйте свои workflow и процессы</p>
             </div>
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Coming Soon</CardTitle>
+                    <CardTitle>Скоро</CardTitle>
                     <CardDescription>
-                        Automation features are currently under development
+                        Функции автоматизации находятся в разработке
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="text-center py-12">
                         <Zap className="w-16 h-16 mx-auto mb-6" />
                         <p className="text-lg mb-4">
-                            We&apos;re working on powerful automation features to help you streamline your workflows.
+                            Мы работаем над мощными функциями автоматизации, которые помогут оптимизировать ваши workflow.
                         </p>
                         <p>
-                            Automate repetitive tasks, trigger actions based on events, and create intelligent workflow pipelines.
+                            Автоматизируйте повторяющиеся задачи, запускайте действия по событиям и создавайте интеллектуальные конвейеры workflow.
                         </p>
                         <p className="mt-4">
-                            Check back soon for updates!
+                            Следите за обновлениями!
                         </p>
                     </div>
                 </CardContent>

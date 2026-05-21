@@ -85,7 +85,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
             }
         } catch (err) {
             console.error("Failed to fetch voices:", err);
-            setError("Failed to load voices");
+            setError("Не удалось загрузить голоса");
             setVoices([]);
         } finally {
             setIsLoading(false);
@@ -171,7 +171,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
             return value;
         }
         const voice = voices.find((v) => v.voice_id === value);
-        return voice?.name || value || "Select a voice";
+        return voice?.name || value || "Выберите голос";
     };
 
     const playPreview = (previewUrl: string, voiceId: string) => {
@@ -211,7 +211,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
             <div className={cn("space-y-2", className)}>
                 <Input
                     type="text"
-                    placeholder="Enter voice ID"
+                    placeholder="Введите ID голоса"
                     value={value || ""}
                     onChange={(e) => onChange(e.target.value)}
                 />
@@ -224,7 +224,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
             <div className={cn("space-y-2", className)}>
                 <Input
                     type="text"
-                    placeholder="Enter voice ID"
+                    placeholder="Введите ID голоса"
                     value={manualVoiceId}
                     onChange={(e) => handleManualVoiceIdChange(e.target.value)}
                 />
@@ -260,7 +260,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
                         disabled={isLoading}
                     >
                         <span className="truncate">
-                            {isLoading ? "Loading voices..." : getSelectedVoiceName()}
+                            {isLoading ? "Загрузка голосов..." : getSelectedVoiceName()}
                         </span>
                         {isLoading ? (
                             <Loader2 className="ml-2 h-4 w-4 shrink-0 animate-spin" />
@@ -274,7 +274,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
                         <div className="relative">
                             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                             <Input
-                                placeholder="Search voices..."
+                                placeholder="Поиск голосов..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="pl-8"
@@ -292,7 +292,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
                                 </div>
                             ) : filteredVoices.length === 0 ? (
                                 <p className="text-sm text-muted-foreground text-center py-4">
-                                    No voices found
+                                    Голоса не найдены
                                 </p>
                             ) : (
                                 filteredVoices.map((voice) => (
@@ -373,11 +373,11 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
                                     htmlFor="manual-voice-input-popup"
                                     className="text-sm font-normal cursor-pointer"
                                 >
-                                    Add Voice ID Manually
+                        Добавить ID голоса вручную
                                 </Label>
                             </div>
                             <p className="text-xs text-muted-foreground">
-                                {voices.length} voices available
+                                {voices.length} голосов доступно
                             </p>
                         </div>
                     </div>

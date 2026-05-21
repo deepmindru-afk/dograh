@@ -75,7 +75,7 @@ export default function TelephonyConfigurationsPage() {
       if (res.error) throw new Error(detailFromError(res.error));
       setItems(res.data?.configurations ?? []);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load configurations");
+      toast.error(err instanceof Error ? err.message : "Не удалось загрузить конфигурации");
     } finally {
       setLoading(false);
     }
@@ -106,7 +106,7 @@ export default function TelephonyConfigurationsPage() {
       setEditTarget(res.data ?? null);
       setEditOpen(true);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load configuration");
+      toast.error(err instanceof Error ? err.message : "Не удалось загрузить конфигурацию");
     }
   };
 
@@ -120,10 +120,10 @@ export default function TelephonyConfigurationsPage() {
         },
       );
       if (res.error) throw new Error(detailFromError(res.error));
-      toast.success(`${item.name} is now the default outbound configuration`);
+      toast.success(`${item.name} теперь конфигурация по умолчанию для исходящих`);
       fetchItems();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to set default");
+      toast.error(err instanceof Error ? err.message : "Не удалось установить по умолчанию");
     }
   };
 
@@ -138,11 +138,11 @@ export default function TelephonyConfigurationsPage() {
         },
       );
       if (res.error) throw new Error(detailFromError(res.error));
-      toast.success("Configuration deleted");
+      toast.success("Конфигурация удалена");
       setDeleteTarget(null);
       fetchItems();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to delete configuration");
+      toast.error(err instanceof Error ? err.message : "Не удалось удалить конфигурацию");
     }
   };
 
@@ -151,23 +151,23 @@ export default function TelephonyConfigurationsPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-start justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Telephony configurations</h1>
+            <h1 className="text-3xl font-bold mb-2">Телефонные конфигурации</h1>
             <p className="text-muted-foreground">
-              Connect one or more telephony provider accounts. Each campaign uses one
-              configuration; inbound calls are routed to the right one by account ID.{" "}
+              Подключите один или несколько аккаунтов телефонных провайдеров. Каждая кампания использует одну
+              конфигурацию; входящие звонки маршрутизируются по ID аккаунта.{" "}
               <a
                 href="https://docs.dograh.com/integrations/telephony/overview"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
               >
-                Learn more <ExternalLink className="h-3 w-3" />
+                Подробнее <ExternalLink className="h-3 w-3" />
               </a>
             </p>
           </div>
           <Button onClick={() => setCreateOpen(true)}>
-            <Plus className="h-4 w-4 mr-2" /> Add configuration
-          </Button>
+                <Plus className="h-4 w-4 mr-2" /> Добавить конфигурацию
+              </Button>
         </div>
 
         {telnyxMissingWebhookPublicKeyCount > 0 && (
@@ -175,18 +175,18 @@ export default function TelephonyConfigurationsPage() {
             <div className="flex items-start gap-3">
               <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" />
               <div className="space-y-1 text-sm">
-                <p className="font-medium">Webhook public key not configured</p>
+                <p className="font-medium">Публичный ключ webhook не настроен</p>
                 <p>
                   {telnyxMissingWebhookPublicKeyCount === 1
-                    ? "1 Telnyx configuration is"
-                    : `${telnyxMissingWebhookPublicKeyCount} Telnyx configurations are`}{" "}
-                  missing a webhook public key. Without it, Telnyx call status
-                  updates and inbound calls are being rejected. Copy your
-                  public key from{" "}
+                    ? "1 конфигурация Telnyx"
+                    : `${telnyxMissingWebhookPublicKeyCount} конфигураций Telnyx`}{" "}
+                  не имеют публичного ключа webhook. Без него обновления статуса
+                  звонков Telnyx и входящие вызовы отклоняются. Скопируйте
+                  ваш публичный ключ из{" "}
                   <span className="whitespace-nowrap">
                     Mission Control Portal → Keys &amp; Credentials → Public Key
                   </span>{" "}
-                  and paste it into the affected Telnyx configuration below.
+                  и вставьте его в соответствующую конфигурацию Telnyx ниже.
                 </p>
               </div>
             </div>
@@ -201,14 +201,14 @@ export default function TelephonyConfigurationsPage() {
         ) : items.length === 0 ? (
           <Card>
             <CardHeader>
-              <CardTitle>No telephony configurations yet</CardTitle>
+              <CardTitle>Ещё нет телефонных конфигураций</CardTitle>
               <CardDescription>
-                Add one to enable outbound calls and receive inbound calls.
+                Добавьте конфигурацию, чтобы включить исходящие звонки и принимать входящие.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button onClick={() => setCreateOpen(true)}>
-                <Plus className="h-4 w-4 mr-2" /> Add configuration
+            <Plus className="h-4 w-4 mr-2" /> Добавить конфигурацию
               </Button>
             </CardContent>
           </Card>
@@ -228,13 +228,13 @@ export default function TelephonyConfigurationsPage() {
                         {item.is_default_outbound && (
                           <Badge className="gap-1">
                             <Star className="h-3 w-3 fill-current" />
-                            Default
+                            По умолчанию
                           </Badge>
                         )}
                       </div>
                       <span className="text-sm text-muted-foreground">
-                        {item.phone_number_count} phone{" "}
-                        {item.phone_number_count === 1 ? "number" : "numbers"}
+                        {item.phone_number_count}{" "}
+                        {item.phone_number_count === 1 ? "номер" : "номеров"}
                       </span>
                       <button
                         type="button"
@@ -243,13 +243,13 @@ export default function TelephonyConfigurationsPage() {
                           e.stopPropagation();
                           navigator.clipboard
                             .writeText(String(item.id))
-                            .then(() => toast.success("Configuration ID copied"))
-                            .catch(() => toast.error("Failed to copy ID"));
+                            .then(() => toast.success("ID конфигурации скопирован"))
+                            .catch(() => toast.error("Не удалось скопировать ID"));
                         }}
-                        title="Click to copy"
+                        title="Нажмите, чтобы скопировать"
                         className="inline-flex items-center gap-1 self-start rounded font-mono text-xs text-muted-foreground hover:text-foreground"
                       >
-                        <span className="truncate">Configuration ID: {item.id}</span>
+                        <span className="truncate">ID конфигурации: {item.id}</span>
                         <Copy className="h-3 w-3 shrink-0" />
                       </button>
                     </div>
@@ -260,7 +260,7 @@ export default function TelephonyConfigurationsPage() {
                         variant="ghost"
                         size="sm"
                         onClick={() => onSetDefault(item)}
-                        title="Set as default outbound"
+                        title="Установить по умолчанию для исходящих"
                       >
                         <Star className="h-4 w-4" />
                       </Button>
@@ -269,7 +269,7 @@ export default function TelephonyConfigurationsPage() {
                       variant="ghost"
                       size="sm"
                       onClick={() => onEdit(item)}
-                      title="Edit"
+                      title="Редактировать"
                     >
                       <Pencil className="h-4 w-4" />
                     </Button>
@@ -277,14 +277,14 @@ export default function TelephonyConfigurationsPage() {
                       variant="ghost"
                       size="sm"
                       onClick={() => setDeleteTarget(item)}
-                      title="Delete"
+                      title="Удалить"
                     >
                       <Trash2 className="h-4 w-4 text-destructive" />
                     </Button>
                     <Link
                       href={`/telephony-configurations/${item.id}`}
                       className="text-muted-foreground"
-                      aria-label="View phone numbers"
+                      aria-label="Просмотреть номера"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </Link>
@@ -315,16 +315,16 @@ export default function TelephonyConfigurationsPage() {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete configuration?</AlertDialogTitle>
+            <AlertDialogTitle>Удалить конфигурацию?</AlertDialogTitle>
             <AlertDialogDescription>
-              {deleteTarget?.name} and all of its phone numbers will be removed. Any
-              campaigns that reference this configuration will block the deletion until
-              they are reassigned.
+              {deleteTarget?.name} и все его номера будут удалены. Любые
+              кампании, ссылающиеся на эту конфигурацию, будут блокировать удаление до тех пор,
+              пока они не будут переназначены.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={onConfirmDelete}>Delete</AlertDialogAction>
+            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogAction onClick={onConfirmDelete}>Удалить</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -340,5 +340,5 @@ function detailFromError(err: unknown): string {
     const first = e.detail[0] as { msg?: string };
     if (first?.msg) return first.msg;
   }
-  return "Request failed";
+  return "Запрос не удался";
 }

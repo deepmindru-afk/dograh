@@ -98,7 +98,7 @@ export default function TelephonyConfigurationDetailPage() {
       setConfig(cfgRes.data ?? null);
       setPhoneNumbers(numbersRes.data?.phone_numbers ?? []);
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to load configuration");
+      toast.error(err instanceof Error ? err.message : "Не удалось загрузить конфигурацию");
     } finally {
       setLoading(false);
     }
@@ -119,10 +119,10 @@ export default function TelephonyConfigurationDetailPage() {
         },
       );
       if (res.error) throw new Error(detailFromError(res.error));
-      toast.success("Set as default outbound");
+      toast.success("Установлен как исходящий по умолчанию");
       fetchAll();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to set default");
+      toast.error(err instanceof Error ? err.message : "Не удалось установить по умолчанию");
     }
   };
 
@@ -136,10 +136,10 @@ export default function TelephonyConfigurationDetailPage() {
         },
       );
       if (res.error) throw new Error(detailFromError(res.error));
-      toast.success(`${n.address} is now the default caller ID`);
+      toast.success(`${n.address} теперь ID вызывающего по умолчанию`);
       fetchAll();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to set default caller");
+      toast.error(err instanceof Error ? err.message : "Не удалось установить вызывающего по умолчанию");
     }
   };
 
@@ -157,11 +157,11 @@ export default function TelephonyConfigurationDetailPage() {
         },
       );
       if (res.error) throw new Error(detailFromError(res.error));
-      toast.success("Phone number deleted");
+      toast.success("Номер удалён");
       setPhoneDeleteTarget(null);
       fetchAll();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to delete phone number");
+      toast.error(err instanceof Error ? err.message : "Не удалось удалить номер");
     }
   };
 
@@ -179,9 +179,9 @@ export default function TelephonyConfigurationDetailPage() {
     return (
       <div className="container mx-auto px-4 py-8">
         <Button variant="ghost" onClick={() => router.push("/telephony-configurations")}>
-          <ArrowLeft className="h-4 w-4 mr-2" /> Back
+          <ArrowLeft className="h-4 w-4 mr-2" /> Назад
         </Button>
-        <p className="mt-4 text-muted-foreground">Configuration not found.</p>
+        <p className="mt-4 text-muted-foreground">Конфигурация не найдена.</p>
       </div>
     );
   }
@@ -193,7 +193,7 @@ export default function TelephonyConfigurationDetailPage() {
           href="/telephony-configurations"
           className="inline-flex items-center text-sm text-muted-foreground hover:underline"
         >
-          <ArrowLeft className="h-4 w-4 mr-1" /> All configurations
+          <ArrowLeft className="h-4 w-4 mr-1" /> Все конфигурации
         </Link>
       </div>
 
@@ -206,36 +206,36 @@ export default function TelephonyConfigurationDetailPage() {
               {config.is_default_outbound && (
                 <Badge className="gap-1">
                   <Star className="h-3 w-3 fill-current" />
-                  Default
+                  По умолчанию
                 </Badge>
               )}
             </div>
             <CardDescription>
-              Updated {new Date(config.updated_at).toLocaleString()}
+              Обновлено {new Date(config.updated_at).toLocaleString()}
             </CardDescription>
             <button
               type="button"
               onClick={() => {
                 navigator.clipboard
                   .writeText(String(config.id))
-                  .then(() => toast.success("Configuration ID copied"))
-                  .catch(() => toast.error("Failed to copy ID"));
+                .then(() => toast.success("ID конфигурации скопирован"))
+                .catch(() => toast.error("Не удалось скопировать ID"));
               }}
-              title="Click to copy"
+              title="Нажмите, чтобы скопировать"
               className="inline-flex items-center gap-1 self-start rounded font-mono text-xs text-muted-foreground hover:text-foreground"
             >
-              <span className="truncate">Configuration ID: {config.id}</span>
+              <span className="truncate">ID конфигурации: {config.id}</span>
               <Copy className="h-3 w-3 shrink-0" />
             </button>
           </div>
           <div className="flex items-center gap-2 shrink-0">
             {!config.is_default_outbound && (
               <Button variant="outline" size="sm" onClick={onSetDefaultOutbound}>
-                <Star className="h-4 w-4 mr-2" /> Set as default
+                <Star className="h-4 w-4 mr-2" /> Установить по умолчанию
               </Button>
             )}
             <Button variant="outline" size="sm" onClick={() => setEditConfigOpen(true)}>
-              <Pencil className="h-4 w-4 mr-2" /> Edit credentials
+              <Pencil className="h-4 w-4 mr-2" /> Редактировать учётные данные
             </Button>
           </div>
         </CardHeader>
@@ -256,17 +256,17 @@ export default function TelephonyConfigurationDetailPage() {
       <Card>
         <CardHeader className="flex flex-row items-start justify-between gap-4">
           <div className="space-y-1">
-            <CardTitle>Phone numbers</CardTitle>
+            <CardTitle>Номера телефонов</CardTitle>
             <CardDescription>
-              Numbers used as caller ID for outbound and accepted for inbound matching.
-              SIP URIs and extensions are supported alongside PSTN numbers.{" "}
+              Номера, используемые как ID вызывающего для исходящих и принимаемые для входящих.
+              SIP URI и расширения поддерживаются наряду с номерами PSTN.{" "}
               <a
                 href="https://docs.dograh.com/integrations/telephony/inbound"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
               >
-                Inbound docs <ExternalLink className="h-3 w-3" />
+                Документация по входящим <ExternalLink className="h-3 w-3" />
               </a>
             </CardDescription>
           </div>
@@ -277,25 +277,25 @@ export default function TelephonyConfigurationDetailPage() {
               setPhoneDialogOpen(true);
             }}
           >
-            <Plus className="h-4 w-4 mr-2" /> Add phone number
+            <Plus className="h-4 w-4 mr-2" /> Добавить номер
           </Button>
         </CardHeader>
         <CardContent>
           {phoneNumbers.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No phone numbers yet. Add one to start placing or receiving calls on this
-              configuration.
+              Ещё нет номеров. Добавьте номер, чтобы начать совершать или принимать звонки на этой
+              конфигурации.
             </p>
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Address</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Label</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Inbound workflow</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>Адрес</TableHead>
+                  <TableHead>Тип</TableHead>
+                  <TableHead>Метка</TableHead>
+                  <TableHead>Статус</TableHead>
+                  <TableHead>Входящий workflow</TableHead>
+                  <TableHead className="text-right">Действия</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -311,13 +311,13 @@ export default function TelephonyConfigurationDetailPage() {
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
                         {n.is_active ? (
-                          <Badge variant="secondary">Active</Badge>
+                          <Badge variant="secondary">Активен</Badge>
                         ) : (
-                          <Badge variant="outline">Inactive</Badge>
+                          <Badge variant="outline">Неактивен</Badge>
                         )}
                         {n.is_default_caller_id && (
                           <Badge className="gap-1">
-                            <Star className="h-3 w-3 fill-current" /> Default caller
+                            <Star className="h-3 w-3 fill-current" /> По умолчанию
                           </Badge>
                         )}
                       </div>
@@ -351,7 +351,7 @@ export default function TelephonyConfigurationDetailPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => onSetDefaultCaller(n)}
-                            title="Set as default caller ID"
+                            title="Установить как ID вызывающего по умолчанию"
                           >
                             <Star className="h-4 w-4" />
                           </Button>
@@ -363,15 +363,15 @@ export default function TelephonyConfigurationDetailPage() {
                             setPhoneEditTarget(n);
                             setPhoneDialogOpen(true);
                           }}
-                          title="Edit"
-                        >
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => setPhoneDeleteTarget(n)}
-                          title="Delete"
+                            title="Редактировать"
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setPhoneDeleteTarget(n)}
+                            title="Удалить"
                         >
                           <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
@@ -406,15 +406,15 @@ export default function TelephonyConfigurationDetailPage() {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete phone number?</AlertDialogTitle>
+            <AlertDialogTitle>Удалить номер?</AlertDialogTitle>
             <AlertDialogDescription>
-              {phoneDeleteTarget?.address} will no longer accept inbound calls or be
-              available as a caller ID for this configuration.
+              {phoneDeleteTarget?.address} больше не будет принимать входящие звонки и не будет
+              доступен как ID вызывающего для этой конфигурации.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={onConfirmDeletePhone}>Delete</AlertDialogAction>
+            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogAction onClick={onConfirmDeletePhone}>Удалить</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -430,5 +430,5 @@ function detailFromError(err: unknown): string {
     const first = e.detail[0] as { msg?: string };
     if (first?.msg) return first.msg;
   }
-  return "Request failed";
+  return "Запрос не удался";
 }

@@ -8,7 +8,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="hover:text-foreground transition-colors"
         >
-          Privacy Policy
+          Политика конфиденциальности
         </a>
         <span className="text-border">|</span>
         <a
@@ -17,7 +17,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="hover:text-foreground transition-colors"
         >
-          Terms of Service
+          Условия использования
         </a>
       </div>
     </footer>

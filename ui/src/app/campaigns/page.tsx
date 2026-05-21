@@ -97,20 +97,20 @@ export default function CampaignsPage() {
         <div className="container mx-auto p-6 space-y-6">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold mb-2">Campaigns</h1>
-                    <p>Manage your bulk workflow execution campaigns</p>
+                    <h1 className="text-3xl font-bold mb-2">Кампании</h1>
+                    <p>Управляйте массовыми кампаниями выполнения воркфлоу</p>
                 </div>
                     <Button onClick={handleCreateCampaign}>
                         <Plus className="h-4 w-4 mr-2" />
-                        Create Campaign
+                        Создать кампанию
                     </Button>
                 </div>
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>All Campaigns</CardTitle>
+                        <CardTitle>Все кампании</CardTitle>
                         <CardDescription>
-                            View and manage your campaigns
+                            Просмотр и управление кампаниями
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -126,12 +126,12 @@ export default function CampaignsPage() {
                                     <TableHeader>
                                         <TableRow>
                                             <TableHead>ID</TableHead>
-                                            <TableHead>Name</TableHead>
-                                            <TableHead>Workflow</TableHead>
-                                            <TableHead>State</TableHead>
-                                            <TableHead>Progress</TableHead>
-                                            <TableHead>Created</TableHead>
-                                            <TableHead className="text-right">Action</TableHead>
+                                            <TableHead>Название</TableHead>
+                                            <TableHead>Воркфлоу</TableHead>
+                                            <TableHead>Статус</TableHead>
+                                            <TableHead>Прогресс</TableHead>
+                                            <TableHead>Создана</TableHead>
+                                            <TableHead className="text-right">Действие</TableHead>
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
@@ -162,7 +162,7 @@ export default function CampaignsPage() {
                                                             handleRowClick(campaign.id);
                                                         }}
                                                     >
-                                                        View
+                                                        Открыть
                                                     </Button>
                                                 </TableCell>
                                             </TableRow>
@@ -172,10 +172,10 @@ export default function CampaignsPage() {
                             </div>
                         ) : (
                             <div className="text-center py-8">
-                                <p className="mb-4">No campaigns found</p>
+                                <p className="mb-4">Кампании не найдены</p>
                                 <Button onClick={handleCreateCampaign} variant="outline">
                                     <Plus className="h-4 w-4 mr-2" />
-                                    Create your first campaign
+                                    Создать первую кампанию
                                 </Button>
                             </div>
                         )}

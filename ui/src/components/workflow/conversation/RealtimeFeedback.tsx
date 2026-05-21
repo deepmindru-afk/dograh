@@ -39,20 +39,20 @@ export function RealtimeFeedback(props: RealtimeFeedbackProps) {
             ? conversationItemsFromRealtimeFeedbackEvents(props.logs.realtime_feedback_events)
             : [];
         status = "ended";
-        title = "Call Transcript";
+        title = "Транскрипт звонка";
         emptyState = {
-            title: "No conversation recorded",
-            subtitle: "Real-time feedback events were not captured for this call",
+            title: "Разговор не записан",
+            subtitle: "События обратной связи в реальном времени не были записаны для этого звонка",
         };
     } else {
         items = conversationItemsFromLiveFeedback(props.messages);
         status = props.isCallActive ? "live" : props.isCallCompleted ? "ended" : "ready";
-        title = "Live Transcript";
+        title = "Транскрипт в реальном времени";
         emptyState = {
-            title: "No messages yet",
+            title: "Сообщений пока нет",
             subtitle: props.isCallActive
-                ? "Start speaking to see the transcript"
-                : "Start the call to begin the conversation",
+                ? "Начните говорить, чтобы увидеть транскрипт"
+                : "Начните звонок, чтобы начать разговор",
         };
         autoScroll = true;
     }

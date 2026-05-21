@@ -17,17 +17,17 @@ interface ConversationContainerProps {
 const STATUS_CONFIG = {
     ready: {
         icon: MicOff,
-        label: "Ready",
+        label: "Готов",
         className: "bg-muted text-muted-foreground",
     },
     live: {
         icon: Mic,
-        label: "Live",
+        label: "В эфире",
         className: "bg-green-500/10 text-green-600 dark:text-green-400",
     },
     ended: {
         icon: MicOff,
-        label: "Ended",
+        label: "Завершён",
         className: "bg-muted text-muted-foreground",
     },
 } satisfies Record<ConversationStatus, { icon: typeof Mic; label: string; className: string }>;
@@ -51,7 +51,7 @@ export function ConversationContainer({
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                         {messageCount !== undefined && messageCount > 0 ? (
-                            <span className="text-xs text-muted-foreground">{messageCount} messages</span>
+                            <span className="text-xs text-muted-foreground">{messageCount} сообщений</span>
                         ) : null}
                         <div
                             className={cn(

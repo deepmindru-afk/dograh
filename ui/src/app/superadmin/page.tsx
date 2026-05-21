@@ -24,7 +24,7 @@ export default function SuperadminPage() {
 
         try {
             if (!user) {
-                setError("User not authenticated. Please log in and try again.");
+                setError("Пользователь не аутентифицирован. Пожалуйста, войдите и попробуйте снова.");
                 setIsLoading(false);
                 return;
             }
@@ -40,7 +40,7 @@ export default function SuperadminPage() {
                 openInNewTab: true,
             });
         } catch (err) {
-            setError("Failed to impersonate user. Please try again.");
+            setError("Не удалось имперсонировать пользователя. Пожалуйста, попробуйте снова.");
             console.error("Impersonation error:", err);
         } finally {
             setIsLoading(false);
@@ -51,28 +51,28 @@ export default function SuperadminPage() {
         <>
             <main className="container mx-auto p-6 space-y-6 max-w-4xl">
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold mb-2">Superadmin Dashboard</h1>
-                    <p className="text-sm text-muted-foreground">Manage users and view system-wide data</p>
+                    <h1 className="text-3xl font-bold mb-2">Панель суперадминистратора</h1>
+                    <p className="text-sm text-muted-foreground">Управление пользователями и просмотр системных данных</p>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
                         {/* User Impersonation Card */}
                         <Card>
                             <CardHeader>
-                                <CardTitle>User Impersonation</CardTitle>
+                                <CardTitle>Имперсонация пользователя</CardTitle>
                                 <CardDescription>
-                                    Impersonate a user account for debugging or support purposes
+                                    Имперсонация учётной записи пользователя для отладки или поддержки
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <form onSubmit={handleImpersonate} className="space-y-4">
                                     <div className="space-y-2">
-                                        <Label htmlFor="userId">Provider User ID</Label>
+                                        <Label htmlFor="userId">ID пользователя провайдера</Label>
                                         <Input
                                             id="userId"
                                             value={userId}
                                             onChange={(e) => setUserId(e.target.value)}
-                                            placeholder="Enter provider user ID"
+                                            placeholder="Введите ID пользователя провайдера"
                                             required
                                         />
                                     </div>
@@ -91,10 +91,10 @@ export default function SuperadminPage() {
                                         {isLoading ? (
                                             <>
                                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                Processing...
+                                                Обработка...
                                             </>
                                         ) : (
-                                            'Impersonate User'
+                                            'Имперсонировать пользователя'
                                         )}
                                     </Button>
                                 </form>
@@ -104,21 +104,20 @@ export default function SuperadminPage() {
                         {/* Workflow Runs Card */}
                         <Card>
                             <CardHeader>
-                                <CardTitle>Workflow Runs</CardTitle>
+                                <CardTitle>Запуски Workflow</CardTitle>
                                 <CardDescription>
-                                    View and manage all workflow runs across organizations
+                                    Просмотр и управление всеми запусками workflow в организациях
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <div className="space-y-4">
                                     <p className="text-sm text-muted-foreground">
-                                        Access detailed information about all workflow runs, including status,
-                                        recordings, transcripts, and usage data.
+                                        Доступ к подробной информации о всех запусках workflow, включая статус, записи, транскрипты и данные об использовании.
                                     </p>
                                     <Link href="/superadmin/runs">
                                         <Button className="w-full">
                                             <List className="mr-2 h-4 w-4" />
-                                            View All Runs
+                                            Посмотреть все запуски
                                             <ArrowRight className="ml-2 h-4 w-4" />
                                         </Button>
                                     </Link>

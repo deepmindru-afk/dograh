@@ -105,7 +105,7 @@ export default function ReportsPage() {
         }
       } catch (err) {
         console.error('Failed to fetch report:', err);
-        setError('Failed to load report data');
+        setError('Не удалось загрузить данные отчёта');
       } finally {
         setLoading(false);
       }
@@ -173,11 +173,11 @@ export default function ReportsPage() {
         link.click();
         document.body.removeChild(link);
       } else {
-        alert('No data available for download');
+        alert('Нет данных для скачивания');
       }
     } catch (err) {
       console.error('Failed to download CSV:', err);
-      alert('Failed to download CSV data');
+      alert('Не удалось скачать CSV-данные');
     }
   };
 
@@ -187,17 +187,17 @@ export default function ReportsPage() {
     <div className="container mx-auto p-6 space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-3xl font-bold">Daily Reports</h1>
+        <h1 className="text-3xl font-bold">Ежедневные отчёты</h1>
 
         {/* Date Navigation & Workflow Selector */}
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           {/* Workflow Selector */}
           <Select value={selectedWorkflow} onValueChange={setSelectedWorkflow}>
             <SelectTrigger className="w-[200px]">
-              <SelectValue placeholder="Select workflow" />
+              <SelectValue placeholder="Выберите workflow" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Workflows</SelectItem>
+              <SelectItem value="all">Все Workflow</SelectItem>
               {workflows.map((workflow) => (
                 <SelectItem key={workflow.id} value={workflow.id.toString()}>
                   {workflow.name}
@@ -248,9 +248,9 @@ export default function ReportsPage() {
       {/* Timezone Display and Download Button */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div className="text-sm text-muted-foreground">
-          Showing data for {timezone} timezone
+          Отображение данных для часового пояса {timezone}
           {selectedWorkflow !== 'all' && (
-            <span> • Filtered by: {workflows.find(w => w.id.toString() === selectedWorkflow)?.name}</span>
+            <span> • Отфильтровано: {workflows.find(w => w.id.toString() === selectedWorkflow)?.name}</span>
           )}
         </div>
 
@@ -263,7 +263,7 @@ export default function ReportsPage() {
             className="flex items-center gap-2"
           >
             <Download className="h-4 w-4" />
-            Download CSV
+Скачать CSV
           </Button>
         )}
       </div>
@@ -305,8 +305,8 @@ export default function ReportsPage() {
           {report.metrics.total_runs === 0 && (
             <Card className="p-6">
               <p className="text-center text-muted-foreground">
-                No workflow runs found for {format(selectedDate, 'MMMM dd, yyyy')}
-                {selectedWorkflow !== 'all' && ' for the selected workflow'}
+                Запуски workflow не найдены для {format(selectedDate, 'MMMM dd, yyyy')}
+                {selectedWorkflow !== 'all' && ' для выбранного workflow'}
               </p>
             </Card>
           )}

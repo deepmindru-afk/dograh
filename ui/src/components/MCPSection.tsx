@@ -27,16 +27,16 @@ export function MCPSection() {
   return (
     <div className="grid gap-6">
       <div className="grid gap-2">
-        <Label>MCP Endpoint</Label>
+        <Label>MCP-эндпоинт</Label>
         <p className="text-xs text-muted-foreground">
-          Connect an MCP-compatible AI assistant to this URL over Streamable
-          HTTP. Requires an API key in the X-API-Key header.{" "}
+          Подключите MCP-совместимого AI-ассистента к этому URL через Streamable
+          HTTP. Требуется API-ключ в заголовке X-API-Key.{" "}
           <Link
             href="/api-keys"
             target="_blank"
             className="text-primary underline hover:no-underline"
           >
-            Get your API key
+            Получить API-ключ
           </Link>
         </p>
         <div className="flex items-center gap-2">
@@ -59,15 +59,15 @@ export function MCPSection() {
       </div>
 
       <p className="text-xs text-muted-foreground">
-        For step-by-step setup with Claude Code, Claude Desktop, Cursor, and
-        other clients, see the{" "}
+        Пошаговая настройка с Claude Code, Claude Desktop, Cursor и
+        другими клиентами — смотрите{" "}
         <Link
           href="https://docs.dograh.com/integrations/mcp"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary underline hover:no-underline"
         >
-          MCP integration guide
+          руководство по интеграции MCP
         </Link>
         .
       </p>

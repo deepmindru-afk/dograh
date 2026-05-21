@@ -61,10 +61,10 @@ export function TelemetrySection() {
       if (error) {
         throw new Error("Failed to save");
       }
-      toast.success("Telemetry credentials saved");
+      toast.success("Учётные данные телеметрии сохранены");
       await fetchCredentials();
     } catch {
-      toast.error("Failed to save telemetry credentials");
+      toast.error("Не удалось сохранить учётные данные телеметрии");
     } finally {
       setSaving(false);
     }
@@ -75,25 +75,25 @@ export function TelemetrySection() {
     try {
       await deleteLangfuseCredentialsApiV1OrganizationsLangfuseCredentialsDelete();
       setCredentials({ host: "", public_key: "", secret_key: "", configured: false });
-      toast.success("Telemetry credentials removed");
+      toast.success("Учётные данные телеметрии удалены");
     } catch {
-      toast.error("Failed to remove telemetry credentials");
+      toast.error("Не удалось удалить учётные данные телеметрии");
     } finally {
       setSaving(false);
     }
   }
 
   if (loading) {
-    return <p className="text-sm text-muted-foreground">Loading...</p>;
+    return <p className="text-sm text-muted-foreground">Загрузка...</p>;
   }
 
   return (
     <form onSubmit={handleSave} className="space-y-4">
       <p className="text-sm text-muted-foreground">
-        Connect your Langfuse project to receive call tracing data.
+        Подключите ваш проект Langfuse для получения данных трассировки звонков.
       </p>
       <div className="space-y-2">
-        <Label htmlFor="langfuse-host">Host</Label>
+        <Label htmlFor="langfuse-host">Хост</Label>
         <Input
           id="langfuse-host"
           placeholder="https://cloud.langfuse.com"
@@ -103,7 +103,7 @@ export function TelemetrySection() {
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="langfuse-public-key">Public Key</Label>
+        <Label htmlFor="langfuse-public-key">Публичный ключ</Label>
         <Input
           id="langfuse-public-key"
           placeholder="pk-lf-..."
@@ -113,7 +113,7 @@ export function TelemetrySection() {
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="langfuse-secret-key">Secret Key</Label>
+        <Label htmlFor="langfuse-secret-key">Секретный ключ</Label>
         <Input
           id="langfuse-secret-key"
           type="password"
@@ -125,11 +125,11 @@ export function TelemetrySection() {
       </div>
       <div className="flex gap-2">
         <Button type="submit" disabled={saving}>
-          {saving ? "Saving..." : "Save"}
+          {saving ? "Сохранение..." : "Сохранить"}
         </Button>
         {credentials.configured && (
           <Button type="button" variant="destructive" disabled={saving} onClick={handleDelete}>
-            Remove
+            Удалить
           </Button>
         )}
       </div>

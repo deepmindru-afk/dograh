@@ -49,11 +49,11 @@ export default function FilesPage() {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Knowledge Base Files</h1>
+                <h1 className="text-3xl font-bold mb-2">Файлы базы знаний</h1>
                 <p className="text-muted-foreground">
-                    Upload and manage documents for your voice agents to reference.{" "}
+                    Загружайте и управляйте документами для ваших голосовых агентов.{" "}
                     <a href="https://docs.dograh.com/voice-agent/knowledge-base" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
-                        Learn more <ExternalLink className="h-3 w-3" />
+                        Подробнее <ExternalLink className="h-3 w-3" />
                     </a>
                 </p>
             </div>
@@ -62,14 +62,14 @@ export default function FilesPage() {
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
-                            <CardTitle>Your Documents</CardTitle>
+                            <CardTitle>Ваши документы</CardTitle>
                             <CardDescription>
-                                Documents shared across all agents in your organization
+                                Документы, доступные всем агентам в вашей организации
                             </CardDescription>
                         </div>
                         <Button onClick={() => setIsUploadOpen(true)}>
                             <Upload className="w-4 h-4 mr-2" />
-                            Upload Document
+                            Загрузить документ
                         </Button>
                     </div>
                 </CardHeader>
@@ -81,9 +81,9 @@ export default function FilesPage() {
             <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Upload Document</DialogTitle>
+                        <DialogTitle>Загрузить документ</DialogTitle>
                         <DialogDescription>
-                            Upload a PDF or document file to add to your knowledge base
+                            Загрузите PDF или файл документа для добавления в базу знаний
                         </DialogDescription>
                     </DialogHeader>
                     <DocumentUpload onUploadSuccess={handleUploadSuccess} />

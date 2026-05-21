@@ -42,22 +42,22 @@ const getCredentialDataFields = (type: WebhookCredentialType): CredentialField[]
     switch (type) {
         case "api_key":
             return [
-                { key: "header_name", label: "Header Name", placeholder: "X-API-Key" },
-                { key: "api_key", label: "API Key", placeholder: "your-api-key", isSecret: true },
+                { key: "header_name", label: "Имя заголовка", placeholder: "X-API-Key" },
+                { key: "api_key", label: "API-ключ", placeholder: "ваш-api-ключ", isSecret: true },
             ];
         case "bearer_token":
             return [
-                { key: "token", label: "Token", placeholder: "your-bearer-token", isSecret: true },
+                { key: "token", label: "Токен", placeholder: "ваш-bearer-токен", isSecret: true },
             ];
         case "basic_auth":
             return [
-                { key: "username", label: "Username", placeholder: "username" },
-                { key: "password", label: "Password", placeholder: "password", isSecret: true },
+                { key: "username", label: "Имя пользователя", placeholder: "имя пользователя" },
+                { key: "password", label: "Пароль", placeholder: "пароль", isSecret: true },
             ];
         case "custom_header":
             return [
-                { key: "header_name", label: "Header Name", placeholder: "X-Custom-Header" },
-                { key: "header_value", label: "Header Value", placeholder: "header-value", isSecret: true },
+                { key: "header_name", label: "Имя заголовка", placeholder: "X-Custom-Header" },
+                { key: "header_value", label: "Значение заголовка", placeholder: "значение-заголовка", isSecret: true },
             ];
         default:
             return [];
@@ -98,7 +98,7 @@ export function CreateCredentialDialog({
 
             if (response.error) {
                 const errorDetail = (response.error as { detail?: string })?.detail
-                    || "Failed to create credential";
+                    || "Не удалось создать учётные данные";
                 setError(errorDetail);
                 return;
             }
@@ -110,7 +110,7 @@ export function CreateCredentialDialog({
         } catch (err) {
             console.error("Failed to create credential:", err);
             setError(
-                err instanceof Error ? err.message : "An unexpected error occurred"
+                err instanceof Error ? err.message : "Произошла неожиданная ошибка"
             );
         } finally {
             setIsCreating(false);
@@ -140,9 +140,9 @@ export function CreateCredentialDialog({
         <Dialog open={open} onOpenChange={handleOpenChange}>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Add Credential</DialogTitle>
+                    <DialogTitle>Добавить учётные данные</DialogTitle>
                     <DialogDescription>
-                        Create a new credential for authentication.
+                        Создайте новые учётные данные для аутентификации.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -155,27 +155,27 @@ export function CreateCredentialDialog({
 
                 <div className="space-y-4 py-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="cred-name">Name *</Label>
+                        <Label htmlFor="cred-name">Название *</Label>
                         <Input
                             id="cred-name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder="My API Key"
+                            placeholder="Мой API-ключ"
                         />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="cred-description">Description</Label>
+                        <Label htmlFor="cred-description">Описание</Label>
                         <Input
                             id="cred-description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Optional description"
+                            placeholder="Необязательное описание"
                         />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label>Credential Type</Label>
+                        <Label>Тип учётных данных</Label>
                         <Select
                             value={credentialType}
                             onValueChange={(v) => {
@@ -188,9 +188,9 @@ export function CreateCredentialDialog({
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="bearer_token">Bearer Token</SelectItem>
-                                <SelectItem value="api_key">API Key</SelectItem>
-                                <SelectItem value="basic_auth">Basic Auth</SelectItem>
-                                <SelectItem value="custom_header">Custom Header</SelectItem>
+                                <SelectItem value="api_key">API-ключ</SelectItem>
+                                <SelectItem value="basic_auth">Базовая аутентификация</SelectItem>
+                                <SelectItem value="custom_header">Пользовательский заголовок</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -220,7 +220,7 @@ export function CreateCredentialDialog({
                         onClick={handleClose}
                         disabled={isCreating}
                     >
-                        Cancel
+                        Отмена
                     </Button>
                     <Button
                         onClick={handleCreate}
@@ -229,10 +229,10 @@ export function CreateCredentialDialog({
                         {isCreating ? (
                             <>
                                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                Creating...
+                                Создание...
                             </>
                         ) : (
-                            "Create"
+                            "Создать"
                         )}
                     </Button>
                 </DialogFooter>

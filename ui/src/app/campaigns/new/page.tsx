@@ -109,7 +109,7 @@ export default function NewCampaignPage() {
             }
         } catch (error) {
             console.error('Failed to fetch workflows:', error);
-            toast.error('Failed to load workflows');
+            toast.error('Не удалось загрузить воркфлоу');
         } finally {
             setIsLoadingWorkflows(false);
         }
@@ -136,7 +136,7 @@ export default function NewCampaignPage() {
             }
         } catch (error) {
             console.error('Failed to fetch telephony configurations:', error);
-            toast.error('Failed to load telephony configurations');
+            toast.error('Не удалось загрузить телефонные конфигурации');
         } finally {
             setIsLoadingTelephonyConfigs(false);
         }
@@ -240,7 +240,7 @@ export default function NewCampaignPage() {
         setCreateError(null);
 
         if (!campaignName || !selectedWorkflowId || !sourceId || !selectedTelephonyConfigId) {
-            toast.error('Please fill in all fields');
+            toast.error('Пожалуйста, заполните все поля');
             return;
         }
 
@@ -248,14 +248,14 @@ export default function NewCampaignPage() {
         const maxConcurrencyValue = maxConcurrency ? parseInt(maxConcurrency) : null;
         if (maxConcurrencyValue !== null) {
             if (isNaN(maxConcurrencyValue) || maxConcurrencyValue < 1 || maxConcurrencyValue > 100) {
-                toast.error('Max concurrent calls must be between 1 and 100');
+                toast.error('Максимум одновременных звонков должен быть от 1 до 100');
                 return;
             }
             if (maxConcurrencyValue > effectiveLimit) {
                 if (availableFromNumbersCount > 0 && availableFromNumbersCount < orgConcurrentLimit) {
-                    toast.error(`Max concurrent calls cannot exceed ${effectiveLimit}. The selected configuration has ${availableFromNumbersCount} phone number(s) — add more CLIs to increase concurrency.`);
+                    toast.error(`Максимум одновременных звонков не может превышать ${effectiveLimit}. Выбранная конфигурация имеет ${availableFromNumbersCount} номер(ов) — добавьте больше CLI для увеличения параллельности.`);
                 } else {
-                    toast.error(`Max concurrent calls cannot exceed organization limit (${effectiveLimit})`);
+                    toast.error(`Максимум одновременных звонков не может превышать лимит организации (${effectiveLimit})`);
                 }
                 return;
             }
@@ -314,19 +314,19 @@ export default function NewCampaignPage() {
             if (response.error) {
                 // Extract error message from API response
                 const errorDetail = (response.error as { detail?: string })?.detail;
-                const errorMessage = errorDetail || 'Failed to create campaign';
+                const errorMessage = errorDetail || 'Не удалось создать кампанию';
                 setCreateError(errorMessage);
                 toast.error(errorMessage);
                 return;
             }
 
             if (response.data) {
-                toast.success('Campaign created successfully');
+                toast.success('Кампания успешно создана');
                 router.push(`/campaigns/${response.data.id}`);
             }
         } catch (error: unknown) {
             console.error('Failed to create campaign:', error);
-            const errorMessage = 'Failed to create campaign';
+            const errorMessage = 'Не удалось создать кампанию';
             setCreateError(errorMessage);
             toast.error(errorMessage);
         } finally {
@@ -355,54 +355,54 @@ export default function NewCampaignPage() {
                     className="mb-4"
                 >
                     <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Campaigns
+                    Назад к кампаниям
                 </Button>
-                <h1 className="text-3xl font-bold mb-2">Create New Campaign</h1>
-                <p className="text-muted-foreground">Set up a new campaign to execute workflows at scale</p>
+                <h1 className="text-3xl font-bold mb-2">Создать новую кампанию</h1>
+                <p className="text-muted-foreground">Настройте новую кампанию для массового выполнения воркфлоу</p>
             </div>
 
             <Card>
                     <CardHeader>
-                        <CardTitle>Campaign Details</CardTitle>
+                        <CardTitle>Детали кампании</CardTitle>
                         <CardDescription>
-                            Configure your campaign settings
+                            Настройте параметры вашей кампании
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
-                                <Label htmlFor="campaign-name">Campaign Name</Label>
+                                <Label htmlFor="campaign-name">Название кампании</Label>
                                 <Input
                                     id="campaign-name"
-                                    placeholder="Enter campaign name"
+                                    placeholder="Введите название кампании"
                                     value={campaignName}
                                     onChange={(e) => setCampaignName(e.target.value)}
                                     maxLength={255}
                                     required
                                 />
                                 <p className="text-sm text-muted-foreground">
-                                    Choose a descriptive name for your campaign
+                                    Выберите описательное название для вашей кампании
                                 </p>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="workflow">Workflow</Label>
+                                <Label htmlFor="workflow">Воркфлоу</Label>
                                 <Select
                                     value={selectedWorkflowId}
                                     onValueChange={setSelectedWorkflowId}
                                     required
                                 >
                                     <SelectTrigger id="workflow">
-                                        <SelectValue placeholder="Select a workflow" />
+                                        <SelectValue placeholder="Выберите воркфлоу" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         {isLoadingWorkflows ? (
                                             <SelectItem value="loading" disabled>
-                                                Loading workflows...
+                                                Загрузка воркфлоу...
                                             </SelectItem>
                                         ) : workflows.length === 0 ? (
                                             <SelectItem value="none" disabled>
-                                                No workflows found
+                                                Воркфлоу не найдены
                                             </SelectItem>
                                         ) : (
                                             workflows.map((workflow) => (
@@ -417,22 +417,22 @@ export default function NewCampaignPage() {
                                     </SelectContent>
                                 </Select>
                                 <p className="text-sm text-muted-foreground">
-                                    Select the workflow to execute for each row in the data source
+                                    Выберите воркфлоу для выполнения для каждой строки в источнике данных
                                 </p>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="telephony-config">Telephony Configuration</Label>
+                                <Label htmlFor="telephony-config">Телефонная конфигурация</Label>
                                 {!isLoadingTelephonyConfigs && telephonyConfigs.length === 0 ? (
                                     <div className="rounded-md border border-dashed p-3 text-sm text-muted-foreground">
-                                        No telephony configurations yet.{' '}
+                                        Телефонные конфигурации ещё не созданы.{' '}
                                         <Link
                                             href="/telephony-configurations"
                                             className="underline text-foreground"
                                         >
-                                            Add one
+                                            Добавить
                                         </Link>{' '}
-                                        to create a campaign.
+                                        для создания кампании.
                                     </div>
                                 ) : (
                                     <Select
@@ -441,12 +441,12 @@ export default function NewCampaignPage() {
                                         required
                                     >
                                         <SelectTrigger id="telephony-config">
-                                            <SelectValue placeholder="Select a telephony configuration" />
+                                            <SelectValue placeholder="Выберите телефонную конфигурацию" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             {isLoadingTelephonyConfigs ? (
                                                 <SelectItem value="loading" disabled>
-                                                    Loading configurations...
+                                                    Загрузка конфигураций...
                                                 </SelectItem>
                                             ) : (
                                                 telephonyConfigs.map((config) => (
@@ -455,7 +455,7 @@ export default function NewCampaignPage() {
                                                         value={config.id.toString()}
                                                     >
                                                         {config.name} ({config.provider})
-                                                        {config.is_default_outbound ? ' — default' : ''}
+                                                        {config.is_default_outbound ? ' — по умолчанию' : ''}
                                                     </SelectItem>
                                                 ))
                                             )}
@@ -463,12 +463,12 @@ export default function NewCampaignPage() {
                                     </Select>
                                 )}
                                 <p className="text-sm text-muted-foreground">
-                                    Outbound calls for this campaign will use this configuration&apos;s caller IDs
+                                    Исходящие звонки этой кампании будут использовать caller ID данной конфигурации
                                 </p>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="source-type">Data Source Type</Label>
+                                <Label htmlFor="source-type">Тип источника данных</Label>
                                 <Select
                                     value={sourceType}
                                     onValueChange={(value) => {
@@ -479,14 +479,14 @@ export default function NewCampaignPage() {
                                     required
                                 >
                                     <SelectTrigger id="source-type">
-                                        <SelectValue placeholder="Select source type" />
+                                        <SelectValue placeholder="Выберите тип источника" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="csv">CSV File</SelectItem>
+                                        <SelectItem value="csv">CSV-файл</SelectItem>
                                     </SelectContent>
                                 </Select>
                                 <p className="text-sm text-muted-foreground">
-                                    Choose where your contact data is stored
+                                    Выберите, где хранятся ваши контактные данные
                                 </p>
                             </div>
 
@@ -502,7 +502,7 @@ export default function NewCampaignPage() {
                                 className="border rounded-lg"
                             >
                                 <CollapsibleTrigger className="flex items-center justify-between w-full p-4 hover:bg-muted/50 transition-colors">
-                                    <span className="font-medium">Advanced Settings</span>
+                                    <span className="font-medium">Расширенные настройки</span>
                                     {showAdvancedSettings ? (
                                         <ChevronDown className="h-4 w-4" />
                                     ) : (
@@ -557,7 +557,7 @@ export default function NewCampaignPage() {
                                     type="submit"
                                     disabled={isSubmitting || !campaignName || !selectedWorkflowId || !sourceId || !selectedTelephonyConfigId}
                                 >
-                                    {isSubmitting ? 'Creating...' : 'Create Campaign'}
+                                    {isSubmitting ? 'Создание...' : 'Создать кампанию'}
                                 </Button>
                                 <Button
                                     type="button"
@@ -565,7 +565,7 @@ export default function NewCampaignPage() {
                                     onClick={handleBack}
                                     disabled={isSubmitting}
                                 >
-                                    Cancel
+                                    Отмена
                                 </Button>
                             </div>
                         </form>

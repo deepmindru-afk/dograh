@@ -286,7 +286,7 @@ export default function RunsPage() {
             <div className="container mx-auto p-6 flex items-center justify-center min-h-[400px]">
                 <div className="flex items-center space-x-2">
                     <Loader2 className="h-6 w-6 animate-spin" />
-                    <span>Loading workflow runs...</span>
+                    <span>Загрузка запусков workflow...</span>
                 </div>
             </div>
         );
@@ -295,8 +295,8 @@ export default function RunsPage() {
     return (
         <div className="container mx-auto p-6 space-y-6 max-w-full">
             <div>
-                <h1 className="text-3xl font-bold mb-2">Workflow Runs</h1>
-                <p className="text-muted-foreground">View and manage all workflow runs across organizations</p>
+                <h1 className="text-3xl font-bold mb-2">Запуски Workflow</h1>
+                <p className="text-muted-foreground">Просмотр и управление всеми запусками workflow в организациях</p>
             </div>
 
             {error && (
@@ -321,15 +321,15 @@ export default function RunsPage() {
                     <CardHeader>
                         <div className="flex items-center justify-between">
                             <div>
-                                <CardTitle>All Workflow Runs</CardTitle>
+                                <CardTitle>Все запуски Workflow</CardTitle>
                                 <CardDescription>
-                                    Showing {runs.length} of {totalCount} total runs
+                                    Показано {runs.length} из {totalCount} всего запусков
                                 </CardDescription>
                             </div>
                             {isAutoRefreshing && (
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <RefreshCw className="h-4 w-4 animate-spin" />
-                                    <span>Refreshing...</span>
+                                    <span>Обновление...</span>
                                 </div>
                             )}
                         </div>
@@ -337,7 +337,7 @@ export default function RunsPage() {
                     <CardContent>
                         {runs.length === 0 ? (
                             <div className="text-center py-8 text-muted-foreground">
-                                No workflow runs found.
+                                Запуски workflow не найдены.
                             </div>
                         ) : (
                             <>
@@ -347,15 +347,15 @@ export default function RunsPage() {
                                             <TableRow className="bg-muted">
                                                 <TableHead className="font-semibold">ID</TableHead>
                                                 <TableHead className="font-semibold">Workflow</TableHead>
-                                                <TableHead className="font-semibold">Status</TableHead>
-                                                <TableHead className="font-semibold">Disposition</TableHead>
-                                                <TableHead className="font-semibold">Tags</TableHead>
+                                                <TableHead className="font-semibold">Статус</TableHead>
+                                                <TableHead className="font-semibold">Результат</TableHead>
+                                                <TableHead className="font-semibold">Теги</TableHead>
                                                 <TableHead
                                                     className="font-semibold cursor-pointer hover:bg-muted/50 select-none"
                                                     onClick={() => handleSort('duration')}
                                                 >
                                                     <div className="flex items-center gap-1">
-                                                        Duration
+                                                        Длительность
                                                         {sortBy === 'duration' ? (
                                                             sortOrder === 'asc' ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />
                                                         ) : (
@@ -363,13 +363,13 @@ export default function RunsPage() {
                                                         )}
                                                     </div>
                                                 </TableHead>
-                                                <TableHead className="font-semibold">Details</TableHead>
+                                                <TableHead className="font-semibold">Детали</TableHead>
                                                 <TableHead
                                                     className="font-semibold cursor-pointer hover:bg-muted/50 select-none"
                                                     onClick={() => handleSort('created_at')}
                                                 >
                                                     <div className="flex items-center gap-1">
-                                                        Created At
+                                                        Дата создания
                                                         {sortBy === 'created_at' ? (
                                                             sortOrder === 'asc' ? <ArrowUp className="h-4 w-4" /> : <ArrowDown className="h-4 w-4" />
                                                         ) : (
@@ -377,7 +377,7 @@ export default function RunsPage() {
                                                         )}
                                                     </div>
                                                 </TableHead>
-                                                <TableHead className="font-semibold">Actions</TableHead>
+                                                <TableHead className="font-semibold">Действия</TableHead>
                                             </TableRow>
                                         </TableHeader>
                                         <TableBody>
@@ -395,7 +395,7 @@ export default function RunsPage() {
                                                                     run.workflow_name.length > 15
                                                                         ? `${run.workflow_name.substring(0, 15)}...`
                                                                         : run.workflow_name
-                                                                ) : 'Unknown Workflow'}
+                                                                ) : 'Неизвестный Workflow'}
                                                             </span>
                                                             <span className="text-xs text-muted-foreground font-mono">
                                                                 ID: {String(run.workflow_id).length > 12
@@ -446,7 +446,7 @@ export default function RunsPage() {
                                                                         <Info className="h-4 w-4 text-blue-500 cursor-pointer" />
                                                                     </TooltipTrigger>
                                                                     <TooltipContent sideOffset={4} className="max-w-sm whitespace-pre-wrap break-words">
-                                                                        <p className="font-semibold text-xs mb-1">Gathered Context</p>
+                                                                        <p className="font-semibold text-xs mb-1">Собранный контекст</p>
                                                                         <pre className="max-w-sm whitespace-pre-wrap break-words text-xs">
                                                                             {JSON.stringify(run.gathered_context, null, 2)}
                                                                         </pre>
@@ -459,7 +459,7 @@ export default function RunsPage() {
                                                                         <Info className="h-4 w-4 text-muted-foreground cursor-pointer" />
                                                                     </TooltipTrigger>
                                                                     <TooltipContent sideOffset={4} className="max-w-sm whitespace-pre-wrap break-words">
-                                                                        <p className="font-semibold text-xs mb-1">Usage Info</p>
+                                                                        <p className="font-semibold text-xs mb-1">Информация об использовании</p>
                                                                         <pre className="max-w-sm whitespace-pre-wrap break-words text-xs">
                                                                             {JSON.stringify(run.usage_info, null, 2)}
                                                                         </pre>

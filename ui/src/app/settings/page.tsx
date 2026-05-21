@@ -17,18 +17,18 @@ export default function SettingsPage() {
     <div className="flex justify-center py-12 px-4">
       <div className="w-full max-w-2xl space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">Platform Settings</h1>
+          <h1 className="text-2xl font-bold">Настройки платформы</h1>
           <p className="text-muted-foreground">
-            Manage your platform configuration and integrations.
+            Управляйте конфигурацией и интеграциями платформы.
           </p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>MCP Server</CardTitle>
+            <CardTitle>MCP-сервер</CardTitle>
             <CardDescription>
-              Let AI agents access your Dograh workspace and documentation via
-              the Model Context Protocol.{" "}
+              Позвольте AI-агентам получать доступ к вашему рабочему пространству Dograh и документации через
+              Model Context Protocol.{" "}
               <a
                 href="https://docs.dograh.com/integrations/mcp"
                 target="_blank"
@@ -46,9 +46,9 @@ export default function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Telemetry</CardTitle>
+            <CardTitle>Телеметрия</CardTitle>
             <CardDescription>
-              Configure Langfuse tracing for your voice agent calls.{" "}
+              Настройте трассировку Langfuse для звонков вашего голосового агента.{" "}
               <a
                 href="https://docs.dograh.com/configurations/tracing"
                 target="_blank"

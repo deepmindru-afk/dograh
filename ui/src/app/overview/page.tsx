@@ -19,25 +19,25 @@ export default function OverviewPage() {
                     <CardHeader>
                         <CardTitle className="text-3xl">
                             {isOSSMode ? (
-                                "Welcome to Dograh"
+                                "Добро пожаловать в Dograh"
                             ) : (
-                                `Welcome${user?.displayName ? `, ${user.displayName.split(' ')[0]}` : ''}!`
+                                `С возвращением${user?.displayName ? `, ${user.displayName.split(' ')[0]}` : ''}!`
                             )}
                         </CardTitle>
                         <CardDescription className="text-lg mt-2">
                             {isOSSMode ? (
                                 <>
-                                    Open source alternative to Vapi. Help us support the project by giving us a star on GitHub.
+                                    Открытая альтернатива Vapi. Помогите проекту, поставив звезду на GitHub.
                                 </>
                             ) : (
-                                "Get started with building voice AI workflows"
+                                "Начните создавать голосовые AI-сценарии"
                             )}
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         {isOSSMode && (
                             <div className="mb-6">
-                                <GitHubStarBadge label="Star us on GitHub" showCount source="overview_page" />
+                                <GitHubStarBadge label="Звезда на GitHub" showCount source="overview_page" />
                             </div>
                         )}
                     </CardContent>
@@ -47,15 +47,15 @@ export default function OverviewPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Create and Manage your Voice Agents</CardTitle>
+                            <CardTitle>Создавайте и управляйте голосовыми агентами</CardTitle>
                             <CardDescription>
-                                Build powerful AI Voice Agents with our visual editor
+                                Создавайте мощных AI-агентов с помощью визуального редактора
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Button asChild>
                                 <Link href="/workflow">
-                                    Go to Agents
+                                    Перейти к агентам
                                 </Link>
                             </Button>
                         </CardContent>
@@ -63,15 +63,15 @@ export default function OverviewPage() {
 
                     <Card>
                         <CardHeader>
-                            <CardTitle>Configure Services</CardTitle>
+                            <CardTitle>Настройка сервисов</CardTitle>
                             <CardDescription>
-                                Set up your AI services like LLM, TTS, and STT providers
+                                Настройте AI-сервисы: LLM, TTS и STT провайдеры
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Button asChild variant="outline">
                                 <Link href="/model-configurations">
-                                    Configure Models
+                                    Настроить модели
                                 </Link>
                             </Button>
                         </CardContent>
@@ -81,9 +81,9 @@ export default function OverviewPage() {
                 {/* Resources Section */}
                 <Card className="mt-8">
                     <CardHeader>
-                        <CardTitle>Resources</CardTitle>
+                        <CardTitle>Ресурсы</CardTitle>
                         <CardDescription>
-                            Get help and learn more about Dograh
+                            Получите помощь и узнайте больше о Dograh
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -94,7 +94,7 @@ export default function OverviewPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Documentation
+                                    Документация
                                 </a>
                             </Button>
                             <Button asChild variant="outline">
@@ -103,7 +103,7 @@ export default function OverviewPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Report an Issue
+                                    Сообщить о проблеме
                                 </a>
                             </Button>
                         </div>

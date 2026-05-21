@@ -35,12 +35,12 @@ export default function CreateWorkflowPage() {
 
     const handleCreateWorkflow = async () => {
         if (!useCase || !activityDescription) {
-            setError('Please fill in all fields');
+            setError('Пожалуйста, заполните все поля');
             return;
         }
 
         if (!user) {
-            setError('You must be logged in to create a workflow');
+            setError('Вы должны войти в систему, чтобы создать сценарий');
             return;
         }
 
@@ -67,7 +67,7 @@ export default function CreateWorkflowPage() {
                 setShowSuccessModal(true);
             }
         } catch (err) {
-            setError('Failed to create workflow. Please try again.');
+            setError('Не удалось создать сценарий. Пожалуйста, попробуйте снова.');
             logger.error(`Error creating workflow: ${err}`);
         } finally {
             setIsLoading(false);
@@ -83,64 +83,64 @@ export default function CreateWorkflowPage() {
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-8 max-w-2xl">
                 <div className="mb-6">
-                    <h1 className="text-3xl font-bold mb-2">Create Voice Agent</h1>
+                    <h1 className="text-3xl font-bold mb-2">Создать голосового агента</h1>
                     <p className="text-muted-foreground">
-                        Tell us about your use case and we&apos;ll create a customized voice agent for you
+                        Расскажите о вашем сценарии, и мы создадим голосового агента для вас
                     </p>
                 </div>
 
                 <Card>
                     <CardHeader>
-                        <CardTitle>Agent Details</CardTitle>
+                        <CardTitle>Детали агента</CardTitle>
                         <CardDescription>
-                            Configure your voice agent settings
+                            Настройте параметры голосового агента
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <div className="space-y-2">
-                            <Label htmlFor="call-type">Call Type</Label>
+                            <Label htmlFor="call-type">Тип звонка</Label>
                             <Select value={callType} onValueChange={(value) => setCallType(value as 'inbound' | 'outbound')}>
                                 <SelectTrigger id="call-type">
-                                    <SelectValue placeholder="Select type" />
+                                    <SelectValue placeholder="Выберите тип" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="inbound">
-                                        Inbound (Users call AI)
+                                        Входящий (Пользователи звонят AI)
                                     </SelectItem>
                                     <SelectItem value="outbound">
-                                        Outbound (AI calls users)
+                                        Исходящий (AI звонит пользователям)
                                     </SelectItem>
                                 </SelectContent>
                             </Select>
                             <p className="text-sm text-muted-foreground">
-                                Choose whether users will call your AI or your AI will call users
+                                Выберите, будут ли пользователи звонить AI или AI будет звонить пользователям
                             </p>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="use-case">Use Case</Label>
+                            <Label htmlFor="use-case">Сценарий использования</Label>
                             <Input
                                 id="use-case"
-                                placeholder="e.g., Lead Qualification, HR Screening, Customer Support"
+                                placeholder="например, Квалификация лидов, HR-скрининг, Поддержка клиентов"
                                 value={useCase}
                                 onChange={(e) => setUseCase(e.target.value)}
                             />
                             <p className="text-sm text-muted-foreground">
-                                Describe the primary purpose of your voice agent
+                                Опишите основную цель вашего голосового агента
                             </p>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="activity-description">Activity Description</Label>
+                            <Label htmlFor="activity-description">Описание активности</Label>
                             <Textarea
                                 id="activity-description"
-                                placeholder="Describe briefly what your voice agent will do (e.g., Qualify leads for real estate, Screen candidates for roles, Handle customer support). This will be a prompt to an LLM."
+                                placeholder="Опишите кратко, что будет делать ваш голосовой агент (например, квалифицировать лиды, отбирать кандидатов). Это будет промптом для LLM."
                                 value={activityDescription}
                                 onChange={(e) => setActivityDescription(e.target.value)}
                                 className="min-h-[100px]"
                             />
                             <p className="text-sm text-muted-foreground">
-                                This description will be used to generate the AI prompt for your voice agent
+                                Это описание будет использовано для генерации AI-промпта для голосового агента
                             </p>
                         </div>
 
@@ -154,7 +154,7 @@ export default function CreateWorkflowPage() {
                                 disabled={isLoading || !useCase || !activityDescription}
                                 className="w-full"
                             >
-                                {isLoading ? 'Creating...' : 'Create Agent'}
+                                {isLoading ? 'Создание...' : 'Создать агента'}
                             </Button>
                         </div>
                     </CardContent>
@@ -174,10 +174,10 @@ export default function CreateWorkflowPage() {
 
                             <div className="text-center space-y-2">
                                 <h3 className="text-lg font-semibold">
-                                    Creating Your Workflow
+                                    Создание сценария
                                 </h3>
                                 <p className="text-sm text-muted-foreground max-w-xs">
-                                    We&apos;re setting up your voice agent with your specifications. This will just take a moment...
+                                    Настраиваем вашего голосового агента. Это займёт всего минуту...
                                 </p>
                             </div>
                         </div>
@@ -193,18 +193,18 @@ export default function CreateWorkflowPage() {
                             <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Workflow Created Successfully!
+                            Сценарий успешно создан!
                         </DialogTitle>
                         <DialogDescription asChild>
                             <div className="mt-4 space-y-3">
                                 <p>
-                                    A voice agent workflow has been generated for your use case, with some artificial data and sample actions.
+                                    Сценарий голосового агента был создан для вашего сценария использования с тестовыми данными и примерами действий.
                                 </p>
                                 <p>
-                                    The voice bot is pre-set to communicate in English with an American accent.
+                                    Голосовой бот настроен на общение на русском языке.
                                 </p>
                                 <p>
-                                    Next steps would be to test the voice bot in the editor, and then modify it to suit your use case.
+                                    Следующие шаги: протестировать бота в редакторе и изменить его под ваш сценарий.
                                 </p>
                             </div>
                         </DialogDescription>
@@ -214,7 +214,7 @@ export default function CreateWorkflowPage() {
                             onClick={handleModalContinue}
                             className="w-full"
                         >
-                            Open and Test Agent
+                            Открыть и протестировать агента
                         </Button>
                     </DialogFooter>
                 </DialogContent>

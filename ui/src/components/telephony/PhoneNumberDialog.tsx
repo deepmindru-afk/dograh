@@ -50,12 +50,12 @@ const ADDRESS_BARE_DIGITS_RE = /^\d{8,15}$/;
 
 function validateAddress(rawAddress: string, countryCode: string): string | null {
   const trimmed = rawAddress.trim();
-  if (!trimmed) return "Address is required";
+  if (!trimmed) return "Адрес обязателен";
   if (/^sips?:/i.test(trimmed)) return null;
   const stripped = trimmed.replace(ADDRESS_FORMAT_STRIP_RE, "");
   if (ADDRESS_E164_RE.test(stripped)) return null;
   if (ADDRESS_BARE_DIGITS_RE.test(stripped) && !countryCode.trim()) {
-    return "PSTN addresses without a leading '+' need a Country (ISO-2) hint, or include the country code in the address (e.g. +14155551234).";
+    return "PSTN адреса без ведущего '+' требуют указания страны (ISO-2) или включения кода страны в адрес (например, +14155551234).";
   }
   return null;
 }
@@ -148,7 +148,7 @@ export function PhoneNumberDialog({
         );
         if (res.error) throw new Error(detailFromError(res.error));
         providerSync = res.data?.provider_sync;
-        toast.success("Phone number updated");
+        toast.success("Номер обновлён");
       } else {
         const res = await createPhoneNumberApiV1OrganizationsTelephonyConfigsConfigIdPhoneNumbersPost(
           {
@@ -166,18 +166,18 @@ export function PhoneNumberDialog({
         );
         if (res.error) throw new Error(detailFromError(res.error));
         providerSync = res.data?.provider_sync;
-        toast.success("Phone number added");
+        toast.success("Номер добавлен");
       }
       if (providerSync && !providerSync.ok) {
         toast.warning(
           providerSync.message ??
-            "Saved, but failed to sync inbound webhook to the provider.",
+            "Сохранено, но не удалось синхронизировать входящий webhook с провайдером.",
         );
       }
       onOpenChange(false);
       onSaved();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to save phone number");
+      toast.error(err instanceof Error ? err.message : "Не удалось сохранить номер");
     } finally {
       setSubmitting(false);
     }
@@ -188,16 +188,16 @@ export function PhoneNumberDialog({
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? "Edit phone number" : "Add phone number"}
+            {isEdit ? "Редактировать номер" : "Добавить номер"}
           </DialogTitle>
           <DialogDescription>
-            PSTN numbers (E.164), SIP URIs (sip:user@host), and SIP extensions are all supported.
+            Номера PSTN (E.164), SIP URI (sip:user@host) и SIP расширения — все поддерживаются.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           <div className="space-y-1">
-            <Label htmlFor="pn-address">Address</Label>
+            <Label htmlFor="pn-address">Адрес</Label>
             <Input
               id="pn-address"
               placeholder="+19781899185, sip:101@asterisk.local, or 101"
@@ -212,20 +212,20 @@ export function PhoneNumberDialog({
             )}
             {isEdit && (
               <p className="text-xs text-muted-foreground">
-                Address cannot be changed. Delete this number and create a new one to
-                change it.
+                Адрес нельзя изменить. Удалите этот номер и создайте новый, чтобы
+                изменить его.
               </p>
             )}
             {isEdit && (
               <p className="text-xs text-muted-foreground">
-                Stored as <code>{existing?.address_normalized}</code> ({existing?.address_type})
+                Сохранено как <code>{existing?.address_normalized}</code> ({existing?.address_type})
               </p>
             )}
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label htmlFor="pn-country">Country (ISO-2)</Label>
+              <Label htmlFor="pn-country">Страна (ISO-2)</Label>
               <Input
                 id="pn-country"
                 placeholder="US"
@@ -235,10 +235,10 @@ export function PhoneNumberDialog({
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="pn-label">Label</Label>
+              <Label htmlFor="pn-label">Метка</Label>
               <Input
                 id="pn-label"
-                placeholder="e.g. Boston caller ID"
+                placeholder="например, Boston caller ID"
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
               />
@@ -246,13 +246,13 @@ export function PhoneNumberDialog({
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="pn-workflow">Inbound workflow</Label>
+            <Label htmlFor="pn-workflow">Входящий workflow</Label>
             <Select value={inboundWorkflowId} onValueChange={setInboundWorkflowId}>
               <SelectTrigger id="pn-workflow">
-                <SelectValue placeholder="(none)" />
+                <SelectValue placeholder="(нет)" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value={NO_WORKFLOW}>(none)</SelectItem>
+                <SelectItem value={NO_WORKFLOW}>(нет)</SelectItem>
                 {workflows.map((w) => (
                   <SelectItem key={w.id} value={String(w.id)}>
                     #{w.id} - {w.name}
@@ -261,22 +261,22 @@ export function PhoneNumberDialog({
               </SelectContent>
             </Select>
             <p className="text-xs text-muted-foreground">
-              Used when per-number inbound routing is enabled. Today, inbound calls still
-              route by the workflow_id in the webhook URL.
+              Используется, когда включена маршрутизация по каждому номеру. Сейчас входящие звонки
+              всё ещё маршрутизируются по workflow_id в URL webhook.
             </p>
           </div>
 
           <div className="flex items-center justify-between rounded border p-3">
-            <Label className="text-sm">Active</Label>
+            <Label className="text-sm">Активен</Label>
             <Switch checked={isActive} onCheckedChange={setIsActive} />
           </div>
 
           {!isEdit && (
             <div className="flex items-center justify-between rounded border p-3">
               <div>
-                <Label className="text-sm">Default caller ID for this configuration</Label>
+                <Label className="text-sm">ID вызывающего по умолчанию для этой конфигурации</Label>
                 <p className="text-xs text-muted-foreground">
-                  Used as the from-number for test calls when set.
+                  Используется как номер-отправитель для тестовых звонков, если установлен.
                 </p>
               </div>
               <Switch
@@ -289,13 +289,13 @@ export function PhoneNumberDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
-            Cancel
+            Отмена
           </Button>
           <Button
             onClick={handleSubmit}
             disabled={submitting || (!isEdit && !!addressError)}
           >
-            {submitting ? "Saving..." : isEdit ? "Save changes" : "Add"}
+            {submitting ? "Сохранение..." : isEdit ? "Сохранить изменения" : "Добавить"}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -311,5 +311,5 @@ function detailFromError(err: unknown): string {
     const first = e.detail[0] as { msg?: string };
     if (first?.msg) return first.msg;
   }
-  return "Failed to save phone number";
+  return "Не удалось сохранить номер";
 }

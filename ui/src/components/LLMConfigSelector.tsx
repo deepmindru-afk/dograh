@@ -104,10 +104,10 @@ export function LLMConfigSelector({
         <div className="space-y-4 p-3 border rounded-md bg-muted/10">
             <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                    <Label>Provider</Label>
+                    <Label>Провайдер</Label>
                     <Select value={provider} onValueChange={handleProviderChange}>
                         <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Select provider" />
+                            <SelectValue placeholder="Выберите провайдера" />
                         </SelectTrigger>
                         <SelectContent>
                             {availableProviders.map((p) => (
@@ -120,12 +120,12 @@ export function LLMConfigSelector({
                 </div>
 
                 <div className="space-y-2">
-                    <Label>Model</Label>
+                    <Label>Модель</Label>
                     {isManualModelInput ? (
                         <div className="space-y-2">
                             <Input
                                 type="text"
-                                placeholder="Enter model name"
+                                placeholder="Введите название модели"
                                 value={model}
                                 onChange={(e) => onModelChange(e.target.value)}
                             />
@@ -144,7 +144,7 @@ export function LLMConfigSelector({
                                     htmlFor="qa-manual-model"
                                     className="text-sm font-normal cursor-pointer"
                                 >
-                                    Add Model Manually
+                                    Добавить модель вручную
                                 </Label>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ export function LLMConfigSelector({
                                 }}
                             >
                                 <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Select model" />
+                                    <SelectValue placeholder="Выберите модель" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {modelOptions.map((m) => (
@@ -179,7 +179,7 @@ export function LLMConfigSelector({
                                     htmlFor="qa-manual-model-dropdown"
                                     className="text-sm font-normal cursor-pointer"
                                 >
-                                    Add Model Manually
+                                    Добавить модель вручную
                                 </Label>
                             </div>
                         </div>
@@ -195,10 +195,10 @@ export function LLMConfigSelector({
             </div>
 
             <div className="space-y-2">
-                <Label>API Key</Label>
+                <Label>API-ключ</Label>
                 <Input
                     type="text"
-                    placeholder="Enter API key"
+                    placeholder="Введите API-ключ"
                     value={apiKey}
                     onChange={(e) => onApiKeyChange(e.target.value)}
                 />

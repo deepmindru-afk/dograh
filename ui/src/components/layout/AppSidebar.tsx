@@ -70,74 +70,74 @@ type SidebarNavSection = {
   items: SidebarNavItem[];
 };
 
-const TELEPHONY_WARNING_COPY = "Action required";
+const TELEPHONY_WARNING_COPY = "Требуется действие";
 
 const NAV_SECTIONS: SidebarNavSection[] = [
   {
     items: [
       {
-        title: "Overview",
+        title: "Обзор",
         url: "/overview",
         icon: Home,
       },
     ],
   },
   {
-    label: "BUILD",
+    label: "СОЗДАНИЕ",
     items: [
       {
-        title: "Voice Agents",
+        title: "Голосовые агенты",
         url: "/workflow",
         icon: Workflow,
       },
       {
-        title: "Campaigns",
+        title: "Кампании",
         url: "/campaigns",
         icon: Megaphone,
       },
       {
-        title: "Models",
+        title: "Модели",
         url: "/model-configurations",
         icon: Brain,
       },
       {
-        title: "Telephony",
+        title: "Телефония",
         url: "/telephony-configurations",
         icon: Phone,
         showsTelephonyWarning: true,
       },
       {
-        title: "Tools",
+        title: "Инструменты",
         url: "/tools",
         icon: Wrench,
       },
       {
-        title: "Files",
+        title: "Файлы",
         url: "/files",
         icon: Database,
       },
       {
-        title: "Recordings",
+        title: "Записи",
         url: "/recordings",
         icon: AudioLines,
       },
       {
-        title: "Developers",
+        title: "Разработчикам",
         url: "/api-keys",
         icon: Key,
       },
     ],
   },
   {
-    label: "OBSERVE",
+    label: "МОНИТОРИНГ",
     items: [
       {
-        title: "Agent Runs",
+        title: "Запуски агентов",
         url: "/usage",
         icon: TrendingUp,
       },
       {
-        title: "Reports",
+        title: "Отчёты",
         url: "/reports",
         icon: FileText,
       },
@@ -205,7 +205,7 @@ export function AppSidebar() {
     };
     const warningIndicator = (
       <AlertTriangle
-        aria-label="Action required on a telephony configuration"
+        aria-label="Требуется действие в конфигурации телефонии"
         className={cn(
           "text-amber-500",
           isCollapsed ? "absolute -right-0.5 -top-0.5 h-3 w-3" : "ml-auto h-3.5 w-3.5"
@@ -284,11 +284,11 @@ export function AppSidebar() {
                     className="inline-flex items-center gap-1 rounded-md border bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium leading-none text-amber-900 transition-opacity hover:opacity-80 dark:bg-amber-950 dark:text-amber-200"
                   >
                     <ArrowUpCircle className="h-3 w-3" />
-                    Update
+                    Обновить
                   </a>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
-                  <p>Latest: {latestRelease} — click to see the update guide</p>
+                  <p>Последняя: {latestRelease} — нажмите для просмотра руководства</p>
                 </TooltipContent>
               </Tooltip>
             )}
@@ -296,11 +296,11 @@ export function AppSidebar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <span className="inline-flex items-center rounded-md border bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium leading-none text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200">
-                    Latest
+                    Последняя
                   </span>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">
-                  <p>You&apos;re running the latest release</p>
+                  <p>У вас установлена последняя версия</p>
                 </TooltipContent>
               </Tooltip>
             )}
@@ -393,11 +393,11 @@ export function AppSidebar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => router.push("/settings")} className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
-                    Platform Settings
+                    Настройки платформы
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
-                    Sign out
+                    Выйти
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -434,7 +434,19 @@ export function AppSidebar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => router.push("/handler/account-settings")} className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
-                    Account settings
+                    Настройки аккаунта
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push("/settings")} className="cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    Настройки платформы
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push("/usage")} className="cursor-pointer">
+                    <CircleDollarSign className="mr-2 h-4 w-4" />
+                    Использование
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Выйти
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => router.push("/settings")} className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
@@ -442,7 +454,7 @@ export function AppSidebar() {
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => router.push("/usage")} className="cursor-pointer">
                     <CircleDollarSign className="mr-2 h-4 w-4" />
-                    Usage
+                    Использование
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
@@ -465,7 +477,7 @@ export function AppSidebar() {
                   </div>
                 </TooltipTrigger>
                 <TooltipContent side="right">
-                  <p>Toggle theme</p>
+                  <p>Сменить тему</p>
                 </TooltipContent>
               </Tooltip>
             ) : (

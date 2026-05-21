@@ -36,13 +36,13 @@ export default function RecordingsPage() {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Recordings</h1>
+                <h1 className="text-3xl font-bold mb-2">Записи</h1>
                 <p className="text-muted-foreground">
-                    Manage audio recordings for your organization. Use{" "}
-                    <code className="rounded bg-muted px-1 text-xs">@</code> in prompt fields to insert them,
-                    or as transition messages in tool calls.{" "}
+                    Управляйте аудиозаписями для вашей организации. Используйте{" "}
+                    <code className="rounded bg-muted px-1 text-xs">@</code> в полях подсказок для вставки
+                    или как переходные сообщения в вызовах инструментов.{" "}
                     <a href="https://docs.dograh.com/voice-agent/pre-recorded-audio" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
-                        Learn more <ExternalLink className="h-3 w-3" />
+                        Подробнее <ExternalLink className="h-3 w-3" />
                     </a>
                 </p>
             </div>
@@ -51,14 +51,14 @@ export default function RecordingsPage() {
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
-                            <CardTitle>All Recordings</CardTitle>
+                            <CardTitle>Все записи</CardTitle>
                             <CardDescription>
-                                Audio recordings shared across all agents in your organization
+                                Аудиозаписи, доступные всем агентам в вашей организации
                             </CardDescription>
                         </div>
                         <Button onClick={() => setIsUploadOpen(true)}>
                             <Upload className="w-4 h-4 mr-2" />
-                            Upload Recording
+                            Загрузить запись
                         </Button>
                     </div>
                 </CardHeader>
