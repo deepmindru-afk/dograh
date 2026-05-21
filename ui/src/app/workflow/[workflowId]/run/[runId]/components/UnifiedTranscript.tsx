@@ -55,17 +55,17 @@ export const UnifiedTranscript = ({
 
     // Default empty state
     const defaultEmptyState = {
-        title: status === 'live' ? "No messages yet" : "No conversation recorded",
+        title: status === 'live' ? "Сообщений пока нет" : "Разговор не записан",
         subtitle: status === 'live'
-            ? "Start speaking to see the transcript"
-            : "Real-time feedback events were not captured"
+            ? "Начните говорить, чтобы увидеть транскрипцию"
+            : "События обратной связи в реальном времени не были записаны"
     };
 
     const emptyStateToShow = emptyState || defaultEmptyState;
 
     return (
         <TranscriptContainer
-            title={title || (status === 'live' ? 'Live Transcript' : 'Call Transcript')}
+            title={title || (status === 'live' ? 'Транскрипция в реальном времени' : 'Транскрипция звонка')}
             status={status}
             messageCount={messageCount > 0 ? messageCount : undefined}
         >

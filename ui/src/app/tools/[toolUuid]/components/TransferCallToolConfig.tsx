@@ -92,7 +92,7 @@ export function TransferCallToolConfig({
             </CardHeader>
             <CardContent className="space-y-6">
                 <div className="grid gap-2">
-                    <Label>Tool Name</Label>
+                    <Label>Название инструмента</Label>
                     <Label className="text-xs text-muted-foreground">
                         A descriptive name for this tool
                     </Label>
@@ -104,7 +104,7 @@ export function TransferCallToolConfig({
                 </div>
 
                 <div className="grid gap-2">
-                    <Label>Description</Label>
+                    <Label>Описание</Label>
                     <Label className="text-xs text-muted-foreground">
                         Helps the LLM understand when to use this tool
                     </Label>
@@ -117,7 +117,7 @@ export function TransferCallToolConfig({
                 </div>
 
                 <div className="grid gap-2 pt-4 border-t">
-                    <Label>Transfer Destination</Label>
+                    <Label>Номер переадресации</Label>
                     <Label className="text-xs text-muted-foreground">
                         {sipMode
                             ? "SIP endpoint to transfer the call to (e.g., PJSIP/1234 or SIP/extension@domain.com)"
@@ -145,7 +145,7 @@ export function TransferCallToolConfig({
                 </div>
 
                 <div className="grid gap-4 pt-4 border-t">
-                    <Label>Pre-Transfer Message</Label>
+                    <Label>Сообщение перед переводом</Label>
                     <Label className="text-xs text-muted-foreground">
                         Choose whether to play a message before transferring
                     </Label>
@@ -211,7 +211,7 @@ export function TransferCallToolConfig({
                 </div>
 
                 <div className="grid gap-2 pt-4 border-t">
-                    <Label>Transfer Timeout</Label>
+                    <Label>Длительность звонка (секунды)</Label>
                     <Label className="text-xs text-muted-foreground">
                         Maximum time to wait for destination to answer (5-120 seconds)
                     </Label>

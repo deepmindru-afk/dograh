@@ -76,7 +76,7 @@ const NAV_SECTIONS: SidebarNavSection[] = [
   {
     items: [
       {
-        title: "Overview",
+        title: "Обзор",
         url: "/overview",
         icon: Home,
       },
@@ -91,7 +91,7 @@ const NAV_SECTIONS: SidebarNavSection[] = [
         icon: Workflow,
       },
       {
-        title: "Campaigns",
+        title: "Кампании",
         url: "/campaigns",
         icon: Megaphone,
       },
@@ -101,23 +101,23 @@ const NAV_SECTIONS: SidebarNavSection[] = [
         icon: Brain,
       },
       {
-        title: "Telephony",
+        title: "Телефония",
         url: "/telephony-configurations",
         icon: Phone,
         showsTelephonyWarning: true,
       },
       {
-        title: "Tools",
+        title: "Инструменты",
         url: "/tools",
         icon: Wrench,
       },
       {
-        title: "Files",
+        title: "Файлы",
         url: "/files",
         icon: Database,
       },
       {
-        title: "Recordings",
+        title: "Записи",
         url: "/recordings",
         icon: AudioLines,
       },
@@ -137,7 +137,7 @@ const NAV_SECTIONS: SidebarNavSection[] = [
         icon: TrendingUp,
       },
       {
-        title: "Reports",
+        title: "Отчёты",
         url: "/reports",
         icon: FileText,
       },
@@ -442,11 +442,11 @@ export function AppSidebar() {
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => router.push("/usage")} className="cursor-pointer">
                     <CircleDollarSign className="mr-2 h-4 w-4" />
-                    Usage
+                    Использование
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
-                    Sign out
+                    Выйти
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

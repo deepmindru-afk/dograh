@@ -17,10 +17,10 @@ type AddNodePanelProps = {
 // Section ordering and labels. Drives both the category → section title
 // mapping and the rendering order.
 const SECTION_ORDER: Array<{ category: NodeSpec['category']; title: string }> = [
-    { category: 'trigger', title: 'Triggers' },
-    { category: 'call_node', title: 'Agent Nodes' },
-    { category: 'global_node', title: 'Global Nodes' },
-    { category: 'integration', title: 'Integrations' },
+    { category: 'trigger', title: 'Триггеры' },
+    { category: 'call_node', title: 'Узлы агента' },
+    { category: 'global_node', title: 'Глобальные узлы' },
+    { category: 'integration', title: 'Интеграции' },
 ];
 
 function resolveIcon(name: string): LucideIcon {
@@ -105,7 +105,7 @@ export default function AddNodePanel({ isOpen, onNodeSelect, onClose }: AddNodeP
             <div className="p-4 h-full overflow-y-auto">
                 <div className="flex justify-between items-center mb-6">
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-lg font-semibold">Add New Node</h2>
+                        <h2 className="text-lg font-semibold">Добавить новый узел</h2>
                         <a
                             href="https://docs.dograh.com/voice-agent/introduction"
                             target="_blank"
@@ -113,7 +113,7 @@ export default function AddNodePanel({ isOpen, onNodeSelect, onClose }: AddNodeP
                             className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
                         >
                             <ExternalLink className="w-3 h-3" />
-                            View Nodes Documentation
+                            Просмотр документации узлов
                         </a>
                     </div>
                     <Button variant="ghost" size="icon" onClick={onClose}>

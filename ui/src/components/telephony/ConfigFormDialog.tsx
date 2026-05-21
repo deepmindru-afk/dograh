@@ -162,12 +162,12 @@ export function ConfigFormDialog({
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? "Edit telephony configuration" : "Add telephony configuration"}
+            {isEdit ? "Редактирование тел. конфигурации" : "Настройка тел. конфигурации"}
           </DialogTitle>
           <DialogDescription>
             {isEdit
-              ? "Update credentials for this configuration. Phone numbers are managed separately."
-              : "Connect a telephony provider account. Phone numbers are added after the configuration is created."}
+              ? "Обновите учётные данные для этой конфигурации. Номера телефонов управляются отдельно."
+              : "Подключите учётную запись тел. провайдера. Номера добавляются после создания конфигурации."}
           </DialogDescription>
         </DialogHeader>
 
@@ -193,7 +193,7 @@ export function ConfigFormDialog({
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="cfg-name">Name</Label>
+            <Label htmlFor="cfg-name">Название</Label>
             <Input
               id="cfg-name"
               placeholder="e.g. Twilio US prod"
@@ -203,14 +203,14 @@ export function ConfigFormDialog({
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="cfg-provider">Provider</Label>
+            <Label htmlFor="cfg-provider">Провайдер</Label>
             <Select
               value={providerName}
               onValueChange={setProviderName}
               disabled={lockedProvider || providers.length === 0}
             >
               <SelectTrigger id="cfg-provider">
-                <SelectValue placeholder="Select a provider" />
+                <SelectValue placeholder="Выберите провайдера" />
               </SelectTrigger>
               <SelectContent>
                 {providers.map((p) => (
@@ -222,7 +222,7 @@ export function ConfigFormDialog({
             </Select>
             {lockedProvider && (
               <p className="text-xs text-muted-foreground">
-                Provider cannot be changed after creation.
+                Провайдера нельзя изменить после создания.
               </p>
             )}
             {currentProvider?.docs_url && (
@@ -240,9 +240,9 @@ export function ConfigFormDialog({
           {!isEdit && (
             <div className="flex items-center justify-between rounded border p-3">
               <div>
-                <Label className="text-sm">Set as default for outbound calls</Label>
+                <Label className="text-sm">По умолчанию для исходящих вызовов</Label>
                 <p className="text-xs text-muted-foreground">
-                  Used by test calls and campaigns when no specific config is selected.
+                  Используется тестовыми вызовами и кампаниями, если не выбрана другая конфигурация.
                 </p>
               </div>
               <Switch checked={isDefault} onCheckedChange={setIsDefault} />
@@ -278,10 +278,10 @@ export function ConfigFormDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
-            Cancel
+            Отмена
           </Button>
           <Button onClick={handleSubmit} disabled={submitting || !currentProvider}>
-            {submitting ? "Saving..." : isEdit ? "Save changes" : "Create"}
+            {submitting ? "Сохранение..." : isEdit ? "Сохранить изменения" : "Создать"}
           </Button>
         </DialogFooter>
       </DialogContent>

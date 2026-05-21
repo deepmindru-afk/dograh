@@ -64,9 +64,9 @@ export function EmbedDialog({
     const [newDomain, setNewDomain] = useState("");
     const [embedMode, setEmbedMode] = useState<"floating" | "inline" | "headless">("floating");
     const [position, setPosition] = useState("bottom-right");
-    const [buttonText, setButtonText] = useState("Talk to Agent");
+    const [buttonText, setButtonText] = useState("Поговорить с агентом");
     const [buttonColor, setButtonColor] = useState("#10b981");
-    const [callToActionText, setCallToActionText] = useState("Click to start voice conversation");
+    const [callToActionText, setCallToActionText] = useState("Нажмите, чтобы начать разговор");
 
     const loadEmbedToken = useCallback(async () => {
         setLoading(true);
@@ -84,9 +84,9 @@ export function EmbedDialog({
                     const settings = response.data.settings as Record<string, string>;
                     setEmbedMode((settings.embedMode as "floating" | "inline" | "headless") || "floating");
                     setPosition(settings.position || "bottom-right");
-                    setButtonText(settings.buttonText || "Talk to Agent");
+                    setButtonText(settings.buttonText || "Поговорить с агентом");
                     setButtonColor(settings.buttonColor || "#10b981");
-                    setCallToActionText(settings.callToActionText || "Click to start voice conversation");
+                    setCallToActionText(settings.callToActionText || "Нажмите, чтобы начать разговор");
                 }
 
                 // Load domains
@@ -181,7 +181,7 @@ export function EmbedDialog({
                     <div className="flex items-center justify-between">
                         <DialogTitle className="flex items-center gap-2">
                             <Rocket className="h-5 w-5" />
-                            Configure Widget
+                            Настройка виджета
                         </DialogTitle>
                         <a
                             href={WIDGET_MODE_DOCUMENTATION_URLS[embedMode]}
@@ -189,12 +189,12 @@ export function EmbedDialog({
                             rel="noopener noreferrer"
                             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors pr-6"
                         >
-                            Docs
+                            Документация
                             <ExternalLink className="h-3.5 w-3.5" />
                         </a>
                     </div>
                     <DialogDescription>
-                        Add &quot;{workflowName}&quot; to any website with a simple script tag.
+                        Добавьте &quot;{workflowName}&quot; на любой сайт с помощью простого тега script.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -207,9 +207,9 @@ export function EmbedDialog({
                         {/* Enable/Disable Toggle */}
                         <div className="flex items-center justify-between">
                             <div className="space-y-0.5">
-                                <Label htmlFor="embed-enabled">Enable Embedding</Label>
+                                <Label htmlFor="embed-enabled">Включить встраивание</Label>
                                 <p className="text-sm text-muted-foreground">
-                                    Allow this workflow to be embedded on external websites
+                                    Разрешить встраивание этого сценария на внешние сайты
                                 </p>
                             </div>
                             <Switch
@@ -226,16 +226,16 @@ export function EmbedDialog({
                                 {/* Allowed Domains */}
                                 <div className="space-y-3">
                                     <Label>
-                                        Allowed Domains
+                                        Разрешённые домены
                                         <span className="text-xs text-muted-foreground ml-2">
-                                            (leave empty to allow all domains)
+                                            (оставьте пустым для всех доменов)
                                         </span>
                                     </Label>
 
                                     {/* Domain Input */}
                                     <div className="flex gap-2">
                                         <Input
-                                            placeholder="example.com or *.example.com"
+                                            placeholder="example.com или *.example.com"
                                             value={newDomain}
                                             onChange={(e) => setNewDomain(e.target.value)}
                                             onKeyPress={handleKeyPress}
@@ -277,7 +277,7 @@ export function EmbedDialog({
 
                                 {/* Embed Mode Selection */}
                                 <div className="space-y-4">
-                                    <Label>Embed Mode</Label>
+                                    <Label>Режим встраивания</Label>
                                     <div className="grid grid-cols-3 gap-4">
                                         <button
                                             type="button"
@@ -289,9 +289,9 @@ export function EmbedDialog({
                                             }`}
                                         >
                                             <div className="space-y-2">
-                                                <div className="font-medium">Floating Widget</div>
+                                                <div className="font-medium">Плавающий виджет</div>
                                                 <div className="text-xs text-muted-foreground">
-                                                    Shows as a button in corner of the page
+                                                    Отображается как кнопка в углу страницы
                                                 </div>
                                             </div>
                                         </button>
@@ -305,9 +305,9 @@ export function EmbedDialog({
                                             }`}
                                         >
                                             <div className="space-y-2">
-                                                <div className="font-medium">Inline Component</div>
+                                                <div className="font-medium">Встроенный компонент</div>
                                                 <div className="text-xs text-muted-foreground">
-                                                    Embeds directly in your page content
+                                                    Встраивается непосредственно в содержимое страницы
                                                 </div>
                                             </div>
                                         </button>
@@ -321,9 +321,9 @@ export function EmbedDialog({
                                             }`}
                                         >
                                             <div className="space-y-2">
-                                                <div className="font-medium">Headless (Bring Your Own UI)</div>
+                                                <div className="font-medium">Headless (свой интерфейс)</div>
                                                 <div className="text-xs text-muted-foreground">
-                                                    No UI — drive calls from your own buttons via the JS API
+                                                    Без интерфейса — управляйте звонками через JS API
                                                 </div>
                                             </div>
                                         </button>
@@ -332,23 +332,23 @@ export function EmbedDialog({
 
                                 {/* Configuration based on mode */}
                                 <div className="space-y-4">
-                                    <Label>Configuration</Label>
+                                    <Label>Конфигурация</Label>
 
                                     {/* Shared: Button Text + Button Color (skipped in headless — host renders its own UI) */}
                                     {embedMode !== "headless" && (
                                         <div className="grid grid-cols-2 gap-4">
                                             <div className="space-y-2">
-                                                <Label htmlFor="button-text" className="text-sm">Button Text</Label>
+                                                <Label htmlFor="button-text" className="text-sm">Текст кнопки</Label>
                                                 <Input
                                                     id="button-text"
                                                     value={buttonText}
                                                     onChange={(e) => setButtonText(e.target.value)}
-                                                    placeholder="Talk to Agent"
+                                                    placeholder="Поговорить с агентом"
                                                     maxLength={40}
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <Label htmlFor="button-color" className="text-sm">Button Color</Label>
+                                                <Label htmlFor="button-color" className="text-sm">Цвет кнопки</Label>
                                                 <div className="flex gap-2">
                                                     <Input
                                                         id="button-color-picker"
@@ -372,16 +372,16 @@ export function EmbedDialog({
                                     {/* Floating mode: Position */}
                                     {embedMode === "floating" && (
                                         <div className="space-y-2">
-                                            <Label htmlFor="position" className="text-sm">Position</Label>
+                                            <Label htmlFor="position" className="text-sm">Позиция</Label>
                                             <Select value={position} onValueChange={setPosition}>
                                                 <SelectTrigger id="position">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="bottom-right">Bottom Right</SelectItem>
-                                                    <SelectItem value="bottom-left">Bottom Left</SelectItem>
-                                                    <SelectItem value="top-right">Top Right</SelectItem>
-                                                    <SelectItem value="top-left">Top Left</SelectItem>
+                                                    <SelectItem value="bottom-right">Снизу справа</SelectItem>
+                                                    <SelectItem value="bottom-left">Снизу слева</SelectItem>
+                                                    <SelectItem value="top-right">Сверху справа</SelectItem>
+                                                    <SelectItem value="top-left">Сверху слева</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </div>
@@ -390,12 +390,12 @@ export function EmbedDialog({
                                     {/* Inline mode: Call to Action Text */}
                                     {embedMode === "inline" && (
                                         <div className="space-y-2">
-                                            <Label htmlFor="cta-text" className="text-sm">Call to Action Text</Label>
+                                            <Label htmlFor="cta-text" className="text-sm">Текст призыва к действию</Label>
                                             <Input
                                                 id="cta-text"
                                                 value={callToActionText}
                                                 onChange={(e) => setCallToActionText(e.target.value)}
-                                                placeholder="Click to start voice conversation"
+                                                placeholder="Нажмите, чтобы начать разговор"
                                             />
                                         </div>
                                     )}
@@ -408,7 +408,7 @@ export function EmbedDialog({
                                                 style={{ backgroundColor: buttonColor }}
                                             >
                                                 <Mic className="h-4 w-4" />
-                                                {buttonText || "Talk to Agent"}
+                                                {buttonText || "Поговорить с агентом"}
                                             </button>
                                         </div>
                                     ) : (
@@ -417,7 +417,7 @@ export function EmbedDialog({
                                                 <svg className="w-16 h-16 mx-auto mb-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                                                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                                 </svg>
-                                                <p className="text-lg font-medium text-foreground mb-1">Ready to Connect</p>
+                                                <p className="text-lg font-medium text-foreground mb-1">Готовы к подключению</p>
                                                 <p className="text-sm text-muted-foreground mb-5">{callToActionText}</p>
                                                 <button
                                                     className="px-8 py-3 rounded-lg font-semibold text-white shadow-md"
@@ -546,10 +546,10 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                         {saving ? (
                                             <>
                                                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                                Saving...
+                                                Сохранение...
                                             </>
                                         ) : (
-                                            "Save Configurations"
+                                            "Сохранить настройки"
                                         )}
                                     </Button>
                                 </div>
@@ -560,7 +560,7 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                         <Separator />
                                         <div className="space-y-3">
                                             <div className="flex items-center justify-between">
-                                                <Label>Embed Code</Label>
+                                                <Label>Код для встраивания</Label>
                                                 <Button
                                                     size="sm"
                                                     variant="outline"
@@ -569,12 +569,12 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                                     {copied ? (
                                                         <>
                                                             <Check className="h-4 w-4 mr-1" />
-                                                            Copied!
+                                                            Скопировано!
                                                         </>
                                                     ) : (
                                                         <>
                                                             <Copy className="h-4 w-4 mr-1" />
-                                                            Copy Code
+                                                            Копировать код
                                                         </>
                                                     )}
                                                 </Button>
@@ -585,8 +585,8 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                                 </pre>
                                             </div>
                                             <p className="text-xs text-muted-foreground">
-                                                Add this script to your website&apos;s HTML to enable the voice widget.
-                                                Configuration changes will apply automatically without re-embedding.
+                                                Добавьте этот скрипт в HTML вашего сайта для включения голосового виджета.
+                                                Изменения конфигурации будут применены автоматически без повторного встраивания.
                                             </p>
                                         </div>
                                     </>
@@ -594,9 +594,9 @@ document.getElementById('talk-btn').addEventListener('click', () => {
                                     <>
                                         <Separator />
                                         <div className="space-y-3">
-                                            <Label className="text-muted-foreground">Embed Code</Label>
+                                            <Label className="text-muted-foreground">Код для встраивания</Label>
                                             <div className="rounded-lg border border-dashed bg-muted/30 px-4 py-8 text-center text-sm text-muted-foreground">
-                                                Click <span className="font-medium">Save Configurations</span> to generate your embed script.
+                                                Нажмите <span className="font-medium">Сохранить настройки</span> для генерации скрипта.
                                             </div>
                                         </div>
                                     </>

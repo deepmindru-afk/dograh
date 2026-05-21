@@ -98,7 +98,7 @@ export const DateRangeFilter: React.FC<DateRangeFilterProps> = ({
 
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
-          <Label>From</Label>
+          <Label>От</Label>
           <Popover open={isFromOpen} onOpenChange={setIsFromOpen}>
             <PopoverTrigger asChild>
               <Button
@@ -137,7 +137,7 @@ export const DateRangeFilter: React.FC<DateRangeFilterProps> = ({
         </div>
 
         <div className="space-y-2">
-          <Label>To</Label>
+          <Label>До</Label>
           <Popover open={isToOpen} onOpenChange={setIsToOpen}>
             <PopoverTrigger asChild>
               <Button

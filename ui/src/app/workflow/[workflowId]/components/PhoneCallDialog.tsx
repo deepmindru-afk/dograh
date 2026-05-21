@@ -197,7 +197,7 @@ export const PhoneCallDialog = ({
             });
 
             if (response.error) {
-                let errMsg = "Failed to initiate call";
+                let errMsg = "Не удалось инициировать звонок";
                 if (typeof response.error === "string") {
                     errMsg = response.error;
                 } else if (response.error && typeof response.error === "object") {
@@ -209,7 +209,7 @@ export const PhoneCallDialog = ({
                 setCallSuccessMsg(typeof msg === "string" ? msg : JSON.stringify(msg));
             }
         } catch (err: unknown) {
-            setCallError(err instanceof Error ? err.message : "Failed to initiate call");
+            setCallError(err instanceof Error ? err.message : "Не удалось инициировать звонок");
         } finally {
             setCallLoading(false);
         }
@@ -231,18 +231,18 @@ export const PhoneCallDialog = ({
     const renderConfigurationNeeded = () => (
         <>
             <DialogHeader>
-                <DialogTitle>Configure Telephony</DialogTitle>
+                <DialogTitle>Настройка телефонии</DialogTitle>
                 <DialogDescription>
-                    You need to configure your telephony settings before making phone calls.
-                    You will be redirected to the telephony configuration page.
+                    Необходимо настроить телефонию перед совершением звонков.
+                    Вы будете перенаправлены на страницу конфигурации телефонии.
                 </DialogDescription>
             </DialogHeader>
             <DialogFooter>
                 <Button variant="ghost" onClick={() => onOpenChange(false)}>
-                    Do it Later
+                    Сделать позже
                 </Button>
                 <Button onClick={handleConfigureContinue}>
-                    Continue
+                    Продолжить
                 </Button>
             </DialogFooter>
         </>
@@ -254,21 +254,21 @@ export const PhoneCallDialog = ({
             <DialogHeader>
                 <DialogTitle>Phone Call</DialogTitle>
                 <DialogDescription>
-                    Enter the phone number or SIP endpoint to call. The number will be saved automatically.
+                    Введите номер телефона или SIP-адрес для звонка. Номер будет сохранён автоматически.
                 </DialogDescription>
             </DialogHeader>
             {telephonyConfigs.length > 0 && (
                 <div className="flex flex-col gap-1.5">
-                    <Label htmlFor="telephony-config">Telephony configuration</Label>
+                    <Label htmlFor="telephony-config">Конфигурация телефонии</Label>
                     <Select value={selectedConfigId} onValueChange={setSelectedConfigId}>
                         <SelectTrigger id="telephony-config" className="w-full">
-                            <SelectValue placeholder="Select a configuration" />
+                            <SelectValue placeholder="Выберите конфигурацию" />
                         </SelectTrigger>
                         <SelectContent>
                             {telephonyConfigs.map((config) => (
                                 <SelectItem key={config.id} value={String(config.id)}>
                                     {config.name} ({config.provider})
-                                    {config.is_default_outbound ? " — default" : ""}
+                                    {config.is_default_outbound ? " — по умолчанию" : ""}
                                 </SelectItem>
                             ))}
                         </SelectContent>
@@ -277,11 +277,11 @@ export const PhoneCallDialog = ({
             )}
             {selectedConfigId && (
                 <div className="flex flex-col gap-1.5">
-                    <Label htmlFor="from-phone-number">Caller ID (from)</Label>
+                    <Label htmlFor="from-phone-number">Идентификатор звонящего (от)</Label>
                     {loadingPhoneNumbers ? (
                         <div className="flex items-center text-sm text-muted-foreground">
                             <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                            Loading phone numbers...
+                            Загрузка номеров...
                         </div>
                     ) : fromPhoneNumbers.length > 0 ? (
                         <Select
@@ -289,20 +289,20 @@ export const PhoneCallDialog = ({
                             onValueChange={setSelectedFromPhoneNumberId}
                         >
                             <SelectTrigger id="from-phone-number" className="w-full">
-                                <SelectValue placeholder="Select a phone number" />
+                                <SelectValue placeholder="Выберите номер телефона" />
                             </SelectTrigger>
                             <SelectContent>
                                 {fromPhoneNumbers.map((phone) => (
                                     <SelectItem key={phone.id} value={String(phone.id)}>
                                         {phone.label ? `${phone.label} — ${phone.address}` : phone.address}
-                                        {phone.is_default_caller_id ? " — default" : ""}
+                                        {phone.is_default_caller_id ? " — по умолчанию" : ""}
                                     </SelectItem>
                                 ))}
                             </SelectContent>
                         </Select>
                     ) : (
                         <div className="text-xs text-muted-foreground">
-                            No phone numbers in this configuration. The provider will pick one automatically.
+                            Нет номеров в этой конфигурации. Провайдер выберет автоматически.
                         </div>
                     )}
                 </div>
@@ -325,7 +325,7 @@ export const PhoneCallDialog = ({
                 className="text-xs text-muted-foreground hover:text-foreground underline"
                 onClick={() => { setSipMode(!sipMode); setPhoneNumber(""); setPhoneChanged(true); }}
             >
-                {sipMode ? "Use phone number instead" : "Use SIP endpoint instead"}
+                {sipMode ? "Использовать номер телефона" : "Использовать SIP-адрес"}
             </button>
             <DialogFooter className="flex-col sm:flex-row gap-2">
                 <Button
@@ -335,26 +335,26 @@ export const PhoneCallDialog = ({
                         router.push('/telephony-configurations');
                     }}
                 >
-                    Configure Telephony
+                    Настроить телефонию
                 </Button>
                 <div className="flex gap-2 flex-1 justify-end">
                     <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
+                        <Button variant="outline">Отмена</Button>
                     </DialogClose>
                     {!callSuccessMsg ? (
                         <Button
                             onClick={handleStartCall}
                             disabled={callLoading || !phoneNumber}
                         >
-                            {callLoading ? "Calling..." : "Start Call"}
+                            {callLoading ? "Звонок..." : "Начать звонок"}
                         </Button>
                     ) : (
                         <>
                             <Button variant="outline" onClick={() => { setCallSuccessMsg(null); setCallError(null); }}>
-                                Call Again
+                                Позвонить снова
                             </Button>
                             <Button onClick={() => onOpenChange(false)}>
-                                Close
+                                Закрыть
                             </Button>
                         </>
                     )}

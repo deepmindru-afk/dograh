@@ -58,12 +58,12 @@ export function DurationChart({ data }: DurationChartProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Call Duration Distribution</CardTitle>
+        <CardTitle>Распределение длительности звонков</CardTitle>
       </CardHeader>
       <CardContent>
         {data.length === 0 ? (
           <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-            No duration data available
+            Нет данных о длительности
           </div>
         ) : (
           <ResponsiveContainer width="100%" height={300}>

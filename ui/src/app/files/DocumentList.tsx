@@ -160,7 +160,7 @@ export default function DocumentList({ refreshTrigger }: DocumentListProps) {
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search documents..."
+            placeholder="Поиск документов..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
@@ -182,8 +182,8 @@ export default function DocumentList({ refreshTrigger }: DocumentListProps) {
           <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
           <p className="text-muted-foreground">
             {searchQuery
-              ? 'No documents match your search'
-              : 'No documents uploaded yet'}
+              ? 'Документы не найдены по вашему запросу'
+              : 'Документы не загружены'}
           </p>
         </div>
       ) : (

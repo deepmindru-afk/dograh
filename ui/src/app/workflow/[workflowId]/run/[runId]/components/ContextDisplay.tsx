@@ -32,7 +32,7 @@ export const ContextDisplay = ({ title, context }: ContextDisplayProps) => {
                         </label>
                         <div className="p-3 bg-muted border rounded-md">
                             <p className="text-sm whitespace-pre-wrap">
-                                {typeof value === 'object' && value !== null ? JSON.stringify(value, null, 2) : (value || 'No value')}
+                                {typeof value === 'object' && value !== null ? JSON.stringify(value, null, 2) : (value || 'Нет значения')}
                             </p>
                         </div>
                     </div>

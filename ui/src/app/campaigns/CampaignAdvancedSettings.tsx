@@ -122,7 +122,7 @@ export default function CampaignAdvancedSettings({
         <div className="space-y-6">
             {/* Max Concurrent Calls */}
             <div className="space-y-2">
-                <Label htmlFor="max-concurrency">Max Concurrent Calls</Label>
+                <Label htmlFor="max-concurrency">Макс. звонков в секунду</Label>
                 <Input
                     id="max-concurrency"
                     type="number"
@@ -152,7 +152,7 @@ export default function CampaignAdvancedSettings({
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <Label htmlFor="retry-enabled">Enable Retries</Label>
+                        <Label htmlFor="retry-enabled">Повтор при ошибке</Label>
                         <p className="text-sm text-muted-foreground">
                             Automatically retry failed calls
                         </p>
@@ -195,15 +195,15 @@ export default function CampaignAdvancedSettings({
                             <Label>Retry On</Label>
                             <div className="space-y-2">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">Busy Signal</span>
+                                    <span className="text-sm">Занято</span>
                                     <Switch checked={retryOnBusy} onCheckedChange={onRetryOnBusyChange} />
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">No Answer</span>
+                                    <span className="text-sm">Нет ответа</span>
                                     <Switch checked={retryOnNoAnswer} onCheckedChange={onRetryOnNoAnswerChange} />
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <span className="text-sm">Voicemail</span>
+                                    <span className="text-sm">Голосовая почта</span>
                                     <Switch checked={retryOnVoicemail} onCheckedChange={onRetryOnVoicemailChange} />
                                 </div>
                             </div>
@@ -218,7 +218,7 @@ export default function CampaignAdvancedSettings({
             <div className="space-y-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <Label htmlFor="schedule-enabled">Call Schedule</Label>
+                        <Label htmlFor="schedule-enabled">Расписание звонков</Label>
                         <p className="text-sm text-muted-foreground">
                             Restrict when calls are made
                         </p>
@@ -331,7 +331,7 @@ export default function CampaignAdvancedSettings({
                 {circuitBreakerEnabled && (
                     <div className="space-y-4 pl-4 border-l-2 border-muted">
                         <div className="space-y-2">
-                            <Label htmlFor="cb-failure-threshold">Failure Threshold (%)</Label>
+                            <Label htmlFor="cb-failure-threshold">Порог сбоев (%)</Label>
                             <Input
                                 id="cb-failure-threshold"
                                 type="number"
@@ -346,7 +346,7 @@ export default function CampaignAdvancedSettings({
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label htmlFor="cb-window">Window (seconds)</Label>
+                                <Label htmlFor="cb-window">Окно (секунды)</Label>
                                 <Input
                                     id="cb-window"
                                     type="number"
@@ -357,7 +357,7 @@ export default function CampaignAdvancedSettings({
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="cb-min-calls">Min Calls in Window</Label>
+                                <Label htmlFor="cb-min-calls">Мин. звонков в окне</Label>
                                 <Input
                                     id="cb-min-calls"
                                     type="number"

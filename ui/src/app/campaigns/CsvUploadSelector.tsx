@@ -94,7 +94,7 @@ export default function CsvUploadSelector({ onFileUploaded, selectedFileName }: 
 
   return (
     <div className="space-y-2">
-      <Label>CSV File</Label>
+      <Label>CSV файл</Label>
       <div className="flex items-center gap-4">
         <input
           ref={fileInputRef}
@@ -109,7 +109,7 @@ export default function CsvUploadSelector({ onFileUploaded, selectedFileName }: 
           onClick={handleButtonClick}
           disabled={uploading}
         >
-          {uploading ? `Uploading... ${uploadProgress}%` : 'Upload CSV File'}
+          {uploading ? `Загрузка... ${uploadProgress}%` : 'Загрузить CSV'}
         </Button>
         {selectedFileName && !uploading && (
           <div className="flex-1 text-sm">

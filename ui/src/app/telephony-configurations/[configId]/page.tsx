@@ -181,7 +181,7 @@ export default function TelephonyConfigurationDetailPage() {
         <Button variant="ghost" onClick={() => router.push("/telephony-configurations")}>
           <ArrowLeft className="h-4 w-4 mr-2" /> Back
         </Button>
-        <p className="mt-4 text-muted-foreground">Configuration not found.</p>
+        <p className="mt-4 text-muted-foreground">Конфигурация не найдена.</p>
       </div>
     );
   }
@@ -192,8 +192,8 @@ export default function TelephonyConfigurationDetailPage() {
         <Link
           href="/telephony-configurations"
           className="inline-flex items-center text-sm text-muted-foreground hover:underline"
-        >
-          <ArrowLeft className="h-4 w-4 mr-1" /> All configurations
+                        >
+                            <ArrowLeft className="h-4 w-4 mr-1" /> Назад к конфигурациям
         </Link>
       </div>
 
@@ -206,7 +206,7 @@ export default function TelephonyConfigurationDetailPage() {
               {config.is_default_outbound && (
                 <Badge className="gap-1">
                   <Star className="h-3 w-3 fill-current" />
-                  Default
+                  По умолчанию
                 </Badge>
               )}
             </div>
@@ -256,7 +256,7 @@ export default function TelephonyConfigurationDetailPage() {
       <Card>
         <CardHeader className="flex flex-row items-start justify-between gap-4">
           <div className="space-y-1">
-            <CardTitle>Phone numbers</CardTitle>
+              <CardTitle>Номера телефонов</CardTitle>
             <CardDescription>
               Numbers used as caller ID for outbound and accepted for inbound matching.
               SIP URIs and extensions are supported alongside PSTN numbers.{" "}
@@ -277,14 +277,13 @@ export default function TelephonyConfigurationDetailPage() {
               setPhoneDialogOpen(true);
             }}
           >
-            <Plus className="h-4 w-4 mr-2" /> Add phone number
+            <Plus className="h-4 w-4 mr-2" /> Добавить номер телефона
           </Button>
         </CardHeader>
         <CardContent>
           {phoneNumbers.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No phone numbers yet. Add one to start placing or receiving calls on this
-              configuration.
+              Нет номеров телефонов. Добавьте номер, чтобы начать совершать или принимать звонки.
             </p>
           ) : (
             <Table>
@@ -311,9 +310,9 @@ export default function TelephonyConfigurationDetailPage() {
                     <TableCell>
                       <div className="flex flex-wrap gap-1">
                         {n.is_active ? (
-                          <Badge variant="secondary">Active</Badge>
+                          <Badge variant="secondary">Активен</Badge>
                         ) : (
-                          <Badge variant="outline">Inactive</Badge>
+                          <Badge variant="outline">Неактивен</Badge>
                         )}
                         {n.is_default_caller_id && (
                           <Badge className="gap-1">

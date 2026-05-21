@@ -78,10 +78,10 @@ export const AudioControls = ({
                         <Mic className="h-6 w-6 text-destructive" />
                     </div>
                     <div className="text-center space-y-2">
-                        <p className="text-foreground font-medium">Microphone access denied</p>
+                        <p className="text-foreground font-medium">Доступ к микрофону запрещён</p>
                         <p className="text-sm text-muted-foreground max-w-md">
-                            To use the voice agent, you need to allow microphone access.
-                            Please enable it in your browser settings and try again.
+                            Для использования голосового агента необходимо разрешить доступ к микрофону.
+                            Включите его в настройках браузера и попробуйте снова.
                         </p>
                     </div>
                     <Button
@@ -92,12 +92,12 @@ export const AudioControls = ({
                         {isRequestingPermission ? (
                             <>
                                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                                Waiting for permission...
+                                Ожидание разрешения...
                             </>
                         ) : (
                             <>
                                 <Mic className="h-5 w-5 mr-2" />
-                                Try Again
+                                Попробовать снова
                             </>
                         )}
                     </Button>
@@ -109,11 +109,11 @@ export const AudioControls = ({
         return (
             <div className="flex flex-col items-center justify-center space-y-4 p-8">
                 <div className="text-center space-y-2">
-                    <p className="text-foreground font-medium">Audio permissions required</p>
+                    <p className="text-foreground font-medium">Требуются разрешения аудио</p>
                     <p className="text-sm text-muted-foreground">
                         {isRequestingPermission
-                            ? "Please allow microphone access in the browser dialog"
-                            : "Click below to grant microphone access"}
+                            ? "Разрешите доступ к микрофону в диалоговом окне браузера"
+                            : "Нажмите ниже, чтобы предоставить доступ к микрофону"}
                     </p>
                 </div>
                 <Button
@@ -124,12 +124,12 @@ export const AudioControls = ({
                     {isRequestingPermission ? (
                         <>
                             <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                            Waiting for permission...
+                            Ожидание разрешения...
                         </>
                     ) : (
                         <>
                             <Mic className="h-5 w-5 mr-2" />
-                            Grant Audio Permissions
+                            Предоставить разрешения аудио
                         </>
                     )}
                 </Button>
@@ -145,28 +145,28 @@ export const AudioControls = ({
                         onClick={start}
                         disabled={isStarting}
                         className="group relative h-20 w-20 rounded-full bg-emerald-600 hover:bg-emerald-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                        aria-label="Start Call"
+                        aria-label="Начать звонок"
                     >
                         <div className="absolute inset-0 rounded-full bg-emerald-600 animate-ping opacity-25"></div>
                         <div className="relative flex items-center justify-center h-full">
                             <Phone className="h-8 w-8 text-white" />
                         </div>
                     </button>
-                    <p className="text-sm font-medium text-foreground">Start Call</p>
+                    <p className="text-sm font-medium text-foreground">Начать звонок</p>
                 </>
             ) : (
                 <>
-                    <p className="text-sm text-muted-foreground">Call in progress</p>
+                    <p className="text-sm text-muted-foreground">Звонок выполняется</p>
                     <button
                         onClick={stop}
                         className="group relative h-20 w-20 rounded-full bg-destructive hover:bg-destructive/90 transition-all duration-200 shadow-lg hover:shadow-xl"
-                        aria-label="End Call"
+                        aria-label="Завершить звонок"
                     >
                         <div className="relative flex items-center justify-center h-full">
                             <PhoneOff className="h-8 w-8 text-destructive-foreground" />
                         </div>
                     </button>
-                    <p className="text-sm font-medium text-foreground">End Call</p>
+                    <p className="text-sm font-medium text-foreground">Завершить звонок</p>
                 </>
             )}
             {permissionError && (

@@ -337,7 +337,7 @@ export default function APIKeysPage() {
                         <CardHeader>
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <CardTitle>API Keys</CardTitle>
+                                    <CardTitle>API ключи</CardTitle>
                                     <CardDescription>
                                         Create and manage API keys for your organization
                                     </CardDescription>
@@ -377,7 +377,7 @@ export default function APIKeysPage() {
                             ) : apiKeys.length === 0 ? (
                                 <div className="text-center py-12">
                                     <Key className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                                    <p className="text-muted-foreground mb-4">No API keys found</p>
+                                    <p className="text-muted-foreground mb-4">API ключи не найдены</p>
                                     <Button onClick={() => setIsCreateDialogOpen(true)}>
                                         Create Your First API Key
                                     </Button>
@@ -395,22 +395,22 @@ export default function APIKeysPage() {
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <span className="font-medium">{key.name}</span>
                                                     {key.archived_at ? (
-                                                        <Badge variant="secondary">Archived</Badge>
+                                                        <Badge variant="secondary">Архивирован</Badge>
                                                     ) : key.is_active ? (
-                                                        <Badge variant="default">Active</Badge>
+                                                        <Badge variant="default">Активен</Badge>
                                                     ) : (
-                                                        <Badge variant="destructive">Inactive</Badge>
+                                                        <Badge variant="destructive">Неактивен</Badge>
                                                     )}
                                                 </div>
                                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <span className="font-mono bg-muted px-2 py-1 rounded">{key.key_prefix}...</span>
                                                     <span className="text-xs text-muted-foreground/70">
-                                                        (Full key hidden for security)
+                                                        (Полный ключ скрыт в целях безопасности)
                                                     </span>
                                                 </div>
                                                 <div className="mt-2 text-xs text-muted-foreground">
-                                                    Created: {formatDate(key.created_at)} •
-                                                    Last used: {formatDate(key.last_used_at ?? null)}
+                                                    Создан: {formatDate(key.created_at)} •
+                                                    Последнее использование: {formatDate(key.last_used_at ?? null)}
                                                 </div>
                                             </div>
                                             <div className="flex gap-2">
@@ -446,7 +446,7 @@ export default function APIKeysPage() {
                         <CardHeader>
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <CardTitle>Service Keys</CardTitle>
+                                    <CardTitle>Сервисные ключи</CardTitle>
                                     <CardDescription>
                                         Manage service keys for accessing AI services (LLM, TTS, STT)
                                     </CardDescription>
@@ -494,7 +494,7 @@ export default function APIKeysPage() {
                             ) : serviceKeys.length === 0 ? (
                                 <div className="text-center py-12">
                                     <Key className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                                    <p className="text-muted-foreground mb-4">No service keys found</p>
+                                    <p className="text-muted-foreground mb-4">Сервисные ключи не найдены</p>
                                     {canCreateServiceKey && (
                                         <Button onClick={() => setIsCreateServiceDialogOpen(true)}>
                                             Create Your First Service Key
@@ -514,11 +514,11 @@ export default function APIKeysPage() {
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <span className="font-medium">{key.name}</span>
                                                     {key.archived_at ? (
-                                                        <Badge variant="secondary">Archived</Badge>
+                                                        <Badge variant="secondary">Архивирован</Badge>
                                                     ) : key.is_active ? (
-                                                        <Badge variant="default">Active</Badge>
+                                                        <Badge variant="default">Активен</Badge>
                                                     ) : (
-                                                        <Badge variant="destructive">Inactive</Badge>
+                                                        <Badge variant="destructive">Неактивен</Badge>
                                                     )}
                                                     {key.expires_at && new Date(key.expires_at) > new Date() && (
                                                         <Badge variant="outline">
@@ -529,12 +529,12 @@ export default function APIKeysPage() {
                                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                     <span className="font-mono bg-muted px-2 py-1 rounded">{key.key_prefix}...</span>
                                                     <span className="text-xs text-muted-foreground/70">
-                                                        (Full key hidden for security)
+                                                        (Полный ключ скрыт в целях безопасности)
                                                     </span>
                                                 </div>
                                                 <div className="mt-2 text-xs text-muted-foreground">
-                                                    Created: {formatDate(key.created_at)} •
-                                                    Last used: {formatDate(key.last_used_at ?? null)}
+                                                    Создан: {formatDate(key.created_at)} •
+                                                    Последнее использование: {formatDate(key.last_used_at ?? null)}
                                                 </div>
                                             </div>
                                             <div className="flex gap-2">
@@ -569,14 +569,14 @@ export default function APIKeysPage() {
             <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Create New API Key</DialogTitle>
+                        <DialogTitle>Создать API ключ</DialogTitle>
                         <DialogDescription>
                             Enter a descriptive name for your API key to help you identify it later.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid gap-2">
-                            <Label htmlFor="name">Key Name</Label>
+                            <Label htmlFor="name">Имя ключа</Label>
                             <Input
                                 id="name"
                                 value={newKeyName}
@@ -587,10 +587,10 @@ export default function APIKeysPage() {
                     </div>
                     <DialogFooter>
                         <Button variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
-                            Cancel
+                            Отмена
                         </Button>
                         <Button onClick={handleCreateKey}>
-                            Create Key
+                            Создать ключ
                         </Button>
                     </DialogFooter>
                 </DialogContent>
@@ -600,9 +600,9 @@ export default function APIKeysPage() {
             <Dialog open={showCreatedKeyDialog} onOpenChange={setShowCreatedKeyDialog}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>API Key Created Successfully</DialogTitle>
+                        <DialogTitle>API ключ создан успешно</DialogTitle>
                         <DialogDescription>
-                            Make sure to copy your API key now. You won&apos;t be able to see it again!
+                            API ключ создан! Скопируйте его сейчас — вы больше не сможете его увидеть.
                         </DialogDescription>
                     </DialogHeader>
                     {createdKey && (

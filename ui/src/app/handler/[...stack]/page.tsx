@@ -10,8 +10,8 @@ export default async function Handler(props: unknown) {
   if (authProvider === "local") {
     return (
       <div style={{ padding: '20px', textAlign: 'center' }}>
-        <h1>Local Auth Mode</h1>
-        <p>Stack Auth handler is disabled when using local authentication.</p>
+        <h1>Режим локальной аутентификации</h1>
+        <p>Обработчик Stack Auth отключён при использовании локальной аутентификации.</p>
       </div>
     );
   }

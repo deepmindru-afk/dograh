@@ -37,11 +37,11 @@ export function TextOrAudioInput({
             >
                 <div className="flex items-center gap-2">
                     <RadioGroupItem value="text" id="toa-text" />
-                    <Label htmlFor="toa-text" className="font-normal cursor-pointer">Text</Label>
+                    <Label htmlFor="toa-text" className="font-normal cursor-pointer">Текст</Label>
                 </div>
                 <div className="flex items-center gap-2">
                     <RadioGroupItem value="audio" id="toa-audio" />
-                    <Label htmlFor="toa-audio" className="font-normal cursor-pointer">Audio</Label>
+                    <Label htmlFor="toa-audio" className="font-normal cursor-pointer">Аудио</Label>
                 </div>
             </RadioGroup>
             {type === 'text' ? (
@@ -103,7 +103,7 @@ export function RecordingSelect({ value, onChange, recordings }: RecordingSelect
     return (
         <div className="space-y-2">
             <Label className="text-xs text-muted-foreground">
-                Select a pre-recorded audio file to play.
+                Выберите предварительно записанный аудиофайл для воспроизведения.
             </Label>
             <Popover modal open={open} onOpenChange={(v) => { if (!v) { stop(); setSearch(""); } setOpen(v); }}>
                 <PopoverTrigger asChild>
@@ -125,7 +125,7 @@ export function RecordingSelect({ value, onChange, recordings }: RecordingSelect
                                 </span>
                             </span>
                         ) : (
-                            <span className="text-muted-foreground">Select a recording</span>
+                            <span className="text-muted-foreground">Выберите запись</span>
                         )}
                         <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
@@ -136,7 +136,7 @@ export function RecordingSelect({ value, onChange, recordings }: RecordingSelect
                 >
                     {recordings.length === 0 ? (
                         <div className="p-3 text-sm text-muted-foreground text-center">
-                            No recordings available
+                            Нет доступных записей
                         </div>
                     ) : (
                         <div>
@@ -144,7 +144,7 @@ export function RecordingSelect({ value, onChange, recordings }: RecordingSelect
                                 <div className="relative">
                                     <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
                                     <Input
-                                        placeholder="Search by ID, transcript, or filename..."
+                                        placeholder="Поиск по ID, транскрипции или имени файла..."
                                         value={search}
                                         onChange={(e) => setSearch(e.target.value)}
                                         className="h-8 pl-8 text-sm"
@@ -155,7 +155,7 @@ export function RecordingSelect({ value, onChange, recordings }: RecordingSelect
                             <div className="max-h-56 overflow-y-auto">
                             {filtered.length === 0 ? (
                                 <div className="p-3 text-sm text-muted-foreground text-center">
-                                    No recordings match &ldquo;{search}&rdquo;
+                                    Нет записей, соответствующих &ldquo;{search}&rdquo;
                                 </div>
                             ) : filtered.map((r) => {
                                 const filename = (r.metadata?.original_filename as string) || "";

@@ -484,7 +484,7 @@ export default function CampaignDetailPage() {
     if (!campaign) {
         return (
             <div className="container mx-auto p-6 space-y-6">
-                <p className="text-center text-muted-foreground">Campaign not found</p>
+                <p className="text-center text-muted-foreground">Кампания не найдена</p>
             </div>
         );
     }
@@ -498,7 +498,7 @@ export default function CampaignDetailPage() {
                     className="mb-4"
                 >
                     <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Campaigns
+                    Назад к кампаниям
                 </Button>
                 <div className="flex justify-between items-start">
                     <div>
@@ -600,7 +600,7 @@ export default function CampaignDetailPage() {
                 {/* Campaign Details */}
                 <Card className="mb-6">
                     <CardHeader>
-                        <CardTitle>Campaign Details</CardTitle>
+                        <CardTitle>Детали кампании</CardTitle>
                         <CardDescription>
                             Configuration and source information
                         </CardDescription>
@@ -716,7 +716,7 @@ export default function CampaignDetailPage() {
                 {/* Campaign Settings */}
                 <Card className="mb-6">
                     <CardHeader>
-                        <CardTitle>Campaign Settings</CardTitle>
+                        <CardTitle>Настройки кампании</CardTitle>
                         <CardDescription>
                             Concurrency and retry configuration
                         </CardDescription>
@@ -831,7 +831,7 @@ export default function CampaignDetailPage() {
                 {/* Activity Log */}
                 <Card className="mb-6">
                     <CardHeader>
-                        <CardTitle>Activity Log</CardTitle>
+                        <CardTitle>Журнал активности</CardTitle>
                         <CardDescription>
                             Recent state transitions and failures. Newest first.
                         </CardDescription>
@@ -888,7 +888,7 @@ export default function CampaignDetailPage() {
                 <Dialog open={isRedialDialogOpen} onOpenChange={setIsRedialDialogOpen}>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle>Redial Campaign</DialogTitle>
+                            <DialogTitle>Перезвон по кампании</DialogTitle>
                             <DialogDescription>
                                 Creates a new campaign that re-dials unique subscribers whose
                                 last call ended with one of the selected outcomes. Subscribers

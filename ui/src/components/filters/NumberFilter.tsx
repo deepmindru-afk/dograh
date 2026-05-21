@@ -18,7 +18,7 @@ export const NumberFilter: React.FC<NumberFilterProps> = ({
   value,
   onChange,
   error,
-  placeholder = "Enter value",
+  placeholder = "Введите число",
   min,
   max,
   step = 1,

@@ -115,7 +115,7 @@ export function WorkflowExecutions({ workflowId, searchParams }: WorkflowExecuti
             });
 
             if (response.error) {
-                throw new Error("Failed to fetch workflow runs");
+                throw new Error("Не удалось получить запуски сценария");
             }
 
             if (response.data) {
@@ -127,7 +127,7 @@ export function WorkflowExecutions({ workflowId, searchParams }: WorkflowExecuti
             setError(null);
         } catch (err) {
             console.error("Error fetching workflow runs:", err);
-            setError("Failed to load workflow runs");
+            setError("Не удалось загрузить запуски сценария");
         } finally {
             setLoading(false);
         }

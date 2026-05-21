@@ -295,7 +295,7 @@ export default function RunsPage() {
     return (
         <div className="container mx-auto p-6 space-y-6 max-w-full">
             <div>
-                <h1 className="text-3xl font-bold mb-2">Workflow Runs</h1>
+                <h1 className="text-3xl font-bold mb-2">Все запуски</h1>
                 <p className="text-muted-foreground">View and manage all workflow runs across organizations</p>
             </div>
 
@@ -321,7 +321,7 @@ export default function RunsPage() {
                     <CardHeader>
                         <div className="flex items-center justify-between">
                             <div>
-                                <CardTitle>All Workflow Runs</CardTitle>
+                                <CardTitle>Все запуски сценариев</CardTitle>
                                 <CardDescription>
                                     Showing {runs.length} of {totalCount} total runs
                                 </CardDescription>
@@ -337,7 +337,7 @@ export default function RunsPage() {
                     <CardContent>
                         {runs.length === 0 ? (
                             <div className="text-center py-8 text-muted-foreground">
-                                No workflow runs found.
+                                Запуски не найдены.
                             </div>
                         ) : (
                             <>

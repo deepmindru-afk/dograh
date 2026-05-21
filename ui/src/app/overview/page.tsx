@@ -19,7 +19,7 @@ export default function OverviewPage() {
                     <CardHeader>
                         <CardTitle className="text-3xl">
                             {isOSSMode ? (
-                                "Welcome to Portal"
+                                "Добро пожаловать в Портал"
                             ) : (
                                 `Welcome${user?.displayName ? `, ${user.displayName.split(' ')[0]}` : ''}!`
                             )}
@@ -27,10 +27,10 @@ export default function OverviewPage() {
                         <CardDescription className="text-lg mt-2">
                             {isOSSMode ? (
                                 <>
-                                    Portal Voice Agents Builder.
+                                    Конструктор голосовых ассистентов Портал.
                                 </>
                             ) : (
-                                "Get started with building voice AI workflows"
+                                "Начните создавать голосовые AI сценарии"
                             )}
                         </CardDescription>
                     </CardHeader>

@@ -218,14 +218,14 @@ export function UnsavedChangesProvider({ children }: { children: React.ReactNode
             <AlertDialog open={showDialog} onOpenChange={(open) => { if (!open) handleCancel(); }}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+                        <AlertDialogTitle>Несохранённые изменения</AlertDialogTitle>
                         <AlertDialogDescription>
-                            You have unsaved changes that will be lost. Are you sure you want to leave?
+                            У вас есть несохранённые изменения, которые будут потеряны. Вы уверены, что хотите уйти?
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel onClick={handleCancel}>Stay on page</AlertDialogCancel>
-                        <AlertDialogAction onClick={handleConfirm}>Discard changes</AlertDialogAction>
+                        <AlertDialogCancel onClick={handleCancel}>Остаться на странице</AlertDialogCancel>
+                        <AlertDialogAction onClick={handleConfirm}>Отменить изменения</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

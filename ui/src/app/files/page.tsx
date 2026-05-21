@@ -49,7 +49,7 @@ export default function FilesPage() {
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Knowledge Base Files</h1>
+                <h1 className="text-3xl font-bold mb-2">Файлы</h1>
                 <p className="text-muted-foreground">
                     Upload and manage documents for your voice agents to reference.{" "}
                     <a href="https://docs.dograh.com/voice-agent/knowledge-base" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
@@ -62,14 +62,14 @@ export default function FilesPage() {
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
-                            <CardTitle>Your Documents</CardTitle>
+                            <CardTitle>Ваши документы</CardTitle>
                             <CardDescription>
                                 Documents shared across all agents in your organization
                             </CardDescription>
                         </div>
                         <Button onClick={() => setIsUploadOpen(true)}>
                             <Upload className="w-4 h-4 mr-2" />
-                            Upload Document
+                            Загрузить файл
                         </Button>
                     </div>
                 </CardHeader>
@@ -81,7 +81,7 @@ export default function FilesPage() {
             <Dialog open={isUploadOpen} onOpenChange={setIsUploadOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Upload Document</DialogTitle>
+                        <DialogTitle>Загрузить файл</DialogTitle>
                         <DialogDescription>
                             Upload a PDF or document file to add to your knowledge base
                         </DialogDescription>

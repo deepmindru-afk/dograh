@@ -12,7 +12,7 @@ export function SentryErrorBoundary({ children }: { children: ReactNode }) {
     <Sentry.ErrorBoundary
       fallback={({ error, resetError }) => (
         <div className="flex flex-col items-center justify-center min-h-screen gap-4 p-6 text-center">
-          <h1 className="text-2xl font-semibold">Something went wrong</h1>
+          <h1 className="text-2xl font-semibold">Что-то пошло не так</h1>
           <p className="text-sm text-muted-foreground max-w-md">
             {error instanceof Error ? error.message : String(error)}
           </p>
@@ -20,7 +20,7 @@ export function SentryErrorBoundary({ children }: { children: ReactNode }) {
             onClick={resetError}
             className="px-4 py-2 rounded-md border bg-background hover:bg-accent text-sm"
           >
-            Try again
+            Попробовать снова
           </button>
         </div>
       )}

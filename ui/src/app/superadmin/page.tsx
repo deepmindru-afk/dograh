@@ -51,15 +51,15 @@ export default function SuperadminPage() {
         <>
             <main className="container mx-auto p-6 space-y-6 max-w-4xl">
                 <div className="text-center">
-                    <h1 className="text-3xl font-bold mb-2">Superadmin Dashboard</h1>
-                    <p className="text-sm text-muted-foreground">Manage users and view system-wide data</p>
+                    <h1 className="text-3xl font-bold mb-2">Супер администратор</h1>
+                    <p className="text-sm text-muted-foreground">Управление пользователями и системными данными</p>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
                         {/* User Impersonation Card */}
                         <Card>
                             <CardHeader>
-                                <CardTitle>User Impersonation</CardTitle>
+                                <CardTitle>Пользователи</CardTitle>
                                 <CardDescription>
                                     Impersonate a user account for debugging or support purposes
                                 </CardDescription>
@@ -94,7 +94,7 @@ export default function SuperadminPage() {
                                                 Processing...
                                             </>
                                         ) : (
-                                            'Impersonate User'
+                                            '                                            Войти как пользователь'
                                         )}
                                     </Button>
                                 </form>
@@ -104,7 +104,7 @@ export default function SuperadminPage() {
                         {/* Workflow Runs Card */}
                         <Card>
                             <CardHeader>
-                                <CardTitle>Workflow Runs</CardTitle>
+                                <CardTitle>Запуски сценариев</CardTitle>
                                 <CardDescription>
                                     View and manage all workflow runs across organizations
                                 </CardDescription>
@@ -118,7 +118,7 @@ export default function SuperadminPage() {
                                     <Link href="/superadmin/runs">
                                         <Button className="w-full">
                                             <List className="mr-2 h-4 w-4" />
-                                            View All Runs
+                                            Все запуски
                                             <ArrowRight className="ml-2 h-4 w-4" />
                                         </Button>
                                     </Link>

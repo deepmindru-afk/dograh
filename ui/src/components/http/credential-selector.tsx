@@ -31,9 +31,9 @@ export function CredentialSelector({
     value,
     onChange,
     disabled = false,
-    placeholder = "No authentication",
-    label = "Credential",
-    description = "Select a credential for authentication, or leave empty for no auth.",
+    placeholder = "Нет аутентификации",
+    label = "Учётные данные",
+    description = "Выберите учётные данные для аутентификации или оставьте пустым.",
     showLabel = true,
 }: CredentialSelectorProps) {
     useAuth();
@@ -93,7 +93,7 @@ export function CredentialSelector({
                         {loading ? (
                             <div className="flex items-center gap-2">
                                 <Loader2 className="h-4 w-4 animate-spin" />
-                                <span>Loading...</span>
+                                <span>Загрузка...</span>
                             </div>
                         ) : (
                             <SelectValue placeholder={placeholder} />
@@ -112,7 +112,7 @@ export function CredentialSelector({
                     variant="outline"
                     size="icon"
                     onClick={() => setIsAddDialogOpen(true)}
-                    title="Add new credential"
+                    title="Добавить учётные данные"
                     disabled={disabled}
                 >
                     <PlusIcon className="h-4 w-4" />
@@ -122,7 +122,7 @@ export function CredentialSelector({
             {credentials.length === 0 && !loading && (
                 <div className="p-3 border rounded-md bg-muted/20">
                     <p className="text-sm text-muted-foreground">
-                        No credentials found. Click the + button to create one.
+                        Нет учётных данных. Нажмите кнопку +, чтобы создать.
                     </p>
                 </div>
             )}

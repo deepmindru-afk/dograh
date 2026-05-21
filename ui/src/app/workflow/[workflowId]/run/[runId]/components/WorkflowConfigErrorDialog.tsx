@@ -18,14 +18,14 @@ export const WorkflowConfigErrorDialog = ({
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Workflow Error</DialogTitle>
+                    <DialogTitle>Ошибка сценария</DialogTitle>
                     <DialogDescription className="text-red-500 whitespace-pre-line">
                         {error}
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
                     <Button onClick={onNavigateToWorkflow}>
-                        Go to Workflow
+                        Перейти к сценарию
                     </Button>
                 </DialogFooter>
             </DialogContent>

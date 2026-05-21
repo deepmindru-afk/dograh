@@ -52,7 +52,7 @@ function ContextDisplay({ title, context }: { title: string; context: Record<str
                     <CardTitle className="text-lg">{title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-sm text-muted-foreground">No data available</p>
+                    <p className="text-sm text-muted-foreground">Нет данных</p>
                 </CardContent>
             </Card>
         );
@@ -64,7 +64,7 @@ function ContextDisplay({ title, context }: { title: string; context: Record<str
                 <CardTitle className="text-lg">{title}</CardTitle>
                 <Button variant="ghost" size="sm" onClick={handleCopy} className="gap-2">
                     {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                    {copied ? 'Copied' : 'Copy'}
+                    {copied ? 'Скопировано' : 'Копировать'}
                 </Button>
             </CardHeader>
             <CardContent>
@@ -188,7 +188,7 @@ export default function WorkflowRunPage() {
                     <Card className="border-border">
                         <CardHeader className="flex flex-row items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <CardTitle className="text-2xl">Agent Run Completed</CardTitle>
+                                <CardTitle className="text-2xl">Запуск агента завершён</CardTitle>
                                 <div className="h-8 w-8 bg-emerald-500/20 rounded-full flex items-center justify-center">
                                     <svg className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -207,7 +207,7 @@ export default function WorkflowRunPage() {
                                     ) : (
                                         <Phone className="h-4 w-4" />
                                     )}
-                                    {startingCall ? 'Starting...' : 'Test Again'}
+                                    {startingCall ? 'Запуск...' : 'Повторить тест'}
                                 </Button>
                                 <Link href={`/workflow/${params.workflowId}`}>
                                     <Button
@@ -222,17 +222,17 @@ export default function WorkflowRunPage() {
                                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                         </svg>
-                                        Customize Agent
+                                        Настроить агента
                                     </Button>
                                 </Link>
                             </div>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-muted-foreground mb-8">Your voice agent run has been completed successfully. You can preview or download the transcript and recording.</p>
+                            <p className="text-muted-foreground mb-8">Запуск голосового агента успешно завершён. Вы можете просмотреть или скачать транскрипцию и запись.</p>
 
                             <div className="flex flex-wrap gap-4">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm text-muted-foreground">Preview:</span>
+                                    <span className="text-sm text-muted-foreground">Просмотр:</span>
                                     <MediaPreviewButton
                                         recordingUrl={workflowRun?.recording_url}
                                         transcriptUrl={workflowRun?.transcript_url}
@@ -241,7 +241,7 @@ export default function WorkflowRunPage() {
                                     />
                                 </div>
                                 <div className="flex items-center gap-2 border-l border-border pl-4">
-                                    <span className="text-sm text-muted-foreground">Download:</span>
+                                    <span className="text-sm text-muted-foreground">Скачать:</span>
                                     <Button
                                         onClick={() => downloadFile(workflowRun?.transcript_url)}
                                         disabled={!workflowRun?.transcript_url || !auth.isAuthenticated}
@@ -249,7 +249,7 @@ export default function WorkflowRunPage() {
                                         className="gap-2"
                                     >
                                         <FileText className="h-4 w-4" />
-                                        Transcript
+                                        Транскрипция
                                     </Button>
                                     <Button
                                         onClick={() => downloadFile(workflowRun?.recording_url)}
@@ -258,12 +258,12 @@ export default function WorkflowRunPage() {
                                         className="gap-2"
                                     >
                                         <Video className="h-4 w-4" />
-                                        Recording
+                                        Запись
                                     </Button>
                                 </div>
                                 {workflowRun?.gathered_context?.trace_url && (
                                     <div className="flex items-center gap-2 border-l border-border pl-4">
-                                        <span className="text-sm text-muted-foreground">Trace:</span>
+                                        <span className="text-sm text-muted-foreground">Трассировка:</span>
                                         <Button
                                             asChild
                                             size="sm"
@@ -276,7 +276,7 @@ export default function WorkflowRunPage() {
                                                 rel="noopener noreferrer"
                                             >
                                                 <ExternalLink className="h-4 w-4" />
-                                                View Trace
+                                                Просмотреть трассировку
                                             </a>
                                         </Button>
                                     </div>
@@ -287,18 +287,18 @@ export default function WorkflowRunPage() {
 
                         <div className="grid gap-6 md:grid-cols-2">
                             <ContextDisplay
-                                title="Initial Context"
+                                title="Начальный контекст"
                                 context={workflowRun?.initial_context}
                             />
                             <ContextDisplay
-                                title="Gathered Context"
+                                title="Собранный контекст"
                                 context={workflowRun?.gathered_context}
                             />
                         </div>
 
                         {workflowRun?.annotations && Object.keys(workflowRun.annotations).length > 0 && (
                             <ContextDisplay
-                                title="QA Results"
+                                title="Результаты QA"
                                 context={workflowRun.annotations as Record<string, string | number | boolean | object>}
                             />
                         )}
@@ -342,9 +342,9 @@ export default function WorkflowRunPage() {
             {/* Onboarding Tooltip for Customize Workflow */}
             {workflowRun?.is_completed && (
                 <OnboardingTooltip
-                    title='Customize Your Workflow'
+                    title='Настроить ваш сценарий'
                     targetRef={customizeButtonRef}
-                    message="Edit your workflow to adjust the voice agent's behavior, add new steps, or modify the conversation flow."
+                    message="Отредактируйте сценарий, чтобы настроить поведение голосового агента, добавить новые шаги или изменить поток разговора."
                     onDismiss={() => markTooltipSeen('customize_workflow')}
                     showNext={false}
                     isVisible={!hasSeenTooltip('customize_workflow')}

@@ -43,7 +43,7 @@ export function ToolBadges({ toolUuids, onStaleUuidsDetected, mcpToolFilters }: 
         return (
             <div className="flex flex-wrap gap-1">
                 <Badge variant="outline" className="text-xs">
-                    Loading...
+                    Загрузка...
                 </Badge>
             </div>
         );

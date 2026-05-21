@@ -188,16 +188,16 @@ export function PhoneNumberDialog({
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? "Edit phone number" : "Add phone number"}
+            {isEdit ? "Редактировать номер" : "Добавить номер телефона"}
           </DialogTitle>
           <DialogDescription>
-            PSTN numbers (E.164), SIP URIs (sip:user@host), and SIP extensions are all supported.
+            Поддерживаются номера PSTN (E.164), SIP URI (sip:user@host) и SIP-расширения.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           <div className="space-y-1">
-            <Label htmlFor="pn-address">Address</Label>
+            <Label htmlFor="pn-address">Адрес</Label>
             <Input
               id="pn-address"
               placeholder="+19781899185, sip:101@asterisk.local, or 101"
@@ -212,8 +212,7 @@ export function PhoneNumberDialog({
             )}
             {isEdit && (
               <p className="text-xs text-muted-foreground">
-                Address cannot be changed. Delete this number and create a new one to
-                change it.
+                Адрес нельзя изменить. Удалите этот номер и создайте новый.
               </p>
             )}
             {isEdit && (
@@ -225,7 +224,7 @@ export function PhoneNumberDialog({
 
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1">
-              <Label htmlFor="pn-country">Country (ISO-2)</Label>
+              <Label htmlFor="pn-country">Страна (ISO-2)</Label>
               <Input
                 id="pn-country"
                 placeholder="US"
@@ -235,7 +234,7 @@ export function PhoneNumberDialog({
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="pn-label">Label</Label>
+              <Label htmlFor="pn-label">Метка</Label>
               <Input
                 id="pn-label"
                 placeholder="e.g. Boston caller ID"
@@ -246,13 +245,13 @@ export function PhoneNumberDialog({
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="pn-workflow">Inbound workflow</Label>
+            <Label htmlFor="pn-workflow">Входящий сценарий</Label>
             <Select value={inboundWorkflowId} onValueChange={setInboundWorkflowId}>
               <SelectTrigger id="pn-workflow">
-                <SelectValue placeholder="(none)" />
+                <SelectValue placeholder="(нет)" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value={NO_WORKFLOW}>(none)</SelectItem>
+                <SelectItem value={NO_WORKFLOW}>(нет)</SelectItem>
                 {workflows.map((w) => (
                   <SelectItem key={w.id} value={String(w.id)}>
                     #{w.id} - {w.name}
@@ -267,7 +266,7 @@ export function PhoneNumberDialog({
           </div>
 
           <div className="flex items-center justify-between rounded border p-3">
-            <Label className="text-sm">Active</Label>
+            <Label className="text-sm">Активен</Label>
             <Switch checked={isActive} onCheckedChange={setIsActive} />
           </div>
 
@@ -289,13 +288,13 @@ export function PhoneNumberDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} disabled={submitting}>
-            Cancel
+            Отмена
           </Button>
           <Button
             onClick={handleSubmit}
             disabled={submitting || (!isEdit && !!addressError)}
           >
-            {submitting ? "Saving..." : isEdit ? "Save changes" : "Add"}
+            {submitting ? "Сохранение..." : isEdit ? "Сохранить изменения" : "Добавить"}
           </Button>
         </DialogFooter>
       </DialogContent>

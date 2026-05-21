@@ -73,10 +73,10 @@ export function WorkflowTable({ workflows, showArchived }: WorkflowTableProps) {
                 <TableHeader>
                     <TableRow>
                         <TableHead className="font-semibold">ID</TableHead>
-                        <TableHead className="font-semibold">Agent Name</TableHead>
-                        <TableHead className="font-semibold">Created At</TableHead>
-                        <TableHead className="font-semibold text-center">Total Runs</TableHead>
-                        <TableHead className="font-semibold text-right">Actions</TableHead>
+                        <TableHead className="font-semibold">Название</TableHead>
+                        <TableHead className="font-semibold">Дата создания</TableHead>
+                        <TableHead className="font-semibold text-center">Запусков</TableHead>
+                        <TableHead className="font-semibold text-right">Действия</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -112,7 +112,7 @@ export function WorkflowTable({ workflows, showArchived }: WorkflowTableProps) {
                                         className="flex items-center gap-2"
                                     >
                                         <Pencil size={16} />
-                                        Edit
+                                        Редактировать
                                     </Button>
                                     <Button
                                         variant={showArchived ? "default" : "outline"}
@@ -124,19 +124,19 @@ export function WorkflowTable({ workflows, showArchived }: WorkflowTableProps) {
                                         {loadingWorkflowId === workflow.id ? (
                                             <>
                                                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                                                {showArchived ? 'Restoring...' : 'Archiving...'}
+                                                {showArchived ? 'Восстановление...' : 'Архивация...'}
                                             </>
                                         ) : (
                                             <>
                                                 {showArchived ? (
                                                     <>
                                                         <RotateCcw size={16} />
-                                                        Restore
+                                                        Восстановить
                                                     </>
                                                 ) : (
                                                     <>
                                                         <Archive size={16} />
-                                                        Archive
+                                                        Архивировать
                                                     </>
                                                 )}
                                             </>

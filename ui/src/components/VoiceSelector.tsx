@@ -171,7 +171,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
             return value;
         }
         const voice = voices.find((v) => v.voice_id === value);
-        return voice?.name || value || "Select a voice";
+        return voice?.name || value || "Выберите голос";
     };
 
     const playPreview = (previewUrl: string, voiceId: string) => {
@@ -292,7 +292,7 @@ export const VoiceSelector: React.FC<VoiceSelectorProps> = ({
                                 </div>
                             ) : filteredVoices.length === 0 ? (
                                 <p className="text-sm text-muted-foreground text-center py-4">
-                                    No voices found
+                                    Нет доступных голосов
                                 </p>
                             ) : (
                                 filteredVoices.map((voice) => (

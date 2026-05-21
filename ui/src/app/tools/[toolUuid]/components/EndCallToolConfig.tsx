@@ -58,7 +58,7 @@ export function EndCallToolConfig({
             </CardHeader>
             <CardContent className="space-y-6">
                 <div className="grid gap-2">
-                    <Label>Tool Name</Label>
+                    <Label>Название инструмента</Label>
                     <Label className="text-xs text-muted-foreground">
                         A descriptive name for this tool
                     </Label>
@@ -70,7 +70,7 @@ export function EndCallToolConfig({
                 </div>
 
                 <div className="grid gap-2">
-                    <Label>Description</Label>
+                    <Label>Описание</Label>
                     <Label className="text-xs text-muted-foreground">
                         Helps the LLM understand when to use this tool
                     </Label>
@@ -89,7 +89,7 @@ export function EndCallToolConfig({
                             checked={endCallReason}
                             onCheckedChange={onEndCallReasonChange}
                         />
-                        <Label htmlFor="end-call-reason">Capture End Call Reason</Label>
+                        <Label htmlFor="end-call-reason">Захват причины завершения звонка</Label>
                     </div>
                     <Label className="text-xs text-muted-foreground">
                         When enabled, the AI will provide a reason for ending the call.
@@ -97,7 +97,7 @@ export function EndCallToolConfig({
                     </Label>
                     {endCallReason && (
                         <div className="grid gap-2 pt-2">
-                            <Label>Reason Description</Label>
+                            <Label>Описание причины</Label>
                             <Label className="text-xs text-muted-foreground">
                                 Instructions shown to the AI for what kind of reason to provide
                             </Label>
@@ -112,7 +112,7 @@ export function EndCallToolConfig({
                 </div>
 
                 <div className="grid gap-4 pt-4 border-t">
-                    <Label>Goodbye Message</Label>
+                    <Label>Прощальное сообщение</Label>
                     <Label className="text-xs text-muted-foreground">
                         Choose whether to play a message before disconnecting
                     </Label>

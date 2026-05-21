@@ -140,7 +140,7 @@ export default function ReportsPage() {
 
       if (response.data && response.data.length > 0) {
         // Prepare CSV content
-        const headers = ['Phone Number', 'Disposition', 'Duration (seconds)', 'Workflow Run URL'];
+        const headers = ['Номер телефона', 'Результат', 'Длительность (сек)', 'URL запуска сценария'];
         const rows = response.data.map((run: WorkflowRunDetail) => {
           const url = `${window.location.origin}/workflow/${run.workflow_id}/run/${run.run_id}`;
           return [
@@ -173,11 +173,11 @@ export default function ReportsPage() {
         link.click();
         document.body.removeChild(link);
       } else {
-        alert('No data available for download');
+        alert('Нет данных для загрузки');
       }
     } catch (err) {
       console.error('Failed to download CSV:', err);
-      alert('Failed to download CSV data');
+      alert('Не удалось загрузить CSV данные');
     }
   };
 
@@ -187,17 +187,17 @@ export default function ReportsPage() {
     <div className="container mx-auto p-6 space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-3xl font-bold">Daily Reports</h1>
+        <h1 className="text-3xl font-bold">Отчёты</h1>
 
         {/* Date Navigation & Workflow Selector */}
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           {/* Workflow Selector */}
           <Select value={selectedWorkflow} onValueChange={setSelectedWorkflow}>
             <SelectTrigger className="w-[200px]">
-              <SelectValue placeholder="Select workflow" />
+              <SelectValue placeholder="Выберите сценарий" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Workflows</SelectItem>
+              <SelectItem value="all">Все сценарии</SelectItem>
               {workflows.map((workflow) => (
                 <SelectItem key={workflow.id} value={workflow.id.toString()}>
                   {workflow.name}
@@ -263,7 +263,7 @@ export default function ReportsPage() {
             className="flex items-center gap-2"
           >
             <Download className="h-4 w-4" />
-            Download CSV
+            Скачать CSV
           </Button>
         )}
       </div>
@@ -305,8 +305,8 @@ export default function ReportsPage() {
           {report.metrics.total_runs === 0 && (
             <Card className="p-6">
               <p className="text-center text-muted-foreground">
-                No workflow runs found for {format(selectedDate, 'MMMM dd, yyyy')}
-                {selectedWorkflow !== 'all' && ' for the selected workflow'}
+                Запуски сценариев не найдены за {format(selectedDate, 'MMMM dd, yyyy')}
+                {selectedWorkflow !== 'all' && ' для выбранного сценария'}
               </p>
             </Card>
           )}

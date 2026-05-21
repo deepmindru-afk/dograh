@@ -73,15 +73,15 @@ Respond with ONLY "CONVERSATION" if a person answered, or "VOICEMAIL" if it's vo
 
 // Sidebar navigation items
 const NAV_ITEMS = [
-    { id: "general", label: "General", icon: Settings },
-    { id: "models", label: "Model Overrides", icon: Brain },
-    { id: "variables", label: "Template Variables", icon: Variable },
-    { id: "dictionary", label: "Dictionary", icon: BookA },
-    { id: "voicemail", label: "Voicemail Detection", icon: PhoneOff },
-    { id: "recordings", label: "Recordings", icon: Mic },
-    { id: "deployment", label: "Add to Website", icon: Rocket },
-    { id: "report", label: "Report", icon: FileDown },
-    { id: "identity", label: "Agent UUID", icon: Fingerprint },
+    { id: "general", label: "Общие", icon: Settings },
+    { id: "models", label: "Переопределения моделей", icon: Brain },
+    { id: "variables", label: "Переменные контекста шаблона", icon: Variable },
+    { id: "dictionary", label: "Словарь", icon: BookA },
+    { id: "voicemail", label: "Определение автоответчика", icon: PhoneOff },
+    { id: "recordings", label: "Записи", icon: Mic },
+    { id: "deployment", label: "Добавить на сайт", icon: Rocket },
+    { id: "report", label: "Отчёт", icon: FileDown },
+    { id: "identity", label: "UUID агента", icon: Fingerprint },
 ];
 
 // ---------------------------------------------------------------------------
@@ -128,11 +128,11 @@ function ReportSection({ workflowId }: { workflowId: number }) {
                 a.remove();
                 window.URL.revokeObjectURL(url);
             } else {
-                toast.error("Failed to download report");
+                toast.error("Не удалось скачать отчёт");
             }
         } catch (err) {
-            logger.error(`Failed to download workflow report: ${err}`);
-            toast.error("Failed to download report");
+            logger.error(`Ошибка скачивания отчёта: ${err}`);
+            toast.error("Не удалось скачать отчёт");
         } finally {
             setIsDownloading(false);
         }
@@ -150,10 +150,10 @@ function ReportSection({ workflowId }: { workflowId: number }) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
                     <FileDown className="h-4 w-4" />
-                    Report
+                    Отчёт
                 </CardTitle>
                 <CardDescription>
-                    Download a CSV report of completed runs for this agent, optionally filtered by date range.
+                    Скачайте CSV-отчёт о выполненных запусках для этого агента, с возможностью фильтрации по дате.
                 </CardDescription>
             </CardHeader>
             <CardFooter className="border-t pt-6">
@@ -161,21 +161,21 @@ function ReportSection({ workflowId }: { workflowId: number }) {
                     <PopoverTrigger asChild>
                         <Button variant="outline" disabled={isDownloading}>
                             <Download className="h-4 w-4 mr-2" />
-                            Download Report
+                            Скачать отчёт
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-4" align="start">
                         <div className="space-y-4">
-                            <div className="text-sm font-medium">Filter by date range</div>
+                            <div className="text-sm font-medium">Фильтр по диапазону дат</div>
                             <div className="grid gap-3">
                                 <div className="space-y-1.5">
-                                    <Label className="text-xs">From</Label>
+                                    <Label className="text-xs">От</Label>
                                     <div className="flex gap-2">
                                         <Popover>
                                             <PopoverTrigger asChild>
                                                 <Button variant="outline" size="sm" className="w-[140px] justify-start text-left font-normal">
                                                     <CalendarIcon className="mr-2 h-3.5 w-3.5" />
-                                                    {startDate ? format(startDate, "MMM dd, yyyy") : "Start date"}
+                                                    {startDate ? format(startDate, "MMM dd, yyyy") : "Дата начала"}
                                                 </Button>
                                             </PopoverTrigger>
                                             <PopoverContent className="w-auto p-0" align="start">
@@ -196,13 +196,13 @@ function ReportSection({ workflowId }: { workflowId: number }) {
                                     </div>
                                 </div>
                                 <div className="space-y-1.5">
-                                    <Label className="text-xs">To</Label>
+                                    <Label className="text-xs">До</Label>
                                     <div className="flex gap-2">
                                         <Popover>
                                             <PopoverTrigger asChild>
                                                 <Button variant="outline" size="sm" className="w-[140px] justify-start text-left font-normal">
                                                     <CalendarIcon className="mr-2 h-3.5 w-3.5" />
-                                                    {endDate ? format(endDate, "MMM dd, yyyy") : "End date"}
+                                                    {endDate ? format(endDate, "MMM dd, yyyy") : "Дата окончания"}
                                                 </Button>
                                             </PopoverTrigger>
                                             <PopoverContent className="w-auto p-0" align="start">
@@ -226,11 +226,11 @@ function ReportSection({ workflowId }: { workflowId: number }) {
                             <Separator />
                             <div className="flex justify-between">
                                 <Button variant="ghost" size="sm" onClick={handleClear}>
-                                    Clear
+                                    Очистить
                                 </Button>
                                 <Button size="sm" onClick={handleDownload} disabled={isDownloading}>
                                     <Download className="h-3.5 w-3.5 mr-1.5" />
-                                    {startDate || endDate ? "Download Filtered" : "Download All"}
+                                    {startDate || endDate ? "Скачать с фильтром" : "Скачать всё"}
                                 </Button>
                             </div>
                         </div>
@@ -294,7 +294,7 @@ function GeneralSection({
 
     const handleAmbientFileUpload = async (file: File) => {
         if (file.size > MAX_AMBIENT_NOISE_FILE_SIZE) {
-            setAudioUploadError(`File too large (${(file.size / (1024 * 1024)).toFixed(1)}MB). Maximum is 10MB.`);
+            setAudioUploadError(`Файл слишком большой (${(file.size / (1024 * 1024)).toFixed(1)}МБ). Максимум 10 МБ.`);
             return;
         }
 
@@ -313,7 +313,7 @@ function GeneralSection({
             });
 
             if (res.error || !res.data?.upload_url) {
-                throw new Error("Failed to get upload URL");
+                throw new Error("Не удалось получить URL загрузки");
             }
 
             const data = res.data;
@@ -325,7 +325,7 @@ function GeneralSection({
                 headers: { "Content-Type": file.type || "audio/wav" },
             });
             if (!uploadRes.ok) {
-                throw new Error("File upload failed");
+                throw new Error("Ошибка загрузки файла");
             }
 
             // 3. Update config with storage reference
@@ -336,7 +336,7 @@ function GeneralSection({
                 original_filename: file.name,
             }));
         } catch (err) {
-            setAudioUploadError(err instanceof Error ? err.message : "Upload failed");
+            setAudioUploadError(err instanceof Error ? err.message : "Ошибка загрузки");
         } finally {
             setIsUploadingAudio(false);
             if (ambientFileInputRef.current) ambientFileInputRef.current.value = "";
@@ -377,21 +377,21 @@ function GeneralSection({
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
                     <Settings className="h-4 w-4" />
-                    General
+                    Общие
                 </CardTitle>
-                <CardDescription>Agent name, call behavior, and turn detection.{" "}
-                    <a href={SETTINGS_DOCUMENTATION_URLS.general} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Learn more <ExternalLink className="h-3 w-3" /></a>
+                <CardDescription>Имя агента, поведение звонка и определение очереди.{" "}
+                    <a href={SETTINGS_DOCUMENTATION_URLS.general} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Подробнее <ExternalLink className="h-3 w-3" /></a>
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
                 {/* Agent Name */}
                 <div className="space-y-2">
-                    <Label htmlFor="workflow_name" className="text-sm font-medium">Agent Name</Label>
+                    <Label htmlFor="workflow_name" className="text-sm font-medium">Имя агента</Label>
                     <Input
                         id="workflow_name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Enter Agent name"
+                        placeholder="Введите имя агента"
                     />
                 </div>
 
@@ -400,13 +400,13 @@ function GeneralSection({
                 {/* Ambient Noise */}
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-sm font-medium">Ambient Noise</h3>
+                        <h3 className="text-sm font-medium">Фоновый шум</h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Add background ambient noise to make the conversation sound more natural.
                         </p>
                     </div>
                     <div className="flex items-center justify-between">
-                        <Label htmlFor="ambient-noise-enabled" className="text-sm">Use Ambient Noise</Label>
+                        <Label htmlFor="ambient-noise-enabled" className="text-sm">Использовать фоновый шум</Label>
                         <Switch
                             id="ambient-noise-enabled"
                             checked={ambientNoiseConfig.enabled}
@@ -418,7 +418,7 @@ function GeneralSection({
                     {ambientNoiseConfig.enabled && (
                         <div className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="ambient-volume" className="text-xs">Volume</Label>
+                                <Label htmlFor="ambient-volume" className="text-xs">Громкость</Label>
                                 <Input
                                     id="ambient-volume"
                                     type="number"
@@ -435,15 +435,15 @@ function GeneralSection({
 
                             {/* Custom Audio File */}
                             <div className="space-y-2">
-                                <Label className="text-xs">Custom Audio File</Label>
+                                <Label className="text-xs">Пользовательский аудиофайл</Label>
                                 <p className="text-xs text-muted-foreground">
-                                    Upload your own audio file or use the default office ambience.
+                                        Загрузите свой аудиофайл или используйте стандартный офисный фон.
                                 </p>
 
                                 {ambientNoiseConfig.storage_key ? (
                                     <div className="flex items-center gap-2 rounded-md border p-2 bg-muted/10">
                                         <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono truncate flex-1">
-                                            {ambientNoiseConfig.original_filename || "Custom audio"}
+                                            {ambientNoiseConfig.original_filename || "Пользовательское аудио"}
                                         </code>
                                         <Button
                                             type="button"
@@ -458,7 +458,7 @@ function GeneralSection({
                                                         ambientNoiseConfig.storage_backend,
                                                     );
                                                 } catch {
-                                                    setAudioUploadError("Failed to play audio");
+                                                    setAudioUploadError("Не удалось воспроизвести аудио");
                                                 }
                                             }}
                                         >
@@ -503,7 +503,7 @@ function GeneralSection({
                                             ) : (
                                                 <Upload className="w-4 h-4 mr-2" />
                                             )}
-                                            {isUploadingAudio ? "Uploading..." : "Upload audio file (max 10MB)"}
+                                            {isUploadingAudio ? "Загрузка..." : "Загрузить аудиофайл (макс. 10 МБ)"}
                                         </Button>
                                     </div>
                                 )}
@@ -514,7 +514,7 @@ function GeneralSection({
 
                                 {!ambientNoiseConfig.storage_key && (
                                     <p className="text-xs text-muted-foreground italic">
-                                        Using default office ambience
+                                        Используется стандартный офисный фон
                                     </p>
                                 )}
                             </div>
@@ -527,35 +527,35 @@ function GeneralSection({
                 {/* Turn Detection */}
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-sm font-medium">Turn Detection</h3>
+                        <h3 className="text-sm font-medium">Определение очереди</h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Configure how the agent detects when the user has finished speaking.
                         </p>
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="turn_stop_strategy" className="text-xs">Detection Strategy</Label>
+                        <Label htmlFor="turn_stop_strategy" className="text-xs">Стратегия определения</Label>
                         <Select
                             value={turnStopStrategy}
                             onValueChange={(value: TurnStopStrategy) => setTurnStopStrategy(value)}
                         >
                             <SelectTrigger id="turn_stop_strategy">
-                                <SelectValue placeholder="Select strategy" />
+                                <SelectValue placeholder="Выберите стратегию" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="transcription">Transcription-based</SelectItem>
-                                <SelectItem value="turn_analyzer">Smart Turn Analyzer</SelectItem>
+                                <SelectItem value="transcription">На основе транскрипции</SelectItem>
+                                <SelectItem value="turn_analyzer">Умный анализатор очереди</SelectItem>
                             </SelectContent>
                         </Select>
                         <p className="text-xs text-muted-foreground">
                             {turnStopStrategy === "transcription"
-                                ? "Best for short responses (1-2 word statements). Ends turn when transcription indicates completion."
-                                : "Best for longer responses with natural pauses. Uses ML model to detect end of turn."}
+                                ? "Лучше всего для коротких ответов (1-2 слова). Завершает очередь, когда транскрипция указывает на завершение."
+                                : "Лучше всего для длинных ответов с естественными паузами. Использует ML-модель для определения конца очереди."}
                         </p>
                     </div>
                     {turnStopStrategy === "turn_analyzer" && (
                         <div className="space-y-2">
                             <Label htmlFor="smart_turn_stop_secs" className="text-xs">
-                                Incomplete Turn Timeout (seconds)
+                                Тайм-аут неполной очереди (секунды)
                             </Label>
                             <Input
                                 id="smart_turn_stop_secs"
@@ -581,15 +581,15 @@ function GeneralSection({
                 {/* Context Compaction */}
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-sm font-medium">Context Compaction</h3>
+                        <h3 className="text-sm font-medium">Компактизация контекста</h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Automatically summarize conversation context when transitioning between nodes. Not applicable in Realtime mode — the speech-to-speech service manages its own conversation state and this setting is ignored.
                         </p>
                     </div>
                     <div className="flex items-center justify-between">
                         <Label htmlFor="context-compaction-enabled" className="text-sm">
-                            Enable Context Compaction
-                        </Label>
+                                Включить компактизацию контекста
+                            </Label>
                         <Switch
                             id="context-compaction-enabled"
                             checked={contextCompactionEnabled}
@@ -603,14 +603,14 @@ function GeneralSection({
                 {/* Call Management */}
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-sm font-medium">Call Management</h3>
+                        <h3 className="text-sm font-medium">Управление звонками</h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
                             Configure call duration limits and idle timeout settings.
                         </p>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="max_call_duration" className="text-xs">Max Call Duration (seconds)</Label>
+                            <Label htmlFor="max_call_duration" className="text-xs">Макс. длительность звонка (секунды)</Label>
                             <Input
                                 id="max_call_duration"
                                 type="number"
@@ -625,7 +625,7 @@ function GeneralSection({
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="max_user_idle_timeout" className="text-xs">
-                                Max User Idle Timeout (seconds)
+                                Макс. тайм-аут бездействия (секунды)
                             </Label>
                             <Input
                                 id="max_user_idle_timeout"
@@ -643,9 +643,9 @@ function GeneralSection({
                 </div>
             </CardContent>
             <CardFooter className="justify-end gap-3 border-t pt-6">
-                {isDirty && <span className="text-xs text-muted-foreground">Unsaved changes</span>}
+                {isDirty && <span className="text-xs text-muted-foreground">Несохранённые изменения</span>}
                 <Button onClick={handleSave} disabled={isSaving || !isDirty}>
-                    {isSaving ? "Saving..." : "Save General Settings"}
+                    {isSaving ? "Сохранение..." : "Сохранить основные настройки"}
                 </Button>
             </CardFooter>
         </Card>
@@ -711,18 +711,18 @@ function TemplateVariablesSection({
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
                     <Variable className="h-4 w-4" />
-                    Template Variables
+                    Переменные контекста шаблона
                 </CardTitle>
                 <CardDescription>
-                    Variables available in workflow prompts via {`{{variable_name}}`} syntax for testing the workflow.{" "}
-                    <a href={SETTINGS_DOCUMENTATION_URLS.templateVariables} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Learn more <ExternalLink className="h-3 w-3" /></a>
+                    Переменные, доступные в промптах сценария через синтаксис {`{{variable_name}}`} для тестирования сценария.{" "}
+                    <a href={SETTINGS_DOCUMENTATION_URLS.templateVariables} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Подробнее <ExternalLink className="h-3 w-3" /></a>
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 {/* Existing Variables */}
                 {Object.entries(contextVars).length > 0 && (
                     <div className="space-y-2">
-                        <Label className="text-sm font-medium">Current Variables</Label>
+                        <Label className="text-sm font-medium">Текущие переменные</Label>
                         {Object.entries(contextVars).map(([key, value]) => (
                             <div key={key} className="flex items-center gap-2 rounded-md border p-2">
                                 <div className="flex-1 min-w-0">
@@ -739,36 +739,36 @@ function TemplateVariablesSection({
 
                 {/* Add New Variable */}
                 <div className="space-y-3">
-                    <Label className="text-sm font-medium">Add New Variable</Label>
+                    <Label className="text-sm font-medium">Добавить новую переменную</Label>
                     <div className="flex gap-2">
                         <div className="flex-1 space-y-1">
-                            <Label htmlFor="var-key" className="text-xs">Key</Label>
+                            <Label htmlFor="var-key" className="text-xs">Ключ</Label>
                             <Input
                                 id="var-key"
-                                placeholder="Enter variable key"
+                                placeholder="Введите ключ переменной"
                                 value={newKey}
                                 onChange={(e) => setNewKey(e.target.value)}
                             />
                         </div>
                         <div className="flex-1 space-y-1">
-                            <Label htmlFor="var-value" className="text-xs">Value</Label>
+                            <Label htmlFor="var-value" className="text-xs">Значение</Label>
                             <Input
                                 id="var-value"
-                                placeholder="Enter variable value"
+                                placeholder="Введите значение переменной"
                                 value={newValue}
                                 onChange={(e) => setNewValue(e.target.value)}
                             />
                         </div>
                     </div>
                     <Button size="sm" onClick={handleAdd} disabled={!newKey || !newValue}>
-                        Add Variable
+                        Добавить переменную
                     </Button>
                 </div>
             </CardContent>
             <CardFooter className="justify-end gap-3 border-t pt-6">
-                {isDirty && <span className="text-xs text-muted-foreground">Unsaved changes</span>}
+                {isDirty && <span className="text-xs text-muted-foreground">Несохранённые изменения</span>}
                 <Button onClick={handleSave} disabled={isSaving || !isDirty}>
-                    {isSaving ? "Saving..." : "Save Variables"}
+                    {isSaving ? "Сохранение..." : "Сохранить переменные"}
                 </Button>
             </CardFooter>
         </Card>
@@ -809,16 +809,16 @@ function DictionarySection({
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
                     <BookA className="h-4 w-4" />
-                    Dictionary
+                    Словарь
                 </CardTitle>
                 <CardDescription>
-                    Add words the agent should actively listen for &mdash; company jargon, names,
-                    industry terms. May incur extra cost depending on provider.
+                    Добавьте слова, которые агент должен активно слушать &mdash; корпоративный жаргон, имена,
+                    отраслевые термины. Может повлечь дополнительные расходы в зависимости от провайдера.
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <Textarea
-                    placeholder="Enter words separated by comma (e.g. billing department, tretinoin)"
+                    placeholder="Введите слова через запятую (например: отдел billing, tretinoin)"
                     value={dictionaryValue}
                     onChange={(e) => setDictionaryValue(e.target.value)}
                     rows={4}
@@ -826,9 +826,9 @@ function DictionarySection({
                 />
             </CardContent>
             <CardFooter className="justify-end gap-3 border-t pt-6">
-                {isDirty && <span className="text-xs text-muted-foreground">Unsaved changes</span>}
+                {isDirty && <span className="text-xs text-muted-foreground">Несохранённые изменения</span>}
                 <Button onClick={handleSave} disabled={isSaving || !isDirty}>
-                    {isSaving ? "Saving..." : "Save Dictionary"}
+                    {isSaving ? "Сохранение..." : "Сохранить словарь"}
                 </Button>
             </CardFooter>
         </Card>
@@ -907,18 +907,18 @@ function VoicemailSection({
     return (
         <Card id="voicemail">
             <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                    <PhoneOff className="h-4 w-4" />
-                    Voicemail Detection
-                </CardTitle>
+                    <CardTitle className="flex items-center gap-2 text-base">
+                                        <PhoneOff className="h-4 w-4" />
+                                        Определение автоответчика
+                                    </CardTitle>
                 <CardDescription>
-                    Automatically detect and end calls when a voicemail system is reached.
+                    Автоматически обнаруживать и завершать звонки при попадании на автоответчик.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="flex items-center space-x-2 rounded-md border bg-muted/20 p-2">
                     <Switch id="voicemail-enabled" checked={enabled} onCheckedChange={setEnabled} />
-                    <Label htmlFor="voicemail-enabled">Enable Voicemail Detection</Label>
+                    <Label htmlFor="voicemail-enabled">Включить определение автоответчика</Label>
                 </div>
 
                 {enabled && (
@@ -931,9 +931,9 @@ function VoicemailSection({
                                     checked={useWorkflowLlm}
                                     onCheckedChange={setUseWorkflowLlm}
                                 />
-                                <Label htmlFor="voicemail-use-workflow-llm">Use Workflow LLM</Label>
+                                <Label htmlFor="voicemail-use-workflow-llm">Использовать LLM сценария</Label>
                                 <Label className="ml-2 text-xs text-muted-foreground">
-                                    Use the LLM configured in your account settings.
+                                    Использовать LLM, настроенную в настройках аккаунта.
                                 </Label>
                             </div>
 
@@ -951,7 +951,7 @@ function VoicemailSection({
 
                         {/* System Prompt */}
                         <div className="space-y-2">
-                            <Label>System Prompt</Label>
+                            <Label>Системный промпт</Label>
                             <p className="text-xs text-muted-foreground">
                                 The LLM must respond with either &quot;CONVERSATION&quot; or &quot;VOICEMAIL&quot;.
                             </p>
@@ -964,9 +964,9 @@ function VoicemailSection({
 
                         {/* Timing */}
                         <div className="space-y-2 rounded-md border bg-muted/10 p-3">
-                            <Label className="font-medium">Timing</Label>
+                            <Label className="font-medium">Время</Label>
                             <div className="space-y-2">
-                                <Label className="text-sm">Speech Cutoff (seconds)</Label>
+                                <Label className="text-sm">Отсечка речи (секунды)</Label>
                                 <p className="text-xs text-muted-foreground">
                                     Trigger classification early if first turn speech exceeds this duration.
                                 </p>
@@ -984,9 +984,9 @@ function VoicemailSection({
                 )}
             </CardContent>
             <CardFooter className="justify-end gap-3 border-t pt-6">
-                {isDirty && <span className="text-xs text-muted-foreground">Unsaved changes</span>}
+                {isDirty && <span className="text-xs text-muted-foreground">Несохранённые изменения</span>}
                 <Button onClick={handleSave} disabled={isSaving || !isDirty}>
-                    {isSaving ? "Saving..." : "Save Voicemail Settings"}
+                    {isSaving ? "Сохранение..." : "Сохранить настройки автоответчика"}
                 </Button>
             </CardFooter>
         </Card>
@@ -1001,9 +1001,9 @@ function AgentUuidSection({ workflowUuid }: { workflowUuid: string }) {
     const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(workflowUuid);
-            toast.success("Agent UUID copied");
+            toast.success("UUID агента скопирован");
         } catch {
-            toast.error("Failed to copy Agent UUID");
+            toast.error("Не удалось скопировать UUID агента");
         }
     };
 
@@ -1012,11 +1012,11 @@ function AgentUuidSection({ workflowUuid }: { workflowUuid: string }) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
                     <Fingerprint className="h-4 w-4" />
-                    Agent UUID
+                    UUID агента
                 </CardTitle>
                 <CardDescription>
-                    Stable identifier for this agent. Used in agent-stream URLs and
-                    other integrations where a numeric workflow ID isn&apos;t portable.
+                    Стабильный идентификатор для этого агента. Используется в agent-stream URL и
+                    других интеграциях, где числовой ID сценария не портативен.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -1033,7 +1033,7 @@ function AgentUuidSection({ workflowUuid }: { workflowUuid: string }) {
             <CardFooter className="border-t pt-6">
                 <Button variant="outline" size="sm" onClick={handleCopy}>
                     <Clipboard className="h-3.5 w-3.5 mr-2" />
-                    Copy UUID
+                    Копировать UUID
                 </Button>
             </CardFooter>
         </Card>
@@ -1072,7 +1072,7 @@ export default function WorkflowSettingsPage() {
                 });
                 setWorkflow(response.data);
             } catch (err) {
-                setError("Failed to fetch workflow");
+                setError("Не удалось загрузить сценарий");
                 logger.error(`Error fetching workflow settings: ${err}`);
             } finally {
                 setLoading(false);
@@ -1086,7 +1086,7 @@ export default function WorkflowSettingsPage() {
     if (error || !workflow) {
         return (
             <div className="flex min-h-screen items-center justify-center">
-                <div className="text-lg text-destructive">{error || "Workflow not found"}</div>
+                <div className="text-lg text-destructive">{error || "Сценарий не найден"}</div>
             </div>
         );
     }
@@ -1199,7 +1199,7 @@ function WorkflowSettingsInner({
                     <ArrowLeft className="h-4 w-4" />
                 </Button>
                 <div>
-                    <p className="text-xs text-muted-foreground">Workflow Settings</p>
+                    <p className="text-xs text-muted-foreground">Настройки сценария</p>
                     <h1 className="text-sm font-semibold">{workflowName || workflow.name}</h1>
                 </div>
             </header>
@@ -1223,19 +1223,19 @@ function WorkflowSettingsInner({
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-2 text-base">
                                         <Brain className="h-4 w-4" />
-                                        Model Overrides
+                                        Переопределения моделей
                                     </CardTitle>
                                     <CardDescription>
                                         Override global model settings for this workflow. Toggle individual services to
                                         customize.{" "}
-                                        <a href={SETTINGS_DOCUMENTATION_URLS.modelOverrides} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Learn more <ExternalLink className="h-3 w-3" /></a>
+                                        <a href={SETTINGS_DOCUMENTATION_URLS.modelOverrides} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Подробнее <ExternalLink className="h-3 w-3" /></a>
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <ServiceConfigurationForm
                                         mode="override"
                                         currentOverrides={workflowConfigurations.model_overrides}
-                                        submitLabel="Save Model Overrides"
+                                        submitLabel="Сохранить переопределения моделей"
                                         onSave={async (config) => {
                                             await saveWorkflowConfigurations(
                                                 {
@@ -1271,18 +1271,18 @@ function WorkflowSettingsInner({
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-2 text-base">
                                         <Mic className="h-4 w-4" />
-                                        Recordings
+                                        Записи
                                     </CardTitle>
                                     <CardDescription>
-                                        Recordings are now managed at the organization level and shared across all agents.
+                                        Записи теперь управляются на уровне организации и доступны для всех агентов.
                                         Use <code className="rounded bg-muted px-1 text-xs">@</code> in prompt fields to insert them.{" "}
-                                        <a href={SETTINGS_DOCUMENTATION_URLS.recordings} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Learn more <ExternalLink className="h-3 w-3" /></a>
+                                        <a href={SETTINGS_DOCUMENTATION_URLS.recordings} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Подробнее <ExternalLink className="h-3 w-3" /></a>
                                     </CardDescription>
                                 </CardHeader>
                                 <CardFooter className="border-t pt-6">
                                     <Button variant="outline" asChild>
                                         <Link href="/recordings">
-                                            Go to Recordings
+                                            Перейти к записям
                                             <ExternalLink className="ml-2 h-4 w-4" />
                                         </Link>
                                     </Button>
@@ -1294,16 +1294,16 @@ function WorkflowSettingsInner({
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-2 text-base">
                                         <Rocket className="h-4 w-4" />
-                                        Add to Website
+                                        Добавить на сайт
                                     </CardTitle>
                                     <CardDescription>
-                                        Configure a widget to add this voice agent to your website.{" "}
-                                        <a href={SETTINGS_DOCUMENTATION_URLS.deployment} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Learn more <ExternalLink className="h-3 w-3" /></a>
+                                        Настройте виджет для добавления этого голосового агента на ваш сайт.{" "}
+                                        <a href={SETTINGS_DOCUMENTATION_URLS.deployment} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">Подробнее <ExternalLink className="h-3 w-3" /></a>
                                     </CardDescription>
                                 </CardHeader>
                                 <CardFooter className="border-t pt-6">
                                     <Button variant="outline" onClick={() => setIsEmbedDialogOpen(true)}>
-                                        Configure Widget
+                                        Настроить виджет
                                     </Button>
                                 </CardFooter>
                             </Card>
@@ -1323,7 +1323,7 @@ function WorkflowSettingsInner({
                 <nav className="hidden w-44 shrink-0 lg:block">
                     <div className="sticky top-20 space-y-1">
                         <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                            On this page
+                            На этой странице
                         </p>
                         {NAV_ITEMS.map((item) => (
                             <a

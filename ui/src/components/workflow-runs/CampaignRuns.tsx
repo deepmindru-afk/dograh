@@ -236,8 +236,8 @@ export function CampaignRuns({ campaignId, workflowId, searchParams }: CampaignR
             onSort={handleSort}
             workflowId={workflowId}
             onReload={handleReload}
-            title="Campaign Workflow Runs"
-            emptyMessage="No workflow runs found for this campaign"
+            title="Запуски кампаний"
+            emptyMessage="Нет запусков кампаний"
         />
     );
 }

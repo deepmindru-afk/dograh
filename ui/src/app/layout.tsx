@@ -28,8 +28,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portal Voice",
-  description: "Portal Voice Assistants Workflow Builder",
+  title: "Портал Голос",
+  description: "Конструктор голосовых ассистентов Портал",
 };
 
 export default function RootLayout({

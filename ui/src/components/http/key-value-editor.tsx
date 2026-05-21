@@ -23,9 +23,9 @@ interface KeyValueEditorProps {
 export function KeyValueEditor({
     items,
     onChange,
-    keyPlaceholder = "Key",
-    valuePlaceholder = "Value",
-    addButtonText = "Add",
+    keyPlaceholder = "Ключ",
+    valuePlaceholder = "Значение",
+    addButtonText = "Добавить",
     disabled = false,
 }: KeyValueEditorProps) {
     const addItem = () => {

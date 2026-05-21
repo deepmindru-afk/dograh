@@ -207,7 +207,7 @@ export function MentionTextarea({
             )}
             {showDropdown && filtered.length === 0 && items.length === 0 && (
                 <div className="absolute z-50 mt-1 w-full rounded-md border bg-popover text-popover-foreground shadow-md p-3 text-sm text-muted-foreground">
-                    No recordings found. Upload recordings via the Recordings panel.
+                    Записи не найдены. Загрузите записи через панель записей.
                 </div>
             )}
         </div>

@@ -17,17 +17,17 @@ interface TranscriptContainerProps {
 const STATUS_CONFIG = {
     ready: {
         icon: MicOff,
-        label: 'Ready',
+        label: 'Готов',
         className: 'bg-muted text-muted-foreground',
     },
     live: {
         icon: Mic,
-        label: 'Live',
+        label: 'В прямом эфире',
         className: 'bg-green-500/10 text-green-600 dark:text-green-400',
     },
     ended: {
         icon: MicOff,
-        label: 'Ended',
+        label: 'Завершён',
         className: 'bg-muted text-muted-foreground',
     },
 };
@@ -64,7 +64,7 @@ export function TranscriptContainer({
             {/* Footer with message count */}
             {messageCount !== undefined && messageCount > 0 && (
                 <div className="px-4 py-2 border-t border-border text-xs text-muted-foreground shrink-0">
-                    {messageCount} messages
+                    {messageCount} сообщений
                 </div>
             )}
         </div>
