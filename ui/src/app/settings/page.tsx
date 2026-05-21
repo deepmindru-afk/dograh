@@ -27,7 +27,7 @@ export default function SettingsPage() {
           <CardHeader>
             <CardTitle>MCP-сервер</CardTitle>
             <CardDescription>
-              Позвольте AI-агентам получать доступ к вашему рабочему пространству Dograh и документации через
+              Позвольте AI-агентам получать доступ к вашему рабочему пространству и документации через
               Model Context Protocol.{" "}
               <a
                 href="https://docs.dograh.com/integrations/mcp"

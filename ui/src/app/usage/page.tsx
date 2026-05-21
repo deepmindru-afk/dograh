@@ -412,9 +412,9 @@ export default function UsagePage() {
                 {/* MPS Credits Card */}
                 <Card className="mb-6">
                     <CardHeader>
-                        <CardTitle>Кредиты моделей Dograh</CardTitle>
+                        <CardTitle>Кредиты моделей</CardTitle>
                         <CardDescription>
-                            Они отслеживают использование моделей Dograh через сервисные ключи Dograh.
+                            Они отслеживают использование моделей через сервисные ключи.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -444,7 +444,7 @@ export default function UsagePage() {
                                 )}
                             </div>
                         ) : (
-                            <p className="text-muted-foreground">Сервисные ключи Dograh не настроены. Настройте сервисный ключ в конфигурации модели, чтобы увидеть использование.</p>
+                            <p className="text-muted-foreground">Сервисные ключи не настроены. Настройте сервисный ключ в конфигурации модели, чтобы увидеть использование.</p>
                         )}
                     </CardContent>
                 </Card>
@@ -580,7 +580,7 @@ export default function UsagePage() {
                                     <div className="mt-4 p-3 bg-muted rounded-md">
                                         <p className="text-sm text-muted-foreground">
                                             Всего за период фильтрации: <span className="font-semibold text-foreground">
-                                                {usageHistory.total_dograh_tokens.toLocaleString()} токенов Dograh
+                                                {usageHistory.total_dograh_tokens.toLocaleString()} токенов
                                             </span>
                                             {' • '}
                                             <span className="font-semibold text-foreground">

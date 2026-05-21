@@ -13,7 +13,7 @@
     autoStart: false,
     apiBaseUrl: window.location.hostname === 'localhost'
       ? 'http://localhost:8000'
-      : 'https://api.dograh.com'
+      : 'https://dgapi.portalos.ru'
   };
 
   // Widget state

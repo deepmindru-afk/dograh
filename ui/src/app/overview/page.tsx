@@ -19,7 +19,7 @@ export default function OverviewPage() {
                     <CardHeader>
                         <CardTitle className="text-3xl">
                             {isOSSMode ? (
-                                "Добро пожаловать в Dograh"
+                                "Добро пожаловать в Портал"
                             ) : (
                                 `С возвращением${user?.displayName ? `, ${user.displayName.split(' ')[0]}` : ''}!`
                             )}
@@ -27,7 +27,7 @@ export default function OverviewPage() {
                         <CardDescription className="text-lg mt-2">
                             {isOSSMode ? (
                                 <>
-                                    Открытая альтернатива Vapi. Помогите проекту, поставив звезду на GitHub.
+                                    No-code Голосовые агенты 
                                 </>
                             ) : (
                                 "Начните создавать голосовые AI-сценарии"
@@ -83,27 +83,18 @@ export default function OverviewPage() {
                     <CardHeader>
                         <CardTitle>Ресурсы</CardTitle>
                         <CardDescription>
-                            Получите помощь и узнайте больше о Dograh
+                            Получите помощь и узнайте больше о Portal
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-wrap gap-4">
                             <Button asChild variant="outline">
                                 <a
-                                    href="https://docs.dograh.com"
+                                    href="https://www.portalos.ru"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Документация
-                                </a>
-                            </Button>
-                            <Button asChild variant="outline">
-                                <a
-                                    href="https://github.com/dograh-hq/dograh/issues"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Сообщить о проблеме
+                                    АО Портал
                                 </a>
                             </Button>
                         </div>

@@ -324,7 +324,7 @@ export default function APIKeysPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="mb-8">
                         <h1 className="text-3xl font-bold mb-2">Портал разработчика</h1>
-                        <p className="text-muted-foreground">Управляйте своими API-ключами для программного доступа к сервисам Dograh</p>
+                        <p className="text-muted-foreground">Управляйте своими API-ключами для программного доступа к сервисам</p>
                     </div>
 
                     {error && (
@@ -446,9 +446,9 @@ export default function APIKeysPage() {
                         <CardHeader>
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <CardTitle>Сервисные ключи Dograh</CardTitle>
+                                    <CardTitle>Сервисные ключи</CardTitle>
                                     <CardDescription>
-                                        Управляйте сервисными ключами для доступа к AI-сервисам Dograh (LLM, TTS, STT)
+                                        Управляйте сервисными ключами для доступа к AI-сервисам (LLM, TTS, STT)
                                     </CardDescription>
                                 </div>
                                 <div className="flex gap-2">
@@ -646,7 +646,7 @@ export default function APIKeysPage() {
                     <DialogHeader>
                         <DialogTitle>Создать новый сервисный ключ</DialogTitle>
                         <DialogDescription>
-                            Создайте сервисный ключ для доступа к AI-сервисам Dograh (LLM, TTS, STT)
+                            Создайте сервисный ключ для доступа к AI-сервисам (LLM, TTS, STT)
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
@@ -699,7 +699,7 @@ export default function APIKeysPage() {
                             </div>
                             <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                                 <p className="text-sm text-blue-600 dark:text-blue-500">
-                                    Этот ключ предоставляет доступ к AI-сервисам Dograh, включая LLM, преобразование текста в речь и речи в текст.
+                                    Этот ключ предоставляет доступ к AI-сервисам, включая LLM, преобразование текста в речь и речи в текст.
                                     {createdServiceKey.expires_at && (
                                         <span className="block mt-1">
                                             Истекает: {formatDate(createdServiceKey.expires_at)}
