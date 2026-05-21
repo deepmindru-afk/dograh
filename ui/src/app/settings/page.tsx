@@ -30,7 +30,7 @@ export default function SettingsPage() {
               Дайте AI-агентам доступ к вашему рабочему пространству и документации через
               Model Context Protocol.{" "}
               <a
-                href="https://docs.dograh.com/integrations/mcp"
+                href="https://www.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
@@ -50,7 +50,7 @@ export default function SettingsPage() {
             <CardDescription>
               Настройте трассировку Langfuse для звонков голосовых агентов.{" "}
               <a
-                href="https://docs.dograh.com/configurations/tracing"
+                href="https://www.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
