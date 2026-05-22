@@ -261,7 +261,7 @@ export default function TelephonyConfigurationDetailPage() {
               Номера, используемые как ID вызывающего для исходящих и принимаемые для входящих.
               SIP URI и расширения поддерживаются наряду с номерами PSTN.{" "}
               <a
-                href="https://docs.dograh.com/integrations/telephony/inbound"
+                href="https://ui.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"

@@ -300,7 +300,7 @@ export default function ToolsPage() {
                         <h1 className="text-3xl font-bold mb-2">Инструменты</h1>
                         <p className="text-muted-foreground">
                             Управляйте инструментами, которые можно использовать во всех сценариях.{" "}
-                            <a href="https://docs.dograh.com/voice-agent/tools/introduction" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
+                            <a href="https://ui.portalos.ru" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
                                 Learn more <ExternalLink className="h-3 w-3" />
                             </a>
                         </p>

@@ -50,7 +50,7 @@ export default function SettingsPage() {
             <CardDescription>
               Настройте трассировку для звонков вашего голосового агента.{" "}
               <a
-                href="https://docs.dograh.com/configurations/tracing"
+                href="https://ui.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"

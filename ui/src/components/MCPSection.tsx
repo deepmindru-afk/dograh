@@ -62,7 +62,7 @@ export function MCPSection() {
         Пошаговая настройка с Claude Code, Claude Desktop, Cursor и
         другими клиентами — смотрите{" "}
         <Link
-          href="https://docs.dograh.com/integrations/mcp"
+          href="https://ui.portalos.ru"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary underline hover:no-underline"

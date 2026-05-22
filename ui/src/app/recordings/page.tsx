@@ -41,7 +41,7 @@ export default function RecordingsPage() {
                     Управляйте аудиозаписями для вашей организации. Используйте{" "}
                     <code className="rounded bg-muted px-1 text-xs">@</code> в полях подсказок для вставки
                     или как переходные сообщения в вызовах инструментов.{" "}
-                    <a href="https://docs.dograh.com/voice-agent/pre-recorded-audio" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
+                    <a href="https://ui.portalos.ru" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-0.5 underline">
                         Подробнее <ExternalLink className="h-3 w-3" />
                     </a>
                 </p>

@@ -156,7 +156,7 @@ export default function TelephonyConfigurationsPage() {
               Подключите один или несколько аккаунтов телефонных провайдеров. Каждая кампания использует одну
               конфигурацию; входящие звонки маршрутизируются по ID аккаунта.{" "}
               <a
-                href="https://docs.dograh.com/integrations/telephony/overview"
+                href="https://ui.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
