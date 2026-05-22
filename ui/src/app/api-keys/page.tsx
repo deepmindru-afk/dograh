@@ -472,7 +472,7 @@ export default function APIKeysPage() {
                                         </Button>
                                     ) : (
                                         <span className="text">
-                                            Чтобы создать дополнительные сервисные ключи, <a href="https://app.dograh.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">зарегистрируйтесь на app.dograh.com</a>
+                                            Чтобы создать дополнительные сервисные ключи, <a href="https://ui.portalos.ru" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">зарегистрируйтесь на ui.portalos.ru</a>
                                         </span>
                                     )}
                                 </div>
