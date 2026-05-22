@@ -30,7 +30,7 @@ export default function SettingsPage() {
               Позвольте AI-агентам получать доступ к вашему рабочему пространству и документации через
               Model Context Protocol.{" "}
               <a
-                href="https://docs.dograh.com/integrations/mcp"
+                href="https://ui.portalos.ru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-0.5 underline"
@@ -48,7 +48,7 @@ export default function SettingsPage() {
           <CardHeader>
             <CardTitle>Телеметрия</CardTitle>
             <CardDescription>
-              Настройте трассировку Langfuse для звонков вашего голосового агента.{" "}
+              Настройте трассировку для звонков вашего голосового агента.{" "}
               <a
                 href="https://docs.dograh.com/configurations/tracing"
                 target="_blank"

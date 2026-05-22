@@ -37,7 +37,7 @@ export default function OverviewPage() {
                     <CardContent>
                         {isOSSMode && (
                             <div className="mb-6">
-                                <GitHubStarBadge label="Звезда на GitHub" showCount source="overview_page" />
+                                <GitHubStarBadge label="АО Портал" showCount source="overview_page" />
                             </div>
                         )}
                     </CardContent>
