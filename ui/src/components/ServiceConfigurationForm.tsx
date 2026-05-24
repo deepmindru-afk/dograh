@@ -817,11 +817,7 @@ export function ServiceConfigurationForm({
                     </Label>
                     {!isEnabled && (
                         <p className="text-xs text-muted-foreground">
-<<<<<<< HEAD
-                            Используется глобальное: {getGlobalSummary(globalVal)}
-=======
                             Using global: {getGlobalSummary(globalVal, globalProviderSchema)}
->>>>>>> upstream/main
                         </p>
                     )}
                 </div>
