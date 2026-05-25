@@ -49,7 +49,7 @@ class ServiceProviders(str, Enum):
     ELEVENLABS = "elevenlabs"
     GOOGLE = "google"
     AZURE = "azure"
-    DOGRAH = "portal_realtime"
+    DOGRAH = "dograh"
     SARVAM = "sarvam"
     SPEECHMATICS = "speechmatics"
     CAMB = "camb"
