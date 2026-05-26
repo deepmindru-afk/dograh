@@ -24,7 +24,7 @@ const BLANK_WORKFLOW_DEFINITION = {
             type: "startCall",
             position: { x: 175, y: 60 },
             data: {
-                prompt: "# Goal\nYou are a helpful agent who is handing a conversation over voice with a human. This is a voice conversation, so transcripts can be error prone.\n\n## Rules\n- Language: UK English but does not have to be correct english\n- Keep responses short and 2-3 sentences max\n- If you have to repeat something that you said in your previous two turns, then rephrase a bit while keeping the same meaning. Never repeat the exact same words as in your previous 2 responses.\n\n## Speech Handling\n- There could be multiple transcription errors. \n- Accept variations: yes/yeah/yep/aye, no/nah/nope\n- If user says \"sorry?\" or \"pardon me\" or \"can you repeat\"  or \"what?\", they might not have heard you- so just repeat what you just said.\n\n### Flow\nStart by saying \"Hi\". Be polite and courteous. ",
+                prompt: "# Goal\nYou are a helpful agent who is handing a conversation over voice with a human. This is a voice conversation, so transcripts can be error prone.\n\n## Rules\n- Language: Russian but does not have to be correct english\n- Keep responses short and 2-3 sentences max\n- If you have to repeat something that you said in your previous two turns, then rephrase a bit while keeping the same meaning. Never repeat the exact same words as in your previous 2 responses.\n\n## Speech Handling\n- There could be multiple transcription errors. \n- Accept variations: yes/yeah/yep/aye, no/nah/nope\n- If user says \"sorry?\" or \"pardon me\" or \"can you repeat\"  or \"what?\", they might not have heard you- so just repeat what you just said.\n\n### Flow\nStart by saying \"Hi\". Be polite and courteous. ",
                 name: "start call",
                 allow_interrupt: false,
                 invalid: false,
@@ -94,15 +94,15 @@ export function CreateWorkflowButton() {
                 <DropdownMenuItem onClick={handleAgentBuilder} className="cursor-pointer">
                     <Bot className="w-4 h-4 mr-2" />
                     <div>
-                        <div className="font-medium">Use Agent Builder</div>
-                        <div className="text-xs text-muted-foreground">AI generates a workflow from your description</div>
+                        <div className="font-medium">Конфигуратор агентов</div>
+                        <div className="text-xs text-muted-foreground">Автоматическое создание сценария агента</div>
                     </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleBlankCanvas} disabled={isCreating} className="cursor-pointer">
                     <LayoutTemplate className="w-4 h-4 mr-2" />
                     <div>
-                        <div className="font-medium">Blank Canvas</div>
-                        <div className="text-xs text-muted-foreground">Start from scratch with an empty workflow</div>
+                        <div className="font-medium">Canvas</div>
+                        <div className="text-xs text-muted-foreground">Ручное создание сценария</div>
                     </div>
                 </DropdownMenuItem>
             </DropdownMenuContent>

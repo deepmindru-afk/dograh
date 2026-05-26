@@ -170,7 +170,7 @@ export function WorkflowTable({
                                         className="flex items-center gap-2"
                                     >
                                         <Pencil size={16} />
-                                        Edit
+                                        Правка
                                     </Button>
                                     {folders && (
                                         <DropdownMenu>
@@ -235,12 +235,12 @@ export function WorkflowTable({
                                                 {showArchived ? (
                                                     <>
                                                         <RotateCcw size={16} />
-                                                        Restore
+                                                        Восстановить
                                                     </>
                                                 ) : (
                                                     <>
                                                         <Archive size={16} />
-                                                        Archive
+                                                        Архив
                                                     </>
                                                 )}
                                             </>

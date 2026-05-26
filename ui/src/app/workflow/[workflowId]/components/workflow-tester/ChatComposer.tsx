@@ -39,7 +39,7 @@ export function ChatComposer({
                         className="inline-flex items-center gap-1 rounded text-foreground hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     >
                         <X className="h-3.5 w-3.5" />
-                        Cancel
+                        Отмена
                     </button>
                 </div>
             ) : null}

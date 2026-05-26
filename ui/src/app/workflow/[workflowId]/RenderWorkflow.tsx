@@ -535,7 +535,7 @@ function RenderWorkflow({
                                     variant={BackgroundVariant.Dots}
                                     gap={16}
                                     size={1}
-                                    color="#94a3b8"
+                                    color="#c689c5"
                                 />
 
                                 {/* Top-right controls - vertical layout (hidden when viewing history) */}
@@ -571,7 +571,7 @@ function RenderWorkflow({
                                                         </Button>
                                                     </TooltipTrigger>
                                                     <TooltipContent side="left">
-                                                        <p>Workflow settings</p>
+                                                        <p>Настройки сценария</p>
                                                     </TooltipContent>
                                                 </Tooltip>
                                             </div>

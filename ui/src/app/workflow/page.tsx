@@ -74,7 +74,7 @@ async function WorkflowList() {
             <>
                 {/* Active Workflows Section */}
                 <div className="mb-8">
-                    <h2 className="text-xl font-semibold mb-4">Active Agents</h2>
+                    <h2 className="text-xl font-semibold mb-4">Агенты</h2>
                     {activeWorkflows.length > 0 || folders.length > 0 ? (
                         <AgentFolderView workflows={activeWorkflows} folders={folders} />
                     ) : (

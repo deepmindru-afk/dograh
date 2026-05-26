@@ -316,7 +316,7 @@ export const WorkflowEditorHeader = ({
                         onClick={onBackToDraft}
                         className="bg-teal-600 hover:bg-teal-700 text-white px-4"
                     >
-                        Back to Draft
+                        Назад к черновику
                     </Button>
                 )}
 
@@ -335,7 +335,7 @@ export const WorkflowEditorHeader = ({
                 {isDirty && !isViewingHistoricalVersion && (
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-yellow-500/30 bg-yellow-500/10">
                         <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                        <span className="text-sm text-yellow-500">Unsaved changes</span>
+                        <span className="text-sm text-yellow-500">Несохраненные изменения</span>
                     </div>
                 )}
 
@@ -356,7 +356,7 @@ export const WorkflowEditorHeader = ({
                             className="w-80 bg-[#1a1a1a] border-[#3a3a3a] p-0"
                         >
                             <div className="px-4 py-3 border-b border-[#3a3a3a]">
-                                <h3 className="text-sm font-medium text-white">Validation Errors</h3>
+                                <h3 className="text-sm font-medium text-white">Ошибки валидации</h3>
                             </div>
                             <div className="max-h-64 overflow-y-auto">
                                 {workflowValidationErrors.map((error, index) => (
@@ -396,12 +396,12 @@ export const WorkflowEditorHeader = ({
                         {publishing ? (
                             <>
                                 <LoaderCircle className="w-4 h-4 mr-2 animate-spin" />
-                                Publishing...
+                                Публикация...
                             </>
                         ) : (
                             <>
                                 <Rocket className="w-4 h-4 mr-2" />
-                                Publish
+                                Опубликовать
                             </>
                         )}
                     </Button>
@@ -415,7 +415,7 @@ export const WorkflowEditorHeader = ({
                         onClick={onPhoneCallClick}
                     >
                         <Phone className="w-4 h-4" />
-                        Phone Call
+                        Телефонный звонок
                     </Button>
                 )}
 
@@ -425,7 +425,7 @@ export const WorkflowEditorHeader = ({
                     onClick={onTestAgentClick}
                 >
                     <Bot className="w-4 h-4" />
-                    Test Agent
+                    Тестирование
                 </Button>
 
                 {/* Save button (only shown when editing the draft) */}
@@ -438,7 +438,7 @@ export const WorkflowEditorHeader = ({
                         {savingWorkflow ? (
                             <>
                                 <LoaderCircle className="w-4 h-4 mr-2 animate-spin" />
-                                Saving...
+                                Сохранение...
                             </>
                         ) : (
                             "Save"
@@ -463,7 +463,7 @@ export const WorkflowEditorHeader = ({
                             className="text-white hover:bg-[#2a2a2a] cursor-pointer"
                         >
                             <History className="w-4 h-4 mr-2" />
-                            View Runs
+                            Запуски агента
                         </DropdownMenuItem>
                         <DropdownMenuItem
                             onClick={handleDuplicate}
@@ -482,7 +482,7 @@ export const WorkflowEditorHeader = ({
                             className="text-white hover:bg-[#2a2a2a] cursor-pointer"
                         >
                             <Download className="w-4 h-4 mr-2" />
-                            Download Workflow
+                            Скачать
                         </DropdownMenuItem>
                         <DropdownMenuItem
                             onClick={handleCopyAgentUuid}
@@ -490,7 +490,7 @@ export const WorkflowEditorHeader = ({
                             className="text-white hover:bg-[#2a2a2a] cursor-pointer"
                         >
                             <Clipboard className="w-4 h-4 mr-2" />
-                            Copy Agent UUID
+                            Скопировать UUID агента
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
